@@ -9,6 +9,9 @@
   <meta name="format-detection" content="telephone=no">
   <title>StudentHub – AI-Powered Academic & Project Management Platform</title>
   <meta name="description" content="StudentHub is a single, AI-powered productivity platform for college students. Generate structured notes, manage assignments, collaborate on college projects, track deadlines, and organize study material seamlessly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
 </head>
@@ -1277,10 +1280,48 @@
             </div>
 
             <div class="workspace-card">
-              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">🎨 Appearance</h3>
-              <div style="display:flex;gap:12px;">
+              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">🎨 Appearance & Theme</h3>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
                 <button class="btn-secondary" id="theme-btn-light">☀️ Light Theme</button>
                 <button class="btn-secondary" id="theme-btn-dark">🌙 Dark Theme</button>
+              </div>
+            </div>
+
+            <div class="workspace-card font-settings-card">
+              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">🔤 Typography & Font Style</h3>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;">
+                Choose your preferred reading typeface and font scale for optimal study focus.
+              </p>
+
+              <div class="form-row-grid" style="margin-bottom:16px;">
+                <div class="form-group">
+                  <label>Font Family</label>
+                  <select class="form-select" id="setting-font-family">
+                    <option value="jakarta" selected>Plus Jakarta Sans (Modern SaaS / Clean)</option>
+                    <option value="outfit">Outfit (Geometric & Elegant)</option>
+                    <option value="inter">Inter (High-Readability Technical)</option>
+                    <option value="space">Space Grotesk (Tech & Cyberpunk)</option>
+                    <option value="lexend">Lexend (Optimal Reading Speed)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Font Scale</label>
+                  <select class="form-select" id="setting-font-size">
+                    <option value="small">Compact (14px)</option>
+                    <option value="medium" selected>Standard (15px)</option>
+                    <option value="large">Comfortable (16.5px)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Live Font Preview Box -->
+              <div class="font-preview-box" id="font-preview-box">
+                <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;">Live Typography Preview</span>
+                <h4 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:6px 0;">Process Scheduling & CPU Optimization</h4>
+                <p style="font-size:0.86rem;color:var(--text-secondary);line-height:1.55;margin:0;">
+                  "Shortest Job First (SJF) achieves the theoretical minimum average waiting time for non-preemptive processes."
+                </p>
               </div>
             </div>
 
