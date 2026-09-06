@@ -500,11 +500,15 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`================================================================`);
-  console.log(`[*] StudentHub Express Server listening on http://localhost:${PORT}`);
-  console.log(`[*] Serving frontend from ${PUBLIC_DIR}`);
-  console.log(`[*] Database: ${DATA_FILE}`);
-  console.log(`================================================================`);
-});
+// Start Server (only when not running in Vercel serverless)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`================================================================`);
+    console.log(`[*] StudentHub Express Server listening on http://localhost:${PORT}`);
+    console.log(`[*] Serving frontend from ${PUBLIC_DIR}`);
+    console.log(`[*] Database: ${DATA_FILE}`);
+    console.log(`================================================================`);
+  });
+}
+
+export default app;
