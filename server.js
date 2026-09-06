@@ -40,7 +40,11 @@ function loadDb() {
 
 // Helper: Save Database
 function saveDb(data) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn(`[Vercel Serverless] Could not write to ${DATA_FILE}. Returning success in memory.`);
+  }
 }
 
 // AI Academic Note Synthesis Engine (Powered by OpenAI)
@@ -409,7 +413,11 @@ app.post('/api/supabase/config', (req, res) => {
   process.env.SUPABASE_URL = url;
   process.env.SUPABASE_KEY = key;
   const envPath = path.join(__dirname, '.env');
-  fs.writeFileSync(envPath, `PORT=${PORT}\nSUPABASE_URL=${url}\nSUPABASE_KEY=${key}\n`, 'utf-8');
+  try {
+    fs.writeFileSync(envPath, `PORT=${PORT}\nSUPABASE_URL=${url}\nSUPABASE_KEY=${key}\n`, 'utf-8');
+  } catch (err) {
+    console.warn(`[Vercel Serverless] Could not write to ${envPath}. Keys saved in memory only.`);
+  }
   res.json({ success: true, message: 'Supabase configuration saved.' });
 });
 
