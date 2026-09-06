@@ -8,6 +8,14 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import OpenAI from 'openai';
+
+dotenv.config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || 'dummy_key',
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,154 +43,55 @@ function saveDb(data) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-// AI Academic Note Synthesis Engine
-function synthesizeAiNotes(subject, unit, noteTypes = [], materialText = '', fileName = '') {
-  const isOs = subject.toLowerCase().includes('operating') || subject.toLowerCase().includes('os');
-  const isDbms = subject.toLowerCase().includes('dbms') || subject.toLowerCase().includes('database');
+// AI Academic Note Synthesis Engine (Powered by OpenAI)
+async function synthesizeAiNotes(subject, unit, noteTypes = [], materialText = '', fileName = '') {
+  try {
+    const prompt = `You are an expert academic tutor. A student needs comprehensive, exam-ready study notes.
+Subject: ${subject}
+Unit/Topic: ${unit || 'Unit Notes'}
+${materialText ? `Study Material Content:\n"""\n${materialText.slice(0, 15000)}\n"""\n` : ''}
 
-  let title, shortNotes, keyPoints, importantTopics, mcqs, vivaQuestions, summary;
+Generate structured JSON output containing the following exact keys:
+- "title": A suitable title.
+- "shortNotes": Detailed Markdown formatted notes with headings, bold text, and bullet points.
+- "keyPoints": Markdown string of key bullet points.
+- "importantTopics": Markdown string of important exam topics.
+- "mcqs": Markdown string of 3-5 multiple choice questions with answers.
+- "vivaQuestions": Markdown string of 2-3 viva/interview questions with answers.
+- "summary": A brief paragraph summarizing the unit.
 
-  if (isOs) {
-    title = `${unit || 'Unit 3'}: Process Scheduling & CPU Optimization`;
-    shortNotes = `### 1. Introduction & Core Concept
-Process scheduling is the core mechanism by which an operating system selects an active process from the ready queue and allocates the CPU to it. The objective is to maximize CPU utilization, ensure system responsiveness, and maintain fairness among competing jobs.
+Return ONLY valid JSON without any markdown code blocks or wrapping.`;
 
-### 2. Types of Schedulers
-* **Long-term Scheduler (Job Scheduler)**: Selects processes from the mass storage pool and loads them into main memory (ready queue). Controls the degree of multiprogramming.
-* **Short-term Scheduler (CPU Scheduler)**: Selects a process from the ready queue and binds CPU execution cycles. Runs at high frequency (every few milliseconds).
-* **Medium-term Scheduler (Swapper)**: Temporarily suspends processes by swapping them out to secondary storage to reduce memory contention.
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.7,
+    });
 
-### 3. Key Scheduling Criteria
-* **CPU Utilization**: Percentage of time the processor is actively computing instructions (Target: 40% - 90%).
-* **Throughput**: Number of discrete processes completed per unit of time.
-* **Turnaround Time (TAT)**: Total elapsed duration from job submission to final completion ($TAT = Completion\\ Time - Arrival\\ Time$).
-* **Waiting Time (WT)**: Accumulated duration spent idling in the ready queue ($WT = TAT - Burst\\ Time$).
-* **Response Time (RT)**: Elapsed time from request submission to the generation of the first response.
-* **Fairness**: Guaranteeing equitable CPU share to prevent thread starvation.
-
-### 4. Comparison of Classic Scheduling Algorithms
-| Algorithm | Type | Advantages | Disadvantages |
-| :--- | :--- | :--- | :--- |
-| **FCFS** | Non-preemptive | Simple implementation (FIFO queue) | Suffers from Convoy Effect |
-| **SJF / SRTF** | Non-preemptive / Preemptive | Provably optimal average waiting time | Requires estimating next CPU burst |
-| **Priority** | Both | Respects real-time task urgency | Potential starvation (resolved via Aging) |
-| **Round Robin** | Preemptive | Excellent interactive response time | Performance depends heavily on time quantum ($q$) |`;
-
-    keyPoints = `• The primary objective of CPU scheduling is maximizing throughput and CPU utilization while minimizing waiting and turnaround latency.
-• Long-term schedulers regulate the degree of multiprogramming; short-term schedulers select the next active thread to run.
-• In FCFS, the 'Convoy Effect' causes short I/O-bound jobs to wait indefinitely behind a single CPU-heavy job.
-• Shortest Job First (SJF) achieves the minimum theoretical average waiting time for any fixed set of stationary processes.
-• Starvation in Priority Scheduling is resolved using 'Aging'—gradually increasing the priority of processes that wait for a long time.
-• Round Robin time quantum ($q$) should be chosen so that ~80% of CPU bursts are shorter than $q$, minimizing context-switch overhead.`;
-
-    importantTopics = `1. Preemptive vs Non-Preemptive Scheduling: Architectural differences, interrupt handling, and race conditions.
-2. Mathematical problem solving for Gantt Charts: Average Waiting Time (AWT) & Average Turnaround Time (ATAT) across FCFS, SJF, and Round Robin.
-3. The Convoy Effect: Causes, impact on CPU & device utilization, and prevention.
-4. Starvation and the Aging mechanism in Priority-based scheduling.
-5. Multi-Level Queue (MLQ) and Multi-Level Feedback Queue (MLFQ) design.`;
-
-    mcqs = `1. Which scheduling algorithm guarantees the minimum average waiting time for a set of given processes?
-   A) First-Come, First-Served (FCFS)
-   B) Round Robin (RR)
-   C) Shortest Job First (SJF) [CORRECT]
-   D) Priority Scheduling
-
-2. The phenomenon of a long CPU-bound process blocking multiple short I/O processes in FCFS is known as:
-   A) Starvation
-   B) Convoy Effect [CORRECT]
-   C) Belady's Anomaly
-   D) Thrashing
-
-3. In Round Robin scheduling, if the assigned time slice (quantum) is extremely large, the algorithm behaves identically to:
-   A) Shortest Remaining Time First (SRTF)
-   B) FCFS [CORRECT]
-   C) Priority Scheduling
-   D) Multi-level Queue`;
-
-    vivaQuestions = `Q1: What is the primary role of the Dispatcher during context switching?
-Ans: The dispatcher is the module that gives control of the CPU to the process selected by the short-term scheduler. It switches context, transitions processor mode to User Mode, and jumps to the proper program counter location.
-
-Q2: What is Starvation in operating systems and how is Aging used to fix it?
-Ans: Starvation (indefinite blocking) occurs when low-priority processes never receive CPU allocation because high-priority processes keep arriving. Aging solves this by gradually incrementing the priority of waiting processes over time until they execute.`;
-
-    summary = `Process scheduling is fundamental to multitasking operating systems. By utilizing long-term, short-term, and medium-term schedulers alongside tailored algorithms (FCFS, SJF, Priority, Round Robin), the OS balances resource utilization, throughput, waiting latency, and process fairness.`;
-
-  } else if (isDbms) {
-    title = `${unit || 'Unit 3'}: Database Normalization & Relational Design`;
-    shortNotes = `### 1. Database Normalization Overview
-Normalization is the systematic process of decomposing relational tables to eliminate data redundancy and avoid anomalies (Insertion, Deletion, and Modification anomalies) while preserving data integrity.
-
-### 2. Normal Forms Hierarchy
-* **1NF (First Normal Form)**: Requires all column attributes to hold atomic (indivisible) values. No repeating groups.
-* **2NF (Second Normal Form)**: Must be in 1NF and have NO Partial Dependencies on composite keys.
-* **3NF (Third Normal Form)**: Must be in 2NF and have NO Transitive Dependencies ($X \\rightarrow Y$ where $X$ is not a super key and $Y$ is not a prime attribute).
-* **BCNF (Boyce-Codd Normal Form)**: For every non-trivial functional dependency $X \\rightarrow Y$, $X$ must strictly be a Super Key.`;
-
-    keyPoints = `• 1NF ensures atomic columns.
-• 2NF removes partial functional dependencies.
-• 3NF removes transitive dependencies.
-• BCNF guarantees that every determinant is a super key.`;
-
-    importantTopics = `1. Candidate Key identification using Attribute Closure ($X^+$).
-2. Lossless Join vs Lossy Decomposition checks.
-3. Comparing 3NF and BCNF trade-offs.`;
-
-    mcqs = `1. In BCNF, for every functional dependency X -> Y:
-   A) Y must be a prime attribute
-   B) X must be a Super Key [CORRECT]
-   C) X must be a foreign key
-   D) Y must be a candidate key`;
-
-    vivaQuestions = `Q1: What are the three anomalies avoided by normalization?
-Ans: Insertion anomaly, Deletion anomaly, and Update/Modification anomaly.`;
-
-    summary = `Normalization systematically refines database schemas from 1NF through BCNF, eliminating data anomalies and redundancy while safeguarding relational constraints.`;
-
-  } else {
-    title = `${subject} – ${unit || 'Unit Notes'}: Core Concepts & Review`;
-    shortNotes = `### 1. Overview & Principles
-Comprehensive academic breakdown for **${subject}** (${unit || 'Unit Review'}).
-
-### 2. Core Architecture
-* **Theoretical Framework**: Foundational models and core axioms.
-* **Algorithmic Efficiency**: Time and space complexity trade-offs.
-* **System Boundaries**: Error isolation, fault recovery, and data integrity.`;
-
-    keyPoints = `• Mastery of ${subject} requires connecting foundational theory with concrete programming implementations.
-• Boundary conditions and edge-case validations are essential for exams and lab tests.`;
-
-    importantTopics = `1. Core Life Cycle and Component Design in ${subject}.
-2. Performance optimization patterns and bottlenecks.
-3. Numerical and analytical problem sets.`;
-
-    mcqs = `1. In ${subject}, what is the primary optimization goal?
-   A) Maximizing throughput and resource efficiency [CORRECT]
-   B) Increasing redundant data
-   C) Adding latency`;
-
-    vivaQuestions = `Q1: How do you verify system correctness under edge conditions?
-Ans: Through unit testing, invariant assertions, stress testing, and boundary value analysis.`;
-
-    summary = `This module provides a rigorous, exam-ready review of ${subject}, focusing on system design, analytical principles, and high-yield concepts.`;
+    const aiData = JSON.parse(response.choices[0].message.content);
+    
+    return {
+      title: aiData.title || `${subject} – ${unit}`,
+      subject,
+      unit: unit || 'Unit Notes',
+      date: new Date().toISOString().split('T')[0],
+      pinned: false,
+      isAiGenerated: true,
+      tags: [subject.replace(/\s+/g, ''), unit ? unit.replace(/\s+/g, '') : 'Unit', 'AINotes'],
+      content: {
+        shortNotes: aiData.shortNotes || 'No notes generated.',
+        keyPoints: aiData.keyPoints || 'No key points generated.',
+        importantTopics: aiData.importantTopics || 'No important topics generated.',
+        mcqs: aiData.mcqs || 'No MCQs generated.',
+        vivaQuestions: aiData.vivaQuestions || 'No viva questions generated.',
+        summary: aiData.summary || 'No summary generated.'
+      }
+    };
+  } catch (error) {
+    console.error("OpenAI Generation Error:", error);
+    throw error;
   }
-
-  return {
-    title,
-    subject,
-    unit: unit || 'Unit 3',
-    date: new Date().toISOString().split('T')[0],
-    pinned: false,
-    isAiGenerated: true,
-    tags: [subject.replace(/\s+/g, ''), unit ? unit.replace(/\s+/g, '') : 'Unit3', 'AINotes'],
-    content: {
-      shortNotes,
-      keyPoints,
-      importantTopics,
-      mcqs,
-      vivaQuestions,
-      summary
-    }
-  };
 }
 
 // --- API ROUTES ---
@@ -207,10 +116,17 @@ app.put('/api/profile', (req, res) => {
 });
 
 // 3. AI Generate Notes
-app.post('/api/notes/generate', (req, res) => {
-  const { subject = 'Operating Systems', unit = 'Unit 3', noteTypes = [], materialText = '', fileName = '' } = req.body;
-  const note = synthesizeAiNotes(subject, unit, noteTypes, materialText, fileName);
-  res.json({ success: true, note, message: 'Notes synthesized successfully by AI.' });
+app.post('/api/notes/generate', async (req, res) => {
+  try {
+    const { subject = 'Operating Systems', unit = 'Unit 3', noteTypes = [], materialText = '', fileName = '' } = req.body;
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({ success: false, message: 'OpenAI API Key is missing in backend configuration. Please add it to .env' });
+    }
+    const note = await synthesizeAiNotes(subject, unit, noteTypes, materialText, fileName);
+    res.json({ success: true, note, message: 'Notes synthesized successfully by AI.' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Failed to generate AI notes. ' + error.message });
+  }
 });
 
 // 4. Notes CRUD
@@ -257,45 +173,47 @@ app.delete('/api/notes/:id', (req, res) => {
 });
 
 // 5. Ask AI Academic Doubts
-app.post('/api/ask-ai', (req, res) => {
-  const { question = '', subject = 'Computer Science' } = req.body;
-  const q = question.toLowerCase();
+app.post('/api/ask-ai', async (req, res) => {
+  try {
+    const { question = '', subject = 'Computer Science' } = req.body;
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({ success: false, message: 'OpenAI API Key is missing in backend configuration. Please add it to .env' });
+    }
+    
+    const prompt = `You are a helpful AI tutor for a college student.
+Subject: ${subject}
+Question: ${question}
 
-  let explanation, keyPoints, example, summary;
+Provide a structured JSON response with the following exact keys:
+- "explanation": A clear paragraph explaining the concept.
+- "keyPoints": An array of 3 strings containing bullet points.
+- "example": A real-world example or analogy.
+- "summary": A one-sentence summary.
+Return ONLY valid JSON.`;
 
-  if (q.includes('scheduling') || q.includes('process')) {
-    explanation = 'Process scheduling is how the Operating System allocates CPU resources among competing programs in the ready queue.';
-    keyPoints = [
-      'Ready Queue stores waiting processes.',
-      'Short-term scheduler selects the next job for the CPU.',
-      'Algorithms include FCFS, SJF, Priority, and Round Robin.'
-    ];
-    example = 'Like a doctor attending patients in an emergency clinic based on triage priority.';
-    summary = 'Scheduling balances CPU utilization, throughput, and response latency.';
-  } else if (q.includes('tcp') && q.includes('udp')) {
-    explanation = 'TCP is a reliable, connection-oriented protocol using a 3-way handshake. UDP is a lightweight, connectionless protocol designed for speed.';
-    keyPoints = [
-      'TCP guarantees in-order delivery with packet acknowledgments.',
-      'UDP delivers datagrams with minimal 8-byte header overhead.',
-      'TCP is used for Web/Email; UDP for Gaming/Live Video.'
-    ];
-    example = 'TCP is registered mail requiring a signature; UDP is dropping a postcard in a mailbox.';
-    summary = 'Choose TCP for reliability; choose UDP for real-time speed.';
-  } else {
-    explanation = `Here is a clear academic breakdown of "${question}" in ${subject}.`;
-    keyPoints = [
-      'Core Theoretical Concept and Mathematical Definition.',
-      'System Architecture and Implementation Workflow.',
-      'Boundary Conditions and Exam-Ready Tips.'
-    ];
-    example = 'Applying modular abstractions to isolate complex states.';
-    summary = 'Connect theory with hands-on practice for full exam mastery.';
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+      response_format: { type: "json_object" },
+      temperature: 0.7,
+    });
+
+    const aiData = JSON.parse(response.choices[0].message.content);
+    
+    res.json({
+      success: true,
+      response: { 
+        question, 
+        subject, 
+        explanation: aiData.explanation || 'Explanation unavailable.', 
+        keyPoints: aiData.keyPoints || [], 
+        example: aiData.example || '', 
+        summary: aiData.summary || '' 
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Failed to ask AI. ' + error.message });
   }
-
-  res.json({
-    success: true,
-    response: { question, subject, explanation, keyPoints, example, summary }
-  });
 });
 
 // 6. Assignments CRUD
