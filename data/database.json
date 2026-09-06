@@ -1,0 +1,483 @@
+{
+  "student": {
+    "name": "Bijay Mandal",
+    "course": "B.Tech Computer Science & Engineering",
+    "year": "2nd Year",
+    "semester": "Semester 4",
+    "gender": "Male",
+    "rollNo": "CSE2024-4108",
+    "college": "Sona College of Technology",
+    "email": "bijay.mandal@sonatech.ac.in",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+    "cgpa": "8.92",
+    "attendance": "92%",
+    "bio": "Passionate 2nd Year Computer Science student at Sona College of Technology focusing on Operating Systems, Data Structures, DBMS, and AI. Always curious to learn and build scalable projects.",
+    "badges": [
+      { "id": "b1", "name": "AI Power User", "icon": "✨", "desc": "Generated over 25+ AI study notes" },
+      { "id": "b2", "name": "Consistent Learner", "icon": "🔥", "desc": "14-day continuous study streak" },
+      { "id": "b3", "name": "Deadline Master", "icon": "🎯", "desc": "Submitted 100% assignments on time" },
+      { "id": "b4", "name": "Project Lead", "icon": "🚀", "desc": "Leading Smart Campus Management System" }
+    ]
+  },
+  "subjects": [
+    {
+      "id": "sub-os",
+      "name": "Operating Systems",
+      "code": "CS-301",
+      "color": "#3b82f6",
+      "icon": "cpu",
+      "credits": 4,
+      "faculty": "Dr. Ramesh Iyer",
+      "notesCount": 12,
+      "assignmentsCount": 2,
+      "progress": 78,
+      "units": [
+        { "id": 1, "name": "Introduction & System Structures", "status": "Completed" },
+        { "id": 2, "name": "Process Management & Threads", "status": "Completed" },
+        { "id": 3, "name": "CPU Scheduling & Synchronization", "status": "In Progress" },
+        { "id": 4, "name": "Deadlocks & Memory Management", "status": "Pending" },
+        { "id": 5, "name": "Storage Management & File Systems", "status": "Pending" }
+      ]
+    },
+    {
+      "id": "sub-dbms",
+      "name": "DBMS",
+      "code": "CS-302",
+      "color": "#8b5cf6",
+      "icon": "database",
+      "credits": 4,
+      "faculty": "Prof. Sunita Rao",
+      "notesCount": 10,
+      "assignmentsCount": 1,
+      "progress": 82,
+      "units": [
+        { "id": 1, "name": "ER Model & Relational Algebra", "status": "Completed" },
+        { "id": 2, "name": "SQL & Advanced Queries", "status": "Completed" },
+        { "id": 3, "name": "Normalization & Functional Dependencies", "status": "Completed" },
+        { "id": 4, "name": "Transaction Processing & Concurrency", "status": "In Progress" },
+        { "id": 5, "name": "NoSQL & Distributed Databases", "status": "Pending" }
+      ]
+    },
+    {
+      "id": "sub-cn",
+      "name": "Computer Networks",
+      "code": "CS-303",
+      "color": "#10b981",
+      "icon": "network",
+      "credits": 4,
+      "faculty": "Dr. Arvind Nair",
+      "notesCount": 8,
+      "assignmentsCount": 1,
+      "progress": 65,
+      "units": [
+        { "id": 1, "name": "Network Models & Physical Layer", "status": "Completed" },
+        { "id": 2, "name": "Data Link Layer & Error Control", "status": "Completed" },
+        { "id": 3, "name": "Network Layer & Routing Protocols", "status": "In Progress" },
+        { "id": 4, "name": "Transport Layer (TCP/UDP) & Congestion", "status": "In Progress" },
+        { "id": 5, "name": "Application Layer & Security", "status": "Pending" }
+      ]
+    },
+    {
+      "id": "sub-java",
+      "name": "Java Programming",
+      "code": "CS-304",
+      "color": "#f59e0b",
+      "icon": "code-xml",
+      "credits": 3,
+      "faculty": "Prof. Manoj Verma",
+      "notesCount": 7,
+      "assignmentsCount": 1,
+      "progress": 88,
+      "units": [
+        { "id": 1, "name": "OOP Concepts & Java Fundamentals", "status": "Completed" },
+        { "id": 2, "name": "Inheritance, Interfaces & Packages", "status": "Completed" },
+        { "id": 3, "name": "Exception Handling & Multithreading", "status": "Completed" },
+        { "id": 4, "name": "Java Collections Framework & Streams", "status": "In Progress" },
+        { "id": 5, "name": "GUI with JavaFX & JDBC Connectivity", "status": "In Progress" }
+      ]
+    },
+    {
+      "id": "sub-math",
+      "name": "Mathematics & Discrete Structures",
+      "code": "MA-301",
+      "color": "#ec4899",
+      "icon": "sigma",
+      "credits": 4,
+      "faculty": "Dr. Kalyani Sen",
+      "notesCount": 5,
+      "assignmentsCount": 1,
+      "progress": 70,
+      "units": [
+        { "id": 1, "name": "Set Theory, Relations & Functions", "status": "Completed" },
+        { "id": 2, "name": "Propositional & Predicate Logic", "status": "Completed" },
+        { "id": 3, "name": "Combinatorics & Recurrence Relations", "status": "In Progress" },
+        { "id": 4, "name": "Graph Theory & Trees", "status": "Pending" },
+        { "id": 5, "name": "Algebraic Structures & Groups", "status": "Pending" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-1",
+      "title": "Unit 3: Process Scheduling",
+      "subject": "Operating Systems",
+      "subjectId": "sub-os",
+      "unit": "Unit 3",
+      "date": "2026-09-05",
+      "pinned": true,
+      "isAiGenerated": true,
+      "tags": ["Scheduling", "CPU", "FCFS", "Round Robin", "Priority"],
+      "content": {
+        "shortNotes": "### 1. Introduction\nProcess scheduling is the mechanism by which an operating system selects a process from the ready queue and allocates the CPU to it. The goal is to maximize CPU utilization and provide fair sharing of system resources among active processes.\n\n### 2. Types of Schedulers\n* **Long-term Scheduler (Job Scheduler)**: Selects processes from the job pool on disk and loads them into memory (ready queue). Controls the degree of multiprogramming.\n* **Short-term Scheduler (CPU Scheduler)**: Selects a process from the ready queue and allocates the CPU to it. Runs very frequently (milliseconds).\n* **Medium-term Scheduler (Swapper)**: Temporarily removes processes from memory to disk (swapping) to reduce degree of multiprogramming and free RAM when overloaded.\n\n### 3. Scheduling Criteria\n* **CPU Utilization**: Percentage of time the CPU is actively executing user/system code. Aim: 40% (light) to 90% (heavy).\n* **Throughput**: Number of processes completed per unit time.\n* **Turnaround Time (TAT)**: Total time interval from process submission to its completion. ($TAT = Completion\\ Time - Arrival\\ Time$).\n* **Waiting Time (WT)**: Total time spent waiting inside the ready queue. ($WT = TAT - Burst\\ Time$).\n* **Response Time (RT)**: Time from process submission until the very first CPU response is produced.\n* **Fairness**: Guaranteeing that every eligible process receives an equitable share of execution cycles without starvation.\n\n### 4. Scheduling Algorithms Summary\n1. **FCFS (First-Come, First-Served)**: Non-preemptive, simple, suffers from Convoy Effect.\n2. **SJF (Shortest Job First)**: Optimal average waiting time; Non-preemptive / Preemptive (SRTF); requires predicting next CPU burst.\n3. **Priority Scheduling**: Allocates CPU based on priority; susceptible to Starvation (solved via Aging).\n4. **Round Robin (RR)**: Preemptive, time-quantum driven, designed specifically for time-sharing systems.",
+        "keyPoints": "• Process scheduling allocates CPU cycles to ready processes to maximize utilization and throughput.\n• Long-term scheduler controls degree of multiprogramming; Short-term scheduler selects next running process.\n• Primary optimization targets: Minimize Turnaround Time & Waiting Time; Maximize Throughput & CPU Utilization.\n• Convoy Effect occurs in FCFS when short processes queue behind long CPU-bound processes.\n• Starvation in Priority scheduling is mitigated using 'Aging' (gradually boosting waiting process priority).\n• Optimal time quantum in Round Robin should cover roughly 80% of standard CPU bursts without excessive context-switch overhead.",
+        "importantTopics": "1. Comparison between Preemptive vs Non-Preemptive Scheduling.\n2. Mathematical calculation of Average Waiting Time and Turnaround Time for SJF & Round Robin.\n3. The Convoy Effect: Causes, real-world symptoms, and mitigation.\n4. Starvation and the Aging technique in Priority Scheduling.\n5. Multi-Level Queue (MLQ) and Multi-Level Feedback Queue (MLFQ) architectures.",
+        "mcqs": "1. Which scheduling algorithm guarantees minimum average waiting time for a given set of processes?\n   A) FCFS\n   B) Round Robin\n   C) Shortest Job First (SJF) [CORRECT]\n   D) Priority Scheduling\n\n2. The problem of indefinite blocking (starvation) in priority scheduling is resolved by:\n   A) Paging\n   B) Aging [CORRECT]\n   C) Compaction\n   D) Swapping\n\n3. In Round Robin scheduling, if the time quantum is chosen to be extremely large, it behaves like:\n   A) Shortest Job First\n   B) Priority Scheduling\n   C) FCFS [CORRECT]\n   D) LJF",
+        "vivaQuestions": "Q1: What is the primary difference between Preemptive and Non-Preemptive scheduling?\nAns: In preemptive scheduling, the OS can interrupt an active running process and reallocate CPU (e.g. Round Robin, SRTF). In non-preemptive, once a process gets the CPU, it holds it until termination or I/O request (e.g. FCFS).\n\nQ2: What is the Convoy Effect in Operating Systems?\nAns: It is a scenario in FCFS where numerous fast I/O-bound processes are blocked waiting for one lengthy CPU-heavy process to finish, resulting in poor CPU and device utilization.\n\nQ3: What role does the Dispatcher play after the CPU scheduler makes a decision?\nAns: The dispatcher gives CPU control to the selected process by switching context, changing to user mode, and jumping to the proper instruction location.",
+        "summary": "Process scheduling is fundamental to multitasking operating systems. By utilizing long-term, short-term, and medium-term schedulers alongside tailored algorithms (FCFS, SJF, Priority, Round Robin), the OS balances resource utilization, throughput, waiting latency, and process fairness."
+      }
+    },
+    {
+      "id": "note-2",
+      "title": "Types of Normalization (1NF to BCNF)",
+      "subject": "DBMS",
+      "subjectId": "sub-dbms",
+      "unit": "Unit 3",
+      "date": "2026-09-03",
+      "pinned": true,
+      "isAiGenerated": true,
+      "tags": ["Normalization", "1NF", "2NF", "3NF", "BCNF", "DBMS"],
+      "content": {
+        "shortNotes": "### Database Normalization Overview\nNormalization is the systematic approach of decomposing tables to eliminate data redundancy and undesirable anomalies (Insertion, Deletion, and Update anomalies).\n\n### Normal Forms Breakdown:\n* **1NF (First Normal Form)**: Each column must contain only atomic (indivisible) values. No repeating groups or multivalued attributes.\n* **2NF (Second Normal Form)**: Table must be in 1NF and have NO Partial Dependency (no non-prime attribute should depend on a subset of any candidate key).\n* **3NF (Third Normal Form)**: Table must be in 2NF and have NO Transitive Dependency ($X \\rightarrow Y$ where neither $X$ is superkey nor $Y$ is prime attribute).\n* **BCNF (Boyce-Codd Normal Form)**: Stricter version of 3NF. For every non-trivial functional dependency $X \\rightarrow Y$, $X$ must be a Super Key.",
+        "keyPoints": "• 1NF = Atomic values only, unique rows.\n• 2NF = 1NF + No partial dependencies.\n• 3NF = 2NF + No transitive dependencies ($A \\rightarrow B$ and $B \\rightarrow C$).\n• BCNF = Every determinant must be a candidate/super key.\n• Normalization reduces redundancy at the cost of requiring more SQL JOIN operations for queries.",
+        "importantTopics": "1. Identifying Candidate Keys from Functional Dependencies.\n2. Lossless Join Decomposition vs Dependency Preserving Decomposition.\n3. Comparing 3NF vs BCNF with real schema examples.\n4. Trade-offs between Normalization (OLTP) and Denormalization (OLAP/Data Warehousing).",
+        "mcqs": "1. A relation is in 2NF if it is in 1NF and does not contain:\n   A) Transitive dependency\n   B) Partial dependency [CORRECT]\n   C) Multivalued dependency\n   D) Join dependency\n\n2. For every functional dependency X -> Y in BCNF, X must be a:\n   A) Prime attribute\n   B) Foreign key\n   C) Super key [CORRECT]\n   D) Non-prime attribute",
+        "vivaQuestions": "Q1: Why is BCNF considered strictly stronger than 3NF?\nAns: In 3NF, the dependency X -> Y is allowed if Y is a prime attribute even if X is not a super key. BCNF strictly forbids this and mandates that X must always be a super key.\n\nQ2: What are the three update anomalies prevented by normalization?\nAns: Insertion anomaly, Deletion anomaly, and Update/Modification anomaly.",
+        "summary": "Database normalization systematically organizes relational tables from 1NF through BCNF to prevent data redundancy and anomalies while ensuring data consistency and referential integrity."
+      }
+    },
+    {
+      "id": "note-3",
+      "title": "TCP vs UDP: Comprehensive Comparison",
+      "subject": "Computer Networks",
+      "subjectId": "sub-cn",
+      "unit": "Unit 4",
+      "date": "2026-08-30",
+      "pinned": false,
+      "isAiGenerated": true,
+      "tags": ["Networking", "TCP", "UDP", "Handshake", "Protocols"],
+      "content": {
+        "shortNotes": "### Transport Layer Protocols: TCP vs UDP\nTCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are the two core transport layer protocols in the Internet Protocol suite.\n\n### Key Comparisons:\n* **Connection Oriented vs Connectionless**: TCP establishes a 3-way handshake (SYN, SYN-ACK, ACK) before data transfer; UDP sends datagrams without prior connection establishment.\n* **Reliability**: TCP guarantees ordered, error-checked delivery via ACK and retransmissions. UDP is 'best-effort' with no acknowledgments.\n* **Header Size**: TCP header is 20-60 bytes; UDP header is fixed at a lightweight 8 bytes.\n* **Flow & Congestion Control**: TCP implements sliding window and AIMD congestion control; UDP does not manage flow or network congestion.\n* **Use Cases**: TCP is used for Web (HTTP/HTTPS), Email (SMTP), File Transfer (FTP). UDP is used for Live Video Streaming, Online Gaming, DNS, VoIP.",
+        "keyPoints": "• TCP provides reliable, in-order, stream-oriented data delivery with a 3-way handshake.\n• UDP is lightweight, connectionless, and optimized for low-latency real-time applications.\n• TCP header overhead is 20 bytes minimum; UDP header is only 8 bytes.\n• Retransmission of lost packets is built into TCP, whereas UDP drops packets without recovery.",
+        "importantTopics": "1. TCP 3-Way Handshake and 4-Way Connection Teardown.\n2. TCP Flow Control (Sliding Window) vs Congestion Control (Slow Start, Congestion Avoidance).\n3. UDP packet format and why DNS/DHCP use UDP.\n4. Modern QUIC protocol (HTTP/3) built on top of UDP.",
+        "mcqs": "1. What is the minimum header size of a standard TCP segment?\n   A) 8 bytes\n   B) 16 bytes\n   C) 20 bytes [CORRECT]\n   D) 32 bytes\n\n2. Which protocol is preferred for real-time video multiplayer gaming?\n   A) TCP\n   B) UDP [CORRECT]\n   C) FTP\n   D) SMTP",
+        "vivaQuestions": "Q1: Explain how the TCP 3-way handshake works.\nAns: Client sends SYN to Server -> Server responds with SYN-ACK -> Client replies with ACK. The bidirectional connection is now established.",
+        "summary": "TCP delivers guaranteed reliability and congestion control for critical data transfers, while UDP offers ultra-fast, low-overhead transmission ideal for live media and time-sensitive networking."
+      }
+    },
+    {
+      "id": "note-4",
+      "title": "Java Exception Handling Architecture",
+      "subject": "Java Programming",
+      "subjectId": "sub-java",
+      "unit": "Unit 3",
+      "date": "2026-08-25",
+      "pinned": false,
+      "isAiGenerated": false,
+      "tags": ["Java", "OOP", "TryCatch", "Exceptions"],
+      "content": {
+        "shortNotes": "### Java Exception Hierarchy\nAll exception and error types in Java inherit from `java.lang.Throwable`.\n\n* **Throwable**\n  * **Error**: Severe system-level issues not intended to be caught (e.g. `OutOfMemoryError`, `StackOverflowError`).\n  * **Exception**:\n    * **Checked Exceptions**: Checked at compile-time (e.g., `IOException`, `SQLException`). Must be caught with `try-catch` or declared using `throws`.\n    * **Unchecked Exceptions (RuntimeExceptions)**: Occur at runtime due to programming flaws (e.g., `NullPointerException`, `ArrayIndexOutOfBoundsException`, `ArithmeticException`).\n\n### Keywords:\n* `try`: Encloses code that may throw an exception.\n* `catch`: Handles the specific exception type.\n* `finally`: Block that always executes regardless of exceptions (resource cleanup).\n* `throw`: Explicitly throws an instance of an exception.\n* `throws`: Declares exceptions in method signature.",
+        "keyPoints": "• `Throwable` is the root class of Java exception hierarchy.\n• Checked exceptions are validated at compile-time; Unchecked (`RuntimeException`) occur at runtime.\n• The `finally` block executes even if a return statement exists inside try/catch.\n• Java 7 introduced `try-with-resources` which automatically closes instances implementing `AutoCloseable`.",
+        "importantTopics": "1. Checked vs Unchecked Exceptions difference with code examples.\n2. Writing custom user-defined Exception classes in Java.\n3. Try-with-resources and AutoCloseable interface.\n4. Best practices: Never catch generic `Throwable` or swallow exceptions silently.",
+        "mcqs": "1. Which class is the direct superclass of all Exception and Error classes in Java?\n   A) Object\n   B) Throwable [CORRECT]\n   C) RuntimeException\n   D) ErrorException",
+        "vivaQuestions": "Q1: Can a finally block be skipped from executing in Java?\nAns: Yes, only if `System.exit(0)` is invoked explicitly or if the JVM experiences an abrupt crash.",
+        "summary": "Java's robust exception handling model ensures graceful error recovery through structured try-catch-finally mechanisms, distinguishing between recoverable exceptions and fatal JVM errors."
+      }
+    }
+  ],
+  "studyMaterials": [
+    {
+      "id": "mat-1",
+      "name": "Operating_Systems_Unit3.pdf",
+      "subject": "Operating Systems",
+      "subjectId": "sub-os",
+      "type": "PDF",
+      "size": "2.4 MB",
+      "uploadedDate": "2026-09-04",
+      "pages": 48,
+      "summary": "Complete lecture slides on CPU scheduling algorithms, criteria, Gantt charts, and multi-processor synchronization."
+    },
+    {
+      "id": "mat-2",
+      "name": "DBMS_Normalization_Guide.pdf",
+      "subject": "DBMS",
+      "subjectId": "sub-dbms",
+      "type": "PDF",
+      "size": "3.8 MB",
+      "uploadedDate": "2026-09-02",
+      "pages": 62,
+      "summary": "In-depth reference notes on Functional Dependencies, 1NF through 5NF, and Armstrong axioms."
+    },
+    {
+      "id": "mat-3",
+      "name": "Computer_Networks_TransportLayer.pptx",
+      "subject": "Computer Networks",
+      "subjectId": "sub-cn",
+      "type": "PPT",
+      "size": "5.1 MB",
+      "uploadedDate": "2026-08-28",
+      "pages": 35,
+      "summary": "Presentation deck covering TCP headers, 3-way handshake, sliding window, and UDP datagram mechanics."
+    },
+    {
+      "id": "mat-4",
+      "name": "Java_Multithreading_Cheatsheet.docx",
+      "subject": "Java Programming",
+      "subjectId": "sub-java",
+      "type": "DOC",
+      "size": "1.2 MB",
+      "uploadedDate": "2026-08-20",
+      "pages": 14,
+      "summary": "Practical cheatsheet on thread life cycle, synchronization blocks, locks, and thread pools."
+    },
+    {
+      "id": "mat-5",
+      "name": "Discrete_Math_Graph_Theory.pdf",
+      "subject": "Mathematics & Discrete Structures",
+      "subjectId": "sub-math",
+      "type": "PDF",
+      "size": "4.6 MB",
+      "uploadedDate": "2026-08-15",
+      "pages": 52,
+      "summary": "Comprehensive notes covering Euler paths, Hamiltonian cycles, planar graphs, and tree traversals."
+    }
+  ],
+  "assignments": [
+    {
+      "id": "asg-1",
+      "title": "DBMS Assignment 2: Complex SQL & Subqueries",
+      "subject": "DBMS",
+      "subjectId": "sub-dbms",
+      "dueDate": "2026-09-08",
+      "priority": "High",
+      "status": "In Progress",
+      "progress": 60,
+      "description": "Write and test relational algebra expressions and nested SQL queries with GROUP BY, HAVING, and correlated subqueries on the University schema.",
+      "attachment": "DBMS_Assignment_2_Questions.pdf"
+    },
+    {
+      "id": "asg-2",
+      "title": "OS Lab Record: CPU Scheduling Simulation",
+      "subject": "Operating Systems",
+      "subjectId": "sub-os",
+      "dueDate": "2026-09-10",
+      "priority": "High",
+      "status": "In Progress",
+      "progress": 40,
+      "description": "Implement C/C++ programs simulating FCFS, SJF (Preemptive & Non-preemptive), and Round Robin scheduling algorithms with Gantt chart generation.",
+      "attachment": "OS_Lab_Manual_Exp4.pdf"
+    },
+    {
+      "id": "asg-3",
+      "title": "Computer Networks: Socket Programming in C",
+      "subject": "Computer Networks",
+      "subjectId": "sub-cn",
+      "dueDate": "2026-09-14",
+      "priority": "Medium",
+      "status": "Not Started",
+      "progress": 0,
+      "description": "Construct a multi-client TCP chat room server and client utilizing POSIX threads and Berkeley sockets in C/C++.",
+      "attachment": "CN_Socket_Assignment.pdf"
+    },
+    {
+      "id": "asg-4",
+      "title": "Mathematics Internal Test 1 Preparation",
+      "subject": "Mathematics & Discrete Structures",
+      "subjectId": "sub-math",
+      "dueDate": "2026-09-04",
+      "priority": "High",
+      "status": "Completed",
+      "progress": 100,
+      "description": "Practice 20 problem sets on Recurrence Relations, Generating Functions, and Combinatorics principles.",
+      "attachment": "Math_Practice_Set_1.pdf"
+    },
+    {
+      "id": "asg-5",
+      "title": "Java GUI Calculator with JavaFX",
+      "subject": "Java Programming",
+      "subjectId": "sub-java",
+      "dueDate": "2026-09-02",
+      "priority": "Medium",
+      "status": "Completed",
+      "progress": 100,
+      "description": "Build a responsive standard and scientific calculator application in Java using JavaFX with event handling.",
+      "attachment": "Java_Calculator_Spec.pdf"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "name": "Smart Campus Management System",
+      "category": "B.Tech Final Year / Mini Project",
+      "description": "An integrated cloud-based IoT and web ecosystem for automating university attendance, smart classroom allocation, campus navigation, cafeteria payments, and student grievance tracking.",
+      "guide": "Dr. Ramesh Iyer (HOD, CSE)",
+      "deadline": "2026-11-20",
+      "progress": 55,
+      "currentStage": "Development",
+      "stages": [
+        { "name": "Planning", "status": "Completed" },
+        { "name": "Research", "status": "Completed" },
+        { "name": "Design", "status": "Completed" },
+        { "name": "Development", "status": "In Progress" },
+        { "name": "Testing", "status": "Pending" },
+        { "name": "Documentation", "status": "Pending" },
+        { "name": "PPT", "status": "Pending" },
+        { "name": "Completed", "status": "Pending" }
+      ],
+      "team": [
+        { "name": "Bijay Mandal", "role": "Team Lead & Backend Dev", "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80", "isLead": true },
+        { "name": "Rahul Verma", "role": "Frontend Engineer", "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80", "isLead": false },
+        { "name": "Ananya Sharma", "role": "Database & API Specialist", "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80", "isLead": false },
+        { "name": "Deepak Patel", "role": "IoT & Hardware Integration", "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80", "isLead": false }
+      ],
+      "tasks": [
+        { "id": "tsk-1", "title": "Implement JWT Authentication & RBAC", "assignedTo": "Bijay Mandal", "priority": "High", "status": "Completed", "deadline": "2026-09-01" },
+        { "id": "tsk-2", "title": "Design Figma UI Prototypes for Student Portal", "assignedTo": "Rahul Verma", "priority": "High", "status": "Completed", "deadline": "2026-09-03" },
+        { "id": "tsk-3", "title": "Develop REST APIs for Attendance Logging", "assignedTo": "Ananya Sharma", "priority": "High", "status": "In Progress", "deadline": "2026-09-10" },
+        { "id": "tsk-4", "title": "Integrate RFID Sensor with ESP32 Controller", "assignedTo": "Deepak Patel", "priority": "Medium", "status": "In Progress", "deadline": "2026-09-12" },
+        { "id": "tsk-5", "title": "Write Unit Tests for Payment Gateway Webhook", "assignedTo": "Bijay Mandal", "priority": "Medium", "status": "To Do", "deadline": "2026-09-18" },
+        { "id": "tsk-6", "title": "Draft Chapter 3: System Architecture Document", "assignedTo": "Rahul Verma", "priority": "Low", "status": "To Do", "deadline": "2026-09-25" }
+      ],
+      "activities": [
+        { "user": "Bijay Mandal", "action": "merged PR for Auth & Role Management", "time": "2 hours ago" },
+        { "user": "Rahul Verma", "action": "completed UI Design System in Figma", "time": "Yesterday at 4:30 PM" },
+        { "user": "Ananya Sharma", "action": "uploaded Database Schema v2.1", "time": "2 days ago" },
+        { "user": "Deepak Patel", "action": "tested ESP32 RFID hardware communication", "time": "3 days ago" }
+      ]
+    },
+    {
+      "id": "proj-2",
+      "name": "AI Academic Doubts & Notes Assistant",
+      "category": "Personal / Open Source Project",
+      "description": "A full-stack RAG (Retrieval-Augmented Generation) application allowing college students to upload textbooks and query concepts with citations.",
+      "guide": "Self-directed",
+      "deadline": "2026-10-15",
+      "progress": 80,
+      "currentStage": "Testing",
+      "stages": [
+        { "name": "Planning", "status": "Completed" },
+        { "name": "Research", "status": "Completed" },
+        { "name": "Design", "status": "Completed" },
+        { "name": "Development", "status": "Completed" },
+        { "name": "Testing", "status": "In Progress" },
+        { "name": "Documentation", "status": "Pending" },
+        { "name": "PPT", "status": "Pending" },
+        { "name": "Completed", "status": "Pending" }
+      ],
+      "team": [
+        { "name": "Bijay Mandal", "role": "Full Stack & AI Engineer", "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80", "isLead": true }
+      ],
+      "tasks": [
+        { "id": "tsk-201", "title": "Optimize Vector Search with Hybrid Indexing", "assignedTo": "Bijay Mandal", "priority": "High", "status": "In Progress", "deadline": "2026-09-09" },
+        { "id": "tsk-202", "title": "Benchmark Latency with Stream Responses", "assignedTo": "Bijay Mandal", "priority": "Medium", "status": "To Do", "deadline": "2026-09-15" }
+      ],
+      "activities": [
+        { "user": "Bijay Mandal", "action": "integrated chunking and embedding pipeline", "time": "1 day ago" }
+      ]
+    }
+  ],
+  "todayTasks": [
+    { "id": "task-1", "title": "Review OS CPU Scheduling notes (Unit 3)", "subject": "Operating Systems", "completed": true },
+    { "id": "task-2", "title": "Solve 5 nested SQL query problems for DBMS Assignment 2", "subject": "DBMS", "completed": false },
+    { "id": "task-3", "title": "Write Round Robin C simulation code for OS Lab", "subject": "Operating Systems", "completed": false },
+    { "id": "task-4", "title": "Complete Smart Campus project task: REST API review", "subject": "Projects", "completed": false }
+  ],
+  "calendarEvents": [
+    {
+      "id": "evt-1",
+      "title": "DBMS Assignment 2 Due",
+      "type": "assignment",
+      "date": "2026-09-08",
+      "time": "11:59 PM",
+      "color": "#8b5cf6",
+      "location": "Online Portal"
+    },
+    {
+      "id": "evt-2",
+      "title": "OS Lab Record Submission",
+      "type": "assignment",
+      "date": "2026-09-10",
+      "time": "02:00 PM",
+      "color": "#3b82f6",
+      "location": "Lab Complex 2"
+    },
+    {
+      "id": "evt-3",
+      "title": "Smart Campus Project Progress Review with HOD",
+      "type": "project",
+      "date": "2026-09-12",
+      "time": "10:30 AM",
+      "color": "#f59e0b",
+      "location": "CSE Dept Meeting Hall"
+    },
+    {
+      "id": "evt-4",
+      "title": "Computer Networks Socket Prog. Assignment",
+      "type": "assignment",
+      "date": "2026-09-14",
+      "time": "05:00 PM",
+      "color": "#10b981",
+      "location": "Online Portal"
+    },
+    {
+      "id": "evt-5",
+      "title": "Mid-Semester Internal Exams Start",
+      "type": "exam",
+      "date": "2026-09-22",
+      "time": "09:30 AM",
+      "color": "#ef4444",
+      "location": "Main Auditorium"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "title": "DBMS Assignment 2 Deadline Approaching",
+      "message": "Due in 2 days. 60% completed so far.",
+      "time": "10 mins ago",
+      "type": "warning",
+      "unread": true
+    },
+    {
+      "id": "notif-2",
+      "title": "AI Note Generated Successfully",
+      "message": "Unit 3: Process Scheduling notes saved to Operating Systems.",
+      "time": "1 hour ago",
+      "type": "success",
+      "unread": true
+    },
+    {
+      "id": "notif-3",
+      "title": "Project Activity: Rahul Verma",
+      "message": "Figma UI prototypes marked as Completed.",
+      "time": "Yesterday",
+      "type": "info",
+      "unread": false
+    },
+    {
+      "id": "notif-4",
+      "title": "Mid-Semester Exam Schedule Released",
+      "message": "Exams begin from September 22, 2026. Check the calendar.",
+      "time": "2 days ago",
+      "type": "alert",
+      "unread": false
+    }
+  ],
+  "settings": {
+    "theme": "light",
+    "aiModelPreference": "balanced",
+    "emailNotifications": true,
+    "deadlineReminders": true,
+    "autoSaveNotes": true,
+    "fontSize": "medium"
+  }
+}

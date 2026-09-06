@@ -1,0 +1,22 @@
+# Environment variables (contains secret keys)
+.env
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# System and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

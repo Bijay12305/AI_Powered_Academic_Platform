@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub – AI-Powered Academic & Project Management Platform</title>
+  <meta name="description" content="StudentHub is a single, AI-powered productivity platform for college students. Generate structured notes, manage assignments, collaborate on college projects, track deadlines, and organize study material seamlessly.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body>
+
+  <div id="app">
+    
+    <!-- ==========================================================================
+         SIDEBAR NAVIGATION
+         ========================================================================== -->
+    <aside class="sidebar" id="sidebar">
+      
+      <!-- Top Brand Header -->
+      <div class="sidebar-header">
+        <a href="#ai-notes" class="brand-logo-wrap" id="brand-link">
+          <div class="brand-icon">
+            <!-- Modern S + Book/Student Concept SVG -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+              <path d="M6 10h10"></path>
+              <path d="M12 18l3-3 3 3"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>Student<span>Hub</span></h1>
+          </div>
+        </a>
+        <p class="brand-tagline">Less Time Managing.<br>More Time Learning.</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <div class="nav-section-title">Core Workspace</div>
+        
+        <a class="nav-item" data-view="dashboard" id="nav-dashboard">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            <span>Dashboard</span>
+          </div>
+        </a>
+
+        <a class="nav-item active" data-view="ai-notes" id="nav-ai-notes">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span>AI Notes Studio</span>
+          </div>
+          <span class="nav-badge ai-badge">✨ AI</span>
+        </a>
+
+        <a class="nav-item" data-view="subjects" id="nav-subjects">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>Subjects</span>
+          </div>
+          <span class="nav-badge" id="badge-subjects">5</span>
+        </a>
+
+        <a class="nav-item" data-view="notes" id="nav-notes">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+            <span>Notes</span>
+          </div>
+          <span class="nav-badge" id="badge-notes">42</span>
+        </a>
+
+        <a class="nav-item" data-view="study-material" id="nav-study-material">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+            <span>Study Material</span>
+          </div>
+          <span class="nav-badge" id="badge-materials">5</span>
+        </a>
+
+        <a class="nav-item" data-view="ask-ai" id="nav-ask-ai">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" x2="15" y1="10" y2="10"/><line x1="12" x2="12" y1="7" y2="13"/></svg>
+            <span>Ask AI</span>
+          </div>
+          <span class="nav-badge ai-badge">Doubt</span>
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 10px;">Management</div>
+
+        <a class="nav-item" data-view="assignments" id="nav-assignments">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>Assignments</span>
+          </div>
+          <span class="nav-badge" id="badge-assignments">3</span>
+        </a>
+
+        <a class="nav-item" data-view="projects" id="nav-projects">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Projects</span>
+          </div>
+          <span class="nav-badge" id="badge-projects">2</span>
+        </a>
+
+        <a class="nav-item" data-view="calendar" id="nav-calendar">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <span>Calendar</span>
+          </div>
+        </a>
+
+        <a class="nav-item" data-view="deadlines" id="nav-deadlines">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Deadlines</span>
+          </div>
+          <span class="nav-badge" style="background:#ea580c;color:#fff;" id="badge-deadlines">4</span>
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 10px;">Account</div>
+
+        <a class="nav-item" data-view="profile" id="nav-profile">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile</span>
+          </div>
+        </a>
+
+        <a class="nav-item" data-view="settings" id="nav-settings">
+          <div class="nav-item-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Settings</span>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Sidebar Motivational Footer -->
+      <div class="sidebar-footer">
+        <div class="motivation-card">
+          <div class="motivation-avatar">🌱</div>
+          <div class="motivation-text">
+            “Small steps every day lead to big results.”
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================================================
+         MAIN CONTENT WRAPPER
+         ========================================================================== -->
+    <div class="main-wrapper">
+      
+      <!-- Top Navigation Bar -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+          
+          <div class="search-box-wrap">
+            <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" class="search-input" id="global-search-input" placeholder="Search notes, subjects, assignments, projects..." autocomplete="off">
+            <span class="search-shortcut">/</span>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <!-- Supabase Cloud DB Status Pill -->
+          <div class="db-status-pill" id="topbar-db-badge" title="Click to open Supabase Cloud Settings">
+            <span class="db-dot dot-offline" id="topbar-db-dot"></span>
+            <span class="db-text" id="topbar-db-text">Local DB</span>
+          </div>
+
+          <!-- Quick AI Notes Shortcut Button -->
+          <button class="btn-quick-ai" id="top-quick-ai-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            <span>AI Notes</span>
+          </button>
+
+          <!-- Notifications Bell -->
+          <div class="notif-btn-wrap">
+            <button class="icon-btn" id="notif-bell-btn" aria-label="Notifications">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+              <span class="notif-badge-count" id="notif-badge">2</span>
+            </button>
+
+            <!-- Notifications Flyout -->
+            <div class="flyout-menu" id="notif-flyout">
+              <div class="flyout-header">
+                <h4>Notifications</h4>
+                <span style="font-size:0.74rem;color:var(--primary-blue);cursor:pointer;" id="mark-all-read-btn">Mark all read</span>
+              </div>
+              <div class="flyout-list" id="notif-list-container">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Profile Pill & Dropdown -->
+          <div style="position:relative;">
+            <div class="profile-pill" id="profile-pill-btn">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" alt="Bijay Mandal" class="profile-avatar-img">
+              <div class="profile-info">
+                <div class="profile-name">Bijay Mandal</div>
+                <div class="profile-role">B.Tech CSE (2nd Year)</div>
+              </div>
+              <svg class="profile-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Profile Dropdown Menu -->
+            <div class="flyout-menu" id="profile-dropdown-menu" style="min-width: 220px;">
+              <div style="padding: 14px 16px; border-bottom: 1px solid var(--border-light);">
+                <div style="font-size: 0.88rem; font-weight: 700;">Bijay Mandal</div>
+                <div style="font-size: 0.74rem; color: var(--text-muted);">bijay.mandal@sonatech.ac.in</div>
+                <div style="font-size: 0.72rem; color: var(--primary-blue); font-weight:600; margin-top:2px;">Sona College of Technology</div>
+              </div>
+              <div class="profile-menu-item" data-action="go-profile">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>My Profile</span>
+              </div>
+              <div class="profile-menu-item" data-action="go-settings">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>Preferences</span>
+              </div>
+              <div class="profile-menu-item" data-action="toggle-theme">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span id="theme-toggle-label">Toggle Theme</span>
+              </div>
+              <div class="profile-menu-item danger" data-action="logout">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                <span>Log Out</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- Main Views Container -->
+      <main class="view-container">
+
+        <!-- ==========================================================================
+             VIEW 1: AI GENERATED NOTES STUDIO (HERO PAGE - SPECS #5 - #14)
+             ========================================================================== -->
+        <section class="page-view active" id="view-ai-notes">
+          
+          <!-- Page Title Section -->
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon">✨</div>
+              <div class="page-title-text">
+                <h2>AI Generated Notes</h2>
+                <p>Upload your study material and let AI create structured, easy-to-understand notes for you.</p>
+              </div>
+            </div>
+
+            <button class="btn-secondary" id="btn-how-it-works">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>How it works?</span>
+            </button>
+          </div>
+
+          <!-- 4-Step Progress Indicator -->
+          <div class="ai-stepper-wrap">
+            <div class="ai-stepper">
+              
+              <div class="stepper-step completed" id="step-1-indicator">
+                <div class="step-circle">1</div>
+                <span class="step-label">Upload Material</span>
+              </div>
+
+              <div class="stepper-line active" id="step-line-1"></div>
+
+              <div class="stepper-step active" id="step-2-indicator">
+                <div class="step-circle">2</div>
+                <span class="step-label">Select Options</span>
+              </div>
+
+              <div class="stepper-line" id="step-line-2"></div>
+
+              <div class="stepper-step" id="step-3-indicator">
+                <div class="step-circle">3</div>
+                <span class="step-label">Generate Notes</span>
+              </div>
+
+              <div class="stepper-line" id="step-line-3"></div>
+
+              <div class="stepper-step" id="step-4-indicator">
+                <div class="step-circle">4</div>
+                <span class="step-label">Review & Save</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Two-Column AI Workspace Grid -->
+          <div class="ai-workspace-grid">
+            
+            <!-- LEFT COLUMN: CARDS 1 & 2 -->
+            <div class="workspace-left-col">
+              
+              <!-- CARD 1: UPLOAD STUDY MATERIAL -->
+              <div class="workspace-card">
+                <div class="card-title-wrap">
+                  <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    <span>1. Upload Study Material</span>
+                  </h3>
+                  <p>Upload PDF, PPT, DOC, or paste text to generate notes.</p>
+                </div>
+
+                <!-- Drag & Drop Upload Zone -->
+                <div class="dropzone-container" id="ai-dropzone">
+                  <input type="file" id="file-upload-input" style="display:none;" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt">
+                  <div class="dropzone-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
+                  </div>
+                  <div class="dropzone-main-text">Drag & drop your file here <span>or click to upload</span></div>
+                  <div class="dropzone-sub-text">Supports PDF, PPT, DOC, TXT (Max 20MB)</div>
+                </div>
+
+                <!-- Active Uploaded File Display -->
+                <div class="uploaded-file-pill" id="active-file-pill">
+                  <div class="file-pill-left">
+                    <div class="file-type-icon">PDF</div>
+                    <div class="file-pill-meta">
+                      <h4 id="uploaded-file-name">Operating_Systems_Unit3.pdf</h4>
+                      <span id="uploaded-file-size">2.4 MB • Ready for AI extraction</span>
+                    </div>
+                  </div>
+                  <button class="file-pill-remove" id="btn-remove-file" title="Remove File">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+                  </button>
+                </div>
+
+                <!-- Divider "OR" -->
+                <div class="or-divider">
+                  <span>OR</span>
+                </div>
+
+                <!-- Paste Text Area -->
+                <div>
+                  <label for="ai-text-paste" style="display:block;font-size:0.8rem;font-weight:700;margin-bottom:6px;">Or paste your text here...</label>
+                  <textarea class="text-paste-area" id="ai-text-paste" placeholder="(e.g. lecture notes, important topics, syllabus pointers, etc.)"></textarea>
+                </div>
+
+                <!-- Extra AI Tools Quick Pills -->
+                <div class="extra-tools-bar">
+                  <button class="btn-pill-tool" id="btn-trigger-ocr">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                    <span>Scan Handwritten Notes</span>
+                  </button>
+                  <button class="btn-pill-tool" id="btn-trigger-lecture">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                    <span>Lecture to Notes</span>
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- CARD 2: SELECT OPTIONS -->
+              <div class="workspace-card">
+                <div class="card-title-wrap">
+                  <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>2. Select Options</span>
+                  </h3>
+                  <p>Customize what type of content you want.</p>
+                </div>
+
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label for="ai-subject-select">Subject</label>
+                    <select class="form-select" id="ai-subject-select">
+                      <option value="Operating Systems" selected>Operating Systems</option>
+                      <option value="DBMS">DBMS</option>
+                      <option value="Computer Networks">Computer Networks</option>
+                      <option value="Java Programming">Java Programming</option>
+                      <option value="Mathematics & Discrete Structures">Mathematics & Discrete Structures</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ai-unit-select">Unit</label>
+                    <select class="form-select" id="ai-unit-select">
+                      <option value="Unit 1">Unit 1</option>
+                      <option value="Unit 2">Unit 2</option>
+                      <option value="Unit 3" selected>Unit 3</option>
+                      <option value="Unit 4">Unit 4</option>
+                      <option value="Unit 5">Unit 5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="margin-bottom:8px;font-size:0.8rem;font-weight:700;">Note Type (All Selectable)</div>
+                <div class="note-type-checkboxes">
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Short Notes" checked>
+                    <span>Short Notes</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Key Points" checked>
+                    <span>Key Points</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Definitions" checked>
+                    <span>Definitions</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Important Topics" checked>
+                    <span>Important Topics</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="MCQs" checked>
+                    <span>Questions (MCQs)</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Viva Questions" checked>
+                    <span>Viva Questions</span>
+                  </label>
+                  <label class="checkbox-card checked">
+                    <input type="checkbox" name="notetype" value="Summary" checked>
+                    <span>Summary</span>
+                  </label>
+                </div>
+
+                <!-- Primary Generate Action Button -->
+                <button class="btn-generate-ai" id="btn-generate-notes">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                  <span>🚀 Generate Notes</span>
+                </button>
+
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: AI GENERATED NOTES PREVIEW CARD (SPECS #9 - #12) -->
+            <div class="workspace-right-col" style="position:relative;">
+              <div class="preview-card" id="ai-preview-card">
+                
+                <!-- Preview Header -->
+                <div class="preview-header">
+                  <div class="preview-header-left">
+                    <h3>
+                      <span>AI Generated Notes Preview</span>
+                      <span class="nav-badge ai-badge">Ready</span>
+                    </h3>
+                  </div>
+                  <button class="btn-regenerate" id="btn-regenerate-notes" title="Regenerate with current parameters">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+                    <span>↻ Regenerate</span>
+                  </button>
+                </div>
+
+                <!-- AI Info Banner -->
+                <div class="ai-info-banner">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                  <div>Here are the AI-generated notes based on your uploaded material. You can edit, customize, and save them to your subject.</div>
+                </div>
+
+                <!-- Note Preview Tabs (Spec #10) -->
+                <div class="preview-tabs" id="note-preview-tabs">
+                  <button class="tab-btn active" data-tab="shortNotes">Short Notes</button>
+                  <button class="tab-btn" data-tab="keyPoints">Key Points</button>
+                  <button class="tab-btn" data-tab="importantTopics">Important Topics</button>
+                  <button class="tab-btn" data-tab="mcqs">MCQs</button>
+                  <button class="tab-btn" data-tab="vivaQuestions">Viva Questions</button>
+                  <button class="tab-btn" data-tab="summary">Summary</button>
+                </div>
+
+                <!-- Generated Note Body (Spec #11) -->
+                <div class="preview-body" id="note-preview-body">
+                  
+                  <div class="note-meta-bar">
+                    <div class="note-meta-title">
+                      <h2 id="preview-note-title">Unit 3: Process Scheduling</h2>
+                      <div class="note-meta-badge" id="preview-note-subject">Operating Systems</div>
+                    </div>
+
+                    <button class="btn-edit-note" id="btn-toggle-edit">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                      <span id="edit-btn-label">✎ Edit Notes</span>
+                    </button>
+                  </div>
+
+                  <!-- Rendered View (Default) -->
+                  <div class="rendered-note-content" id="rendered-note-view">
+                    <!-- Default realistic content preloaded from backend -->
+                  </div>
+
+                  <!-- Inline Rich Editor (Activated via "✎ Edit Notes") -->
+                  <div class="inline-editor-wrap" id="inline-editor-container">
+                    <div class="editor-toolbar">
+                      <button class="editor-tool-btn" data-cmd="bold" title="Bold">B</button>
+                      <button class="editor-tool-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+                      <button class="editor-tool-btn" data-cmd="heading" title="Heading">H3</button>
+                      <button class="editor-tool-btn" data-cmd="bullet" title="Bullet List">• List</button>
+                      <button class="editor-tool-btn" data-cmd="code" title="Code/Formula">`Code`</button>
+                    </div>
+                    <textarea class="editor-textarea" id="note-edit-textarea"></textarea>
+                  </div>
+
+                </div>
+
+                <!-- Note Actions Footer (Spec #12) -->
+                <div class="preview-actions">
+                  <button class="btn-download-note" id="btn-download-note" title="Download formatted note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span>↓ Download</span>
+                  </button>
+
+                  <button class="btn-save-note" id="btn-save-to-notes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    <span>💾 Save to My Notes</span>
+                  </button>
+                </div>
+
+                <!-- AI Generation Loading Overlay -->
+                <div class="ai-loading-overlay" id="ai-loading-overlay">
+                  <div class="ai-spinner-wand">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                  </div>
+                  <div class="ai-loading-status-text" id="ai-loading-status-text">Analyzing material...</div>
+                  <div class="ai-loading-sub-text" id="ai-loading-sub-text">Extracting process scheduling concepts and algorithms</div>
+                  <div class="ai-progress-bar-wrap">
+                    <div class="ai-progress-bar-fill" id="ai-progress-fill"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 2: DASHBOARD (SPEC #15)
+             ========================================================================== -->
+        <section class="page-view" id="view-dashboard">
+          
+          <!-- Welcome Section -->
+          <div class="welcome-banner">
+            <div class="welcome-text">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <span class="note-tag-pill" style="background:rgba(239, 68, 68, 0.2);color:#f87171;border:1px solid rgba(239, 68, 68, 0.4);">
+                  🔥 14-Day Study Streak
+                </span>
+                <span class="note-tag-pill" style="background:rgba(139, 92, 246, 0.2);color:#a855f7;border:1px solid rgba(139, 92, 246, 0.4);">
+                  ✨ AI Powered
+                </span>
+              </div>
+              <h2>Welcome back, Bijay! 👋</h2>
+              <p>Stay consistent, keep learning, and make it happen at Sona College of Technology.</p>
+            </div>
+            <div class="welcome-actions">
+              <button class="btn-primary" id="dash-btn-ai-notes" style="background:var(--ai-gradient);box-shadow:var(--ai-glow);">
+                <span>✨ AI Generate Note</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistics Cards Grid (Spec #15) -->
+          <div class="stats-grid">
+            <div class="stat-card" data-action="go-subjects">
+              <div class="stat-icon blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+              </div>
+              <div class="stat-content">
+                <h3 id="stat-subjects-count">5</h3>
+                <p>Enrolled Subjects</p>
+              </div>
+            </div>
+
+            <div class="stat-card" data-action="go-notes">
+              <div class="stat-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+              </div>
+              <div class="stat-content">
+                <h3 id="stat-notes-count">42</h3>
+                <p>Saved Notes</p>
+              </div>
+            </div>
+
+            <div class="stat-card" data-action="go-assignments">
+              <div class="stat-icon amber">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div class="stat-content">
+                <h3 id="stat-assignments-count">3</h3>
+                <p>Pending Assignments</p>
+              </div>
+            </div>
+
+            <div class="stat-card" data-action="go-projects">
+              <div class="stat-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div class="stat-content">
+                <h3 id="stat-projects-count">2</h3>
+                <p>Active Projects</p>
+              </div>
+            </div>
+
+            <div class="stat-card" data-action="go-deadlines">
+              <div class="stat-icon red">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="stat-content">
+                <h3 id="stat-deadlines-count">4</h3>
+                <p>Upcoming Deadlines</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Main Two Columns -->
+          <div class="dashboard-grid">
+            
+            <!-- Left Dashboard Column -->
+            <div class="dash-col">
+              
+              <!-- Quick Actions Bar -->
+              <div class="workspace-card" style="padding:18px 24px;">
+                <div class="section-title-wrap" style="margin-bottom:12px;">
+                  <h3>Quick Actions</h3>
+                </div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                  <button class="btn-secondary" id="dash-create-note-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+                    <span>Create Note</span>
+                  </button>
+                  <button class="btn-secondary" id="dash-upload-mat-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    <span>Upload Material</span>
+                  </button>
+                  <button class="btn-secondary" id="dash-add-asg-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    <span>Add Assignment</span>
+                  </button>
+                  <button class="btn-secondary" id="dash-create-proj-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/></svg>
+                    <span>Create Project</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Recent Notes Section -->
+              <div>
+                <div class="section-title-wrap">
+                  <h3>Recent Notes</h3>
+                  <a class="link-view-all" data-action="go-notes">View all notes →</a>
+                </div>
+                <div class="recent-notes-grid" id="dash-recent-notes-container">
+                  <!-- Populated dynamically from state -->
+                </div>
+              </div>
+
+              <!-- My Projects Progress Section -->
+              <div class="workspace-card">
+                <div class="section-title-wrap">
+                  <h3>My Projects</h3>
+                  <a class="link-view-all" data-action="go-projects">Manage projects →</a>
+                </div>
+                <div id="dash-projects-container">
+                  <!-- Dynamically rendered project cards with progress bars -->
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Dashboard Column -->
+            <div class="dash-col">
+              
+              <!-- AI Study Assistant Quick Hub -->
+              <div class="workspace-card">
+                <div class="section-title-wrap">
+                  <h3 style="display:flex;align-items:center;gap:6px;">
+                    <span style="color:var(--ai-purple);">✨</span> AI Study Assistant
+                  </h3>
+                </div>
+                <div class="ai-assistant-grid">
+                  <div class="ai-assistant-btn" data-action="go-ai-notes">
+                    <div class="ai-btn-icon">📄</div>
+                    <span>Upload PDF/PPT</span>
+                  </div>
+                  <div class="ai-assistant-btn" id="dash-scan-notes-btn">
+                    <div class="ai-btn-icon">📷</div>
+                    <span>Scan Notes</span>
+                  </div>
+                  <div class="ai-assistant-btn" id="dash-lecture-notes-btn">
+                    <div class="ai-btn-icon">🎙️</div>
+                    <span>Lecture to Notes</span>
+                  </div>
+                  <div class="ai-assistant-btn" data-action="go-ask-ai">
+                    <div class="ai-btn-icon">💬</div>
+                    <span>Ask AI</span>
+                  </div>
+                  <div class="ai-assistant-btn" data-action="go-ai-notes">
+                    <div class="ai-btn-icon">❓</div>
+                    <span>Generate MCQs</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Today's Tasks Checklist -->
+              <div class="task-checklist">
+                <div class="section-title-wrap">
+                  <h3>Today's Tasks</h3>
+                  <button class="btn-pill-tool" id="btn-add-today-task">+ Add</button>
+                </div>
+                <div id="today-tasks-container">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- Upcoming Deadlines Card -->
+              <div class="deadline-list-widget">
+                <div class="section-title-wrap">
+                  <h3>Upcoming Deadlines</h3>
+                  <a class="link-view-all" data-action="go-deadlines">View all →</a>
+                </div>
+                <div id="dash-deadlines-container">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 3: SUBJECTS (SPEC #16)
+             ========================================================================== -->
+        <section class="page-view" id="view-subjects">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon blue">📚</div>
+              <div class="page-title-text">
+                <h2>Enrolled Subjects</h2>
+                <p>Organize syllabus, notes, assignments, and unit progress for 3rd Year CSE.</p>
+              </div>
+            </div>
+            <button class="btn-primary" id="btn-add-subject">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+              <span>Add Subject</span>
+            </button>
+          </div>
+
+          <div class="subjects-grid" id="subjects-cards-container">
+            <!-- Populated dynamically -->
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 4: NOTES LIBRARY (SPEC #17)
+             ========================================================================== -->
+        <section class="page-view" id="view-notes">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon purple">📝</div>
+              <div class="page-title-text">
+                <h2>Notes Library</h2>
+                <p>Search, filter, edit, and organize all your AI-generated and personal notes.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <button class="btn-secondary" id="btn-create-manual-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+                <span>Create Note</span>
+              </button>
+              <button class="btn-primary" data-action="go-ai-notes">
+                <span>✨ AI Generate Note</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Notes Filter Bar -->
+          <div class="notes-filter-bar">
+            <div class="filter-group-left">
+              <input type="text" class="form-input" id="notes-search-box" placeholder="Filter notes by keyword..." style="width:240px;height:38px;">
+              
+              <select class="form-select" id="notes-filter-subject" style="width:180px;height:38px;">
+                <option value="All">All Subjects</option>
+                <option value="Operating Systems">Operating Systems</option>
+                <option value="DBMS">DBMS</option>
+                <option value="Computer Networks">Computer Networks</option>
+                <option value="Java Programming">Java Programming</option>
+                <option value="Mathematics & Discrete Structures">Mathematics</option>
+              </select>
+
+              <select class="form-select" id="notes-filter-unit" style="width:140px;height:38px;">
+                <option value="All">All Units</option>
+                <option value="Unit 1">Unit 1</option>
+                <option value="Unit 2">Unit 2</option>
+                <option value="Unit 3">Unit 3</option>
+                <option value="Unit 4">Unit 4</option>
+                <option value="Unit 5">Unit 5</option>
+              </select>
+            </div>
+
+            <select class="form-select" id="notes-sort-select" style="width:160px;height:38px;">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="title-asc">Title A-Z</option>
+            </select>
+          </div>
+
+          <!-- Notes Grid -->
+          <div class="notes-grid" id="notes-library-container">
+            <!-- Populated dynamically -->
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 5: STUDY MATERIAL VAULT (SPEC #18)
+             ========================================================================== -->
+        <section class="page-view" id="view-study-material">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon green">📁</div>
+              <div class="page-title-text">
+                <h2>Study Material Vault</h2>
+                <p>Store PDFs, PPTs, Docs, and lecture handouts. Convert any document to structured notes instantly.</p>
+              </div>
+            </div>
+            <button class="btn-primary" id="btn-upload-new-material">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              <span>Upload Document</span>
+            </button>
+          </div>
+
+          <div class="material-table-card">
+            <table class="material-table">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                  <th>Subject</th>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Uploaded Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="study-material-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 6: ASK AI ACADEMIC DOUBTS (SPEC #14)
+             ========================================================================== -->
+        <section class="page-view" id="view-ask-ai">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon purple">✨</div>
+              <div class="page-title-text">
+                <h2>Ask AI – Academic Doubts Assistant</h2>
+                <p>Get simple explanations, step-by-step points, real-world examples, and quick revision answers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ask-ai-layout">
+            
+            <div class="chat-main-card">
+              <div class="chat-messages-body" id="chat-messages-container">
+                
+                <!-- Initial AI Welcome Message -->
+                <div class="chat-msg ai">
+                  <div class="chat-avatar ai">✨</div>
+                  <div class="chat-bubble">
+                    <strong>Hello Bijay! 👋 I am your AI Academic Tutor.</strong><br>
+                    You can ask me to explain difficult algorithms, clarify semester concepts in simple words, generate step-by-step derivations, or test you on MCQs.
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Chat Input Bar -->
+              <div class="chat-input-bar">
+                <input type="text" class="chat-input" id="chat-user-input" placeholder="Ask a doubt (e.g. 'Explain process scheduling in simple words', 'Derive B-Tree complexity')...">
+                <button class="btn-primary" id="btn-send-chat" style="padding:0 20px;">
+                  <span>Send</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Suggestions Column -->
+            <div>
+              <div class="prompt-suggestions-card">
+                <h4 style="font-size:0.92rem;font-weight:800;margin-bottom:14px;color:var(--text-primary);">💡 Common Student Queries</h4>
+                <div class="prompt-chip" data-prompt="Explain process scheduling in simple words with real world example.">
+                  “Explain process scheduling in simple words.”
+                </div>
+                <div class="prompt-chip" data-prompt="Compare TCP vs UDP protocols: Header differences and use cases.">
+                  “Differences between TCP and UDP?”
+                </div>
+                <div class="prompt-chip" data-prompt="What is Database Normalization and why do we need 3NF and BCNF?">
+                  “Explain 3NF vs BCNF normalization.”
+                </div>
+                <div class="prompt-chip" data-prompt="Explain Java Exception Hierarchy (Checked vs Unchecked exceptions).">
+                  “Java Checked vs Unchecked Exceptions.”
+                </div>
+                <div class="prompt-chip" data-prompt="How does Round Robin scheduling choose the optimal time quantum?">
+                  “Round Robin optimal time slice.”
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 7: ASSIGNMENTS (SPEC #19)
+             ========================================================================== -->
+        <section class="page-view" id="view-assignments">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon amber">📋</div>
+              <div class="page-title-text">
+                <h2>Assignment Management</h2>
+                <p>Track college assignments, lab records, priority deadlines, and submission statuses.</p>
+              </div>
+            </div>
+            <button class="btn-primary" id="btn-add-assignment">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+              <span>Add Assignment</span>
+            </button>
+          </div>
+
+          <!-- Assignment Filter Tabs -->
+          <div class="assignment-tabs" id="assignment-status-tabs">
+            <button class="btn-secondary active" data-filter="All">All (5)</button>
+            <button class="btn-secondary" data-filter="In Progress">In Progress (2)</button>
+            <button class="btn-secondary" data-filter="Not Started">Not Started (1)</button>
+            <button class="btn-secondary" data-filter="Completed">Completed (2)</button>
+          </div>
+
+          <!-- Assignments Grid -->
+          <div class="assignment-grid" id="assignments-container">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 8: PROJECTS & TEAM COLLABORATION (SPECS #20 - #21)
+             ========================================================================== -->
+        <section class="page-view" id="view-projects">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon green">🚀</div>
+              <div class="page-title-text">
+                <h2>Projects & Team Collaboration</h2>
+                <p>Manage final-year projects, team tasks, development stages, and shared deliverables.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <button class="btn-secondary" id="btn-add-project-task">
+                <span>+ Add Task</span>
+              </button>
+              <button class="btn-primary" id="btn-create-project">
+                <span>+ Create Project</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Showcase Project Header Hero Card -->
+          <div class="project-hero-card" id="project-hero-details">
+            <!-- Populated dynamically with stages, progress, and team -->
+          </div>
+
+          <!-- Kanban Board (To Do, In Progress, Completed) -->
+          <div class="kanban-board">
+            <div class="kanban-col" id="kanban-todo">
+              <div class="kanban-col-header">
+                <span>📌 To Do</span>
+                <span class="nav-badge" id="badge-kanban-todo">2</span>
+              </div>
+              <div class="kanban-items" id="kanban-items-todo"></div>
+            </div>
+
+            <div class="kanban-col" id="kanban-inprogress">
+              <div class="kanban-col-header">
+                <span>⚡ In Progress</span>
+                <span class="nav-badge" style="background:#2563eb;color:#fff;" id="badge-kanban-inprogress">2</span>
+              </div>
+              <div class="kanban-items" id="kanban-items-inprogress"></div>
+            </div>
+
+            <div class="kanban-col" id="kanban-completed">
+              <div class="kanban-col-header">
+                <span>✅ Completed</span>
+                <span class="nav-badge" style="background:#10b981;color:#fff;" id="badge-kanban-completed">2</span>
+              </div>
+              <div class="kanban-items" id="kanban-items-completed"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 9: CALENDAR (SPEC #22)
+             ========================================================================== -->
+        <section class="page-view" id="view-calendar">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon blue">📅</div>
+              <div class="page-title-text">
+                <h2>Academic Calendar</h2>
+                <p>Schedule internal exams, project reviews, lab submissions, and semester events.</p>
+              </div>
+            </div>
+            <button class="btn-primary" id="btn-add-calendar-event">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+              <span>Add Event</span>
+            </button>
+          </div>
+
+          <div class="calendar-wrap">
+            <div class="calendar-header-bar">
+              <h3 id="cal-month-title" style="font-size:1.2rem;font-weight:800;">September 2026</h3>
+              <div style="display:flex;gap:8px;">
+                <button class="btn-secondary" id="cal-prev-btn">◀</button>
+                <button class="btn-secondary" id="cal-today-btn">Today</button>
+                <button class="btn-secondary" id="cal-next-btn">▶</button>
+              </div>
+            </div>
+
+            <div class="calendar-grid-month" id="calendar-grid-container">
+              <!-- Dynamically populated with day cells and event pills -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 10: DEADLINES (SPEC #23)
+             ========================================================================== -->
+        <section class="page-view" id="view-deadlines">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon amber">⏰</div>
+              <div class="page-title-text">
+                <h2>Academic Deadlines Tracker</h2>
+                <p>Grouped breakdown of academic tasks categorized by urgency.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="deadlines-grouped-container">
+            <!-- Grouped into Today, This Week, Later, Overdue -->
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 11: PROFILE (SPEC #24)
+             ========================================================================== -->
+        <section class="page-view" id="view-profile">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon blue">🎓</div>
+              <div class="page-title-text">
+                <h2>Student Profile</h2>
+                <p>Manage your academic credentials, enrollment records, and achievement badges.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-grid">
+            
+            <div class="profile-sidebar-card">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80" alt="Bijay Mandal" class="profile-big-avatar">
+              <h3 style="font-size:1.25rem;font-weight:800;">Bijay Mandal</h3>
+              <p style="font-size:0.84rem;color:var(--primary-blue);font-weight:700;">B.Tech CSE (2nd Year)</p>
+              <p style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Semester 4 • Roll: CSE2024-4108</p>
+
+              <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border-light);text-align:left;">
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:8px;">
+                  <span style="color:var(--text-muted);">CGPA:</span>
+                  <strong>8.92 / 10</strong>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:8px;">
+                  <span style="color:var(--text-muted);">Attendance:</span>
+                  <strong style="color:var(--success-green);">92%</strong>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;">
+                  <span style="color:var(--text-muted);">College:</span>
+                  <strong style="font-size:0.76rem;text-align:right;">Sona College of Tech</strong>
+                </div>
+              </div>
+
+              <div class="badge-grid" id="profile-badges-container">
+                <!-- Badges dynamically rendered -->
+              </div>
+            </div>
+
+            <!-- Profile Edit Form -->
+            <div class="workspace-card">
+              <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:18px;">Edit Academic Profile</h3>
+              <form id="profile-edit-form">
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-input" id="prof-name" value="Bijay Mandal">
+                  </div>
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-input" id="prof-email" value="bijay.mandal@sonatech.ac.in">
+                  </div>
+                </div>
+
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label>Course & Branch</label>
+                    <input type="text" class="form-input" id="prof-course" value="B.Tech Computer Science & Engineering">
+                  </div>
+                  <div class="form-group">
+                    <label>Year / Semester</label>
+                    <input type="text" class="form-input" id="prof-year" value="2nd Year (Semester 4)">
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:18px;">
+                  <label>College / University Name</label>
+                  <input type="text" class="form-input" id="prof-college" value="Sona College of Technology">
+                </div>
+
+                <div class="form-group" style="margin-bottom:20px;">
+                  <label>Bio / Academic Focus</label>
+                  <textarea class="text-paste-area" id="prof-bio" style="min-height:80px;">Passionate 2nd Year Computer Science student at Sona College of Technology focusing on Operating Systems, Data Structures, DBMS, and AI. Always curious to learn and build scalable projects.</textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                  <span>Save Profile Changes</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 12: SETTINGS (SPEC #25)
+             ========================================================================== -->
+        <section class="page-view" id="view-settings">
+          <div class="page-header">
+            <div class="page-title-wrap">
+              <div class="page-title-icon blue">⚙️</div>
+              <div class="page-title-text">
+                <h2>Application Preferences & Settings</h2>
+                <p>Customize AI model behavior, notifications, themes, and workspace options.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px;max-width:850px;">
+            
+            <!-- SUPABASE CLOUD DATABASE CONFIGURATION CARD -->
+            <div class="workspace-card supabase-config-card">
+              <div class="supabase-card-header">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div class="supabase-icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M13.35 2.5C13.6 2.05 14.28 2.21 14.3 2.73L14.7 10.5H21.5C22.03 10.5 22.31 11.13 21.94 11.5L10.65 21.5C10.4 21.95 9.72 21.79 9.7 21.27L9.3 13.5H2.5C1.97 13.5 1.69 12.87 2.06 12.5L13.35 2.5Z" fill="#3ECF8E"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 style="font-size:1.12rem;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:8px;">
+                      Supabase Cloud Database
+                    </h3>
+                    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">
+                      Real-time PostgreSQL cloud persistence with dual-mode offline fallback.
+                    </p>
+                  </div>
+                </div>
+                <div class="supabase-status-tag" id="supabase-live-status-tag">
+                  <span class="pulse-dot-indicator dot-yellow" id="supabase-status-dot"></span>
+                  <span id="supabase-status-label">Checking Status...</span>
+                </div>
+              </div>
+
+              <!-- Diagnostic Info Banner -->
+              <div class="supabase-diag-box" id="supabase-diag-box">
+                <div class="diag-item">
+                  <span class="diag-label">Status:</span>
+                  <span class="diag-val" id="diag-status-text">Local Storage Mode</span>
+                </div>
+                <div class="diag-item">
+                  <span class="diag-label">Cloud Latency:</span>
+                  <span class="diag-val" id="diag-latency-text">--</span>
+                </div>
+                <div class="diag-item">
+                  <span class="diag-label">Engine:</span>
+                  <span class="diag-val" id="diag-mode-text">Dual-Mode (PostgreSQL + JSON)</span>
+                </div>
+              </div>
+
+              <!-- Form credentials -->
+              <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;">
+                <div class="form-group">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                    <label style="margin-bottom:0;font-weight:700;">Supabase Project URL</label>
+                    <a href="https://supabase.com/dashboard" target="_blank" class="link-ext">Open Supabase Console ↗</a>
+                  </div>
+                  <input type="text" class="form-input" id="supabase-url-input" placeholder="https://your-project-id.supabase.co">
+                </div>
+
+                <div class="form-group">
+                  <label style="font-weight:700;margin-bottom:6px;">Supabase API Key (anon / public or service_role)</label>
+                  <div style="position:relative;">
+                    <input type="password" class="form-input" id="supabase-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." style="padding-right:44px;">
+                    <button type="button" id="toggle-supabase-key-visibility" class="password-toggle-btn" title="Toggle visibility">👁️</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="supabase-btn-row">
+                <button class="btn-primary" id="btn-save-supabase-config" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  <span>Test & Connect</span>
+                </button>
+
+                <button class="btn-secondary" id="btn-sync-to-supabase">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                  <span>Sync Local Data to Supabase</span>
+                </button>
+
+                <button class="btn-secondary" id="btn-pull-from-supabase">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                  <span>Pull from Cloud</span>
+                </button>
+
+                <button class="btn-secondary" id="btn-view-sql-schema">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  <span>View SQL Migration Script</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="workspace-card">
+              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">✨ AI Generation Preferences</h3>
+              <div class="form-group" style="margin-bottom:16px;">
+                <label>AI Output Detail Level</label>
+                <select class="form-select" id="setting-ai-depth">
+                  <option value="balanced" selected>Balanced (Standard Exam-oriented + Examples)</option>
+                  <option value="concise">Concise (Quick Revision Bullet Points)</option>
+                  <option value="comprehensive">Comprehensive (Deep Explanations + Full Proofs)</option>
+                </select>
+              </div>
+              <label class="checkbox-card" style="margin-bottom:10px;">
+                <input type="checkbox" id="setting-auto-save" checked>
+                <span>Auto-save generated notes to Subject library</span>
+              </label>
+            </div>
+
+            <div class="workspace-card">
+              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">🔔 Notification Preferences</h3>
+              <label class="checkbox-card" style="margin-bottom:10px;">
+                <input type="checkbox" id="setting-deadline-alert" checked>
+                <span>Send alerts 48 hours before assignment deadlines</span>
+              </label>
+              <label class="checkbox-card">
+                <input type="checkbox" id="setting-team-alert" checked>
+                <span>Notify me when teammates complete project tasks</span>
+              </label>
+            </div>
+
+            <div class="workspace-card">
+              <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:14px;">🎨 Appearance</h3>
+              <div style="display:flex;gap:12px;">
+                <button class="btn-secondary" id="theme-btn-light">☀️ Light Theme</button>
+                <button class="btn-secondary" id="theme-btn-dark">🌙 Dark Theme</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+    </div>
+
+    <!-- ==========================================================================
+         MODALS SYSTEM
+         ========================================================================== -->
+
+    <!-- 1. "How it Works" Guide Modal (Spec #5) -->
+    <div class="modal-backdrop" id="modal-how-it-works">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>✨ How AI Generated Notes Works</h3>
+          <button class="modal-close-btn" data-close-modal="modal-how-it-works">✕</button>
+        </div>
+        <div class="modal-body">
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--primary-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>
+              <div>
+                <strong style="font-size:0.92rem;">Upload Material or Paste Text</strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Upload PDF textbooks, lecture PPTs, Word documents, or simply paste raw lecture notes.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--primary-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>
+              <div>
+                <strong style="font-size:0.92rem;">Select Subject, Unit & Output Types</strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Pick your subject and check which elements you need: Short Notes, Key Points, MCQs, or Viva Questions.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--ai-purple);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>
+              <div>
+                <strong style="font-size:0.92rem;">AI Synthesizes Exam-Ready Structured Notes</strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Our engine extracts concepts, formulates definitions, and constructs structured review tabs in seconds.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--success-green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">4</div>
+              <div>
+                <strong style="font-size:0.92rem;">Edit, Download, or Save to Your Vault</strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-top:2px;">Customize any line with the built-in rich editor, download as markdown/PDF, or store forever in your subject notes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary" data-close-modal="modal-how-it-works">Got it, let's start!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Scan Handwritten Notes Modal (Spec #14) -->
+    <div class="modal-backdrop" id="modal-scan-notes">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>📷 Scan Handwritten Notes (OCR)</h3>
+          <button class="modal-close-btn" data-close-modal="modal-scan-notes">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:16px;">Take a photo of your handwritten notebook or upload an image. AI will extract and clean the handwriting into formatted digital notes.</p>
+          <div class="dropzone-container" id="scan-dropzone">
+            <div class="dropzone-icon">📷</div>
+            <div class="dropzone-main-text">Upload photo of notebook page</div>
+            <div class="dropzone-sub-text">PNG, JPG, HEIC supported</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-scan-notes">Cancel</button>
+          <button class="btn-primary" id="btn-process-ocr">Process Handwritten Notes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Lecture to Notes Modal (Spec #14) -->
+    <div class="modal-backdrop" id="modal-lecture-notes">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>🎙️ Lecture Audio to Notes</h3>
+          <button class="modal-close-btn" data-close-modal="modal-lecture-notes">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:16px;">Upload a lecture recording (MP3, WAV, M4A) or paste the transcript to synthesize clean study notes.</p>
+          <div class="dropzone-container" id="audio-dropzone">
+            <div class="dropzone-icon">🎙️</div>
+            <div class="dropzone-main-text">Upload Lecture Audio Recording</div>
+            <div class="dropzone-sub-text">Supports MP3, WAV, AAC (Up to 100MB)</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-lecture-notes">Cancel</button>
+          <button class="btn-primary" id="btn-process-lecture">Transcribe & Generate Notes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Add/Edit Note Modal -->
+    <div class="modal-backdrop" id="modal-note-editor">
+      <div class="modal-card large">
+        <div class="modal-header">
+          <h3 id="modal-note-title">Create Manual Note</h3>
+          <button class="modal-close-btn" data-close-modal="modal-note-editor">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="manual-note-form">
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label>Note Title</label>
+                <input type="text" class="form-input" id="manual-note-title-input" required placeholder="e.g. Unit 4: Memory Management">
+              </div>
+              <div class="form-group">
+                <label>Subject</label>
+                <select class="form-select" id="manual-note-subject-select">
+                  <option value="Operating Systems">Operating Systems</option>
+                  <option value="DBMS">DBMS</option>
+                  <option value="Computer Networks">Computer Networks</option>
+                  <option value="Java Programming">Java Programming</option>
+                  <option value="Mathematics & Discrete Structures">Mathematics</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:16px;">
+              <label>Unit / Chapter</label>
+              <input type="text" class="form-input" id="manual-note-unit-input" placeholder="e.g. Unit 4">
+            </div>
+
+            <div class="form-group" style="margin-bottom:16px;">
+              <label>Content (Markdown Supported)</label>
+              <textarea class="text-paste-area" id="manual-note-content-input" style="min-height:220px;" required placeholder="Write your notes here..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-note-editor">Cancel</button>
+          <button class="btn-primary" id="btn-save-manual-note">Save Note</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Add Assignment Modal -->
+    <div class="modal-backdrop" id="modal-add-assignment">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Add New Assignment</h3>
+          <button class="modal-close-btn" data-close-modal="modal-add-assignment">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-assignment-form">
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Assignment Title</label>
+              <input type="text" class="form-input" id="asg-title-input" required placeholder="e.g. OS Lab Exp 5: Banker's Algorithm">
+            </div>
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label>Subject</label>
+                <select class="form-select" id="asg-subject-select">
+                  <option value="Operating Systems">Operating Systems</option>
+                  <option value="DBMS">DBMS</option>
+                  <option value="Computer Networks">Computer Networks</option>
+                  <option value="Java Programming">Java Programming</option>
+                  <option value="Mathematics & Discrete Structures">Mathematics</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" class="form-input" id="asg-duedate-input" required>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Priority</label>
+              <select class="form-select" id="asg-priority-select">
+                <option value="High">High Priority</option>
+                <option value="Medium" selected>Medium Priority</option>
+                <option value="Low">Low Priority</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Description & Instructions</label>
+              <textarea class="text-paste-area" id="asg-desc-input" style="min-height:80px;" placeholder="Brief details about the submission requirements..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-add-assignment">Cancel</button>
+          <button class="btn-primary" id="btn-submit-assignment">Add Assignment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Add Project Task Modal -->
+    <div class="modal-backdrop" id="modal-add-task">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Add Project Task</h3>
+          <button class="modal-close-btn" data-close-modal="modal-add-task">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-task-form">
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Task Title</label>
+              <input type="text" class="form-input" id="task-title-input" required placeholder="e.g. Write Unit Tests for Auth Module">
+            </div>
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label>Assigned Team Member</label>
+                <select class="form-select" id="task-assignee-select">
+                  <option value="Bijay Mandal">Bijay Mandal</option>
+                  <option value="Rahul Verma">Rahul Verma</option>
+                  <option value="Ananya Sharma">Ananya Sharma</option>
+                  <option value="Deepak Patel">Deepak Patel</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Priority</label>
+                <select class="form-select" id="task-priority-select">
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Deadline</label>
+              <input type="date" class="form-input" id="task-deadline-input">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-add-task">Cancel</button>
+          <button class="btn-primary" id="btn-submit-task">Create Task</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Upload Document Vault Modal -->
+    <div class="modal-backdrop" id="modal-upload-material">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Upload Study Material</h3>
+          <button class="modal-close-btn" data-close-modal="modal-upload-material">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom:14px;">
+            <label>Document Title / File Name</label>
+            <input type="text" class="form-input" id="mat-name-input" placeholder="e.g. OS_Unit4_MemoryManagement.pdf">
+          </div>
+          <div class="form-row-grid">
+            <div class="form-group">
+              <label>Subject</label>
+              <select class="form-select" id="mat-subject-select">
+                <option value="Operating Systems">Operating Systems</option>
+                <option value="DBMS">DBMS</option>
+                <option value="Computer Networks">Computer Networks</option>
+                <option value="Java Programming">Java Programming</option>
+                <option value="Mathematics & Discrete Structures">Mathematics</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-select" id="mat-type-select">
+                <option value="PDF">PDF Document</option>
+                <option value="PPT">PPT Slide Deck</option>
+                <option value="DOC">Word Document</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Short Summary / Notes</label>
+            <textarea class="text-paste-area" id="mat-summary-input" style="min-height:70px;" placeholder="Brief description of the material contents..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-upload-material">Cancel</button>
+          <button class="btn-primary" id="btn-submit-upload-mat">Upload Material</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Supabase SQL Schema Migration Modal -->
+    <div class="modal-backdrop" id="modal-supabase-schema">
+      <div class="modal-card" style="max-width:760px;">
+        <div class="modal-header">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:1.2rem;">⚡</span>
+            <h3>Supabase PostgreSQL Migration Schema</h3>
+          </div>
+          <button class="modal-close-btn" data-close-modal="modal-supabase-schema">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:12px;">
+            Copy this SQL script and paste it into your <strong>Supabase Dashboard &gt; SQL Editor</strong> to create all tables (students, subjects, notes, assignments, projects, tasks) and seed initial student data for Bijay Mandal.
+          </p>
+          <div style="position:relative;">
+            <textarea class="code-box-area" id="supabase-sql-code-display" readonly style="min-height:280px;font-family:monospace;font-size:0.8rem;background:rgba(5,8,15,0.9);color:#38bdf8;border:1px solid var(--border-light);border-radius:10px;padding:12px;width:100%;resize:vertical;">Loading SQL schema...</textarea>
+            <button class="btn-copy-code" id="btn-copy-supabase-sql" title="Copy SQL script">
+              📋 Copy SQL
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" data-close-modal="modal-supabase-schema">Close</button>
+          <a href="https://supabase.com/dashboard" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+            <span>Open Supabase SQL Editor ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Hub -->
+    <div class="toast-container" id="toast-container"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
