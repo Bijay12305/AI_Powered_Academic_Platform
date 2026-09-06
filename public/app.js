@@ -179,8 +179,17 @@
   function switchView(viewName) {
     state.activeView = viewName;
 
-    // Update active nav items
+    // Update active sidebar nav items
     $$('.sidebar .nav-item').forEach(item => {
+      if (item.getAttribute('data-view') === viewName) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Update active mobile bottom nav items
+    $$('.bottom-nav-bar .bottom-nav-item').forEach(item => {
       if (item.getAttribute('data-view') === viewName) {
         item.classList.add('active');
       } else {
@@ -197,8 +206,9 @@
       }
     });
 
-    // Close mobile menu if open
-    $('#sidebar').classList.remove('open');
+    // Close mobile drawer and overlay if open
+    $('#sidebar')?.classList.remove('open');
+    $('#sidebar-overlay')?.classList.remove('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Always re-render the target view freshly
@@ -237,21 +247,51 @@
       });
     });
 
+    // Mobile Bottom Nav items
+    $$('.bottom-nav-bar .bottom-nav-item[data-view]').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const view = item.getAttribute('data-view');
+        if (view) {
+          location.hash = view;
+          switchView(view);
+        }
+      });
+    });
+
+    // Mobile Bottom Nav "Menu" Button
+    $('#bnav-menu-btn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sidebar = $('#sidebar');
+      const overlay = $('#sidebar-overlay');
+      if (sidebar) sidebar.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('active');
+    });
+
     // Top CTA quick AI button
-    $('#top-quick-ai-btn').addEventListener('click', () => {
+    $('#top-quick-ai-btn')?.addEventListener('click', () => {
       location.hash = 'ai-notes';
       switchView('ai-notes');
     });
 
-    $('#brand-link').addEventListener('click', (e) => {
+    $('#brand-link')?.addEventListener('click', (e) => {
       e.preventDefault();
       location.hash = 'ai-notes';
       switchView('ai-notes');
     });
 
     // Mobile Hamburger
-    $('#mobile-menu-toggle').addEventListener('click', () => {
-      $('#sidebar').classList.toggle('open');
+    $('#mobile-menu-toggle')?.addEventListener('click', () => {
+      const sidebar = $('#sidebar');
+      const overlay = $('#sidebar-overlay');
+      if (sidebar) sidebar.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('active');
+    });
+
+    // Click outside sidebar on overlay to close
+    $('#sidebar-overlay')?.addEventListener('click', () => {
+      $('#sidebar')?.classList.remove('open');
+      $('#sidebar-overlay')?.classList.remove('active');
     });
 
     // Global action links (e.g. data-action="go-notes")
