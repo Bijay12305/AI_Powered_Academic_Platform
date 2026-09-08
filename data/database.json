@@ -1,20 +1,20 @@
 {
   "student": {
-    "id": "user-1788882466",
-    "name": "Pooja Patel",
-    "email": "pooja.patel@college.edu",
-    "college": "Salem Institute of Technology",
-    "departmentId": "dept-it",
-    "department": "Information Technology",
-    "course": "B.Tech Information Technology",
-    "year": "2nd Year",
+    "id": "user-1788884110",
+    "name": "Vikram Sethi",
+    "email": "vikram.civil@sonatech.ac.in",
+    "college": "Sona College of Technology",
+    "departmentId": "dept-civil",
+    "department": "Civil Engineering",
+    "course": "B.Tech Civil Engineering",
+    "year": "3rd Year",
     "semester": "Semester 1",
-    "rollNo": "IT-2024-88",
+    "rollNo": "CIVIL-3021",
     "gender": "Student",
-    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=pooja.patel@college.edu",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
     "cgpa": "8.80",
     "attendance": "95%",
-    "bio": "Student at Salem Institute of Technology majoring in Information Technology.",
+    "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
     "badges": [
       {
         "id": "b-welcome",
@@ -1349,6 +1349,33 @@
       "cgpa": "8.80",
       "attendance": "95%",
       "bio": "Student at Salem Institute of Technology majoring in Information Technology.",
+      "badges": [
+        {
+          "id": "b-welcome",
+          "name": "New Scholar",
+          "icon": "🎓",
+          "desc": "Joined StudentHub Academic Platform"
+        }
+      ],
+      "createdAt": "2026-09-08"
+    },
+    {
+      "id": "user-1788884110",
+      "name": "Vikram Sethi",
+      "email": "vikram.civil@sonatech.ac.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona College of Technology",
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering",
+      "course": "B.Tech Civil Engineering",
+      "year": "3rd Year",
+      "semester": "Semester 1",
+      "rollNo": "CIVIL-3021",
+      "gender": "Student",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+      "cgpa": "8.80",
+      "attendance": "95%",
+      "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
       "badges": [
         {
           "id": "b-welcome",
