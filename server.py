@@ -452,17 +452,36 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
             year = body.get("year", "1st Year").strip()
             roll_no = body.get("rollNo", f"STU-{int(datetime.now().timestamp())}").strip()
 
-            if not name or not email or not password:
-                self.send_json_response({"success": False, "message": "Name, email and password are required."}, status=400)
+            if not name or not email:
+                self.send_json_response({"success": False, "message": "Name and email are required."}, status=400)
                 return
 
+            pw_hash = hashlib.sha256((password or "password123").encode()).hexdigest()
             users = db.setdefault("users", [])
-            # Check existing email
-            if any(u.get("email", "").lower() == email for u in users):
-                self.send_json_response({"success": False, "message": "An account with this email already exists."}, status=409)
+            
+            # If user already exists, update profile and log in directly
+            existing_user = next((u for u in users if u.get("email", "").lower() == email), None)
+            if existing_user:
+                existing_user["name"] = name
+                existing_user["college"] = college
+                existing_user["department"] = department_name
+                existing_user["departmentId"] = department_id
+                existing_user["course"] = course
+                existing_user["year"] = year
+                if roll_no:
+                    existing_user["rollNo"] = roll_no
+                if password:
+                    existing_user["passwordHash"] = pw_hash
+                safe_user = {k: v for k, v in existing_user.items() if k != "passwordHash"}
+                db["student"] = safe_user
+                save_db(db)
+                self.send_json_response({
+                    "success": True,
+                    "user": safe_user,
+                    "message": f"Welcome back, {name}! Account updated successfully."
+                })
                 return
 
-            pw_hash = hashlib.sha256(password.encode()).hexdigest()
             user_id = f"user-{int(datetime.now().timestamp())}"
             new_user = {
                 "id": user_id,

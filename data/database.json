@@ -1,20 +1,20 @@
 {
   "student": {
-    "id": "user-1788884110",
-    "name": "Vikram Sethi",
-    "email": "vikram.civil@sonatech.ac.in",
-    "college": "Sona College of Technology",
-    "departmentId": "dept-civil",
-    "department": "Civil Engineering",
-    "course": "B.Tech Civil Engineering",
-    "year": "3rd Year",
+    "id": "user-1788884502",
+    "name": "Bijay Mandal",
+    "email": "bijay@gmail.com",
+    "college": "Sona college",
+    "departmentId": "dept-cse",
+    "department": "Computer Science & Engineering",
+    "course": "B.Tech Computer Science & Engineering",
+    "year": "2nd Year",
     "semester": "Semester 1",
-    "rollNo": "CIVIL-3021",
+    "rollNo": "cse123",
     "gender": "Student",
-    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bijay@gmail.com",
     "cgpa": "8.80",
     "attendance": "95%",
-    "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
+    "bio": "Student at Sona college majoring in Computer Science & Engineering.",
     "badges": [
       {
         "id": "b-welcome",
@@ -1376,6 +1376,33 @@
       "cgpa": "8.80",
       "attendance": "95%",
       "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
+      "badges": [
+        {
+          "id": "b-welcome",
+          "name": "New Scholar",
+          "icon": "🎓",
+          "desc": "Joined StudentHub Academic Platform"
+        }
+      ],
+      "createdAt": "2026-09-08"
+    },
+    {
+      "id": "user-1788884502",
+      "name": "Bijay Mandal",
+      "email": "bijay@gmail.com",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona college",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "course": "B.Tech Computer Science & Engineering",
+      "year": "2nd Year",
+      "semester": "Semester 1",
+      "rollNo": "cse123",
+      "gender": "Student",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bijay@gmail.com",
+      "cgpa": "8.80",
+      "attendance": "95%",
+      "bio": "Student at Sona college majoring in Computer Science & Engineering.",
       "badges": [
         {
           "id": "b-welcome",
