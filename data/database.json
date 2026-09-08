@@ -1,23 +1,29 @@
 {
   "student": {
-    "name": "Bijay Mandal",
-    "course": "B.Tech Computer Science & Engineering",
-    "year": "2nd Year",
-    "semester": "Semester 4",
-    "gender": "Male",
-    "rollNo": "CSE2024-4108",
+    "id": "user-1788881131",
+    "name": "Vikram Sethi",
+    "email": "vikram.civil@sonatech.ac.in",
     "college": "Sona College of Technology",
-    "email": "bijay.mandal@sonatech.ac.in",
-    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
-    "cgpa": "8.92",
-    "attendance": "92%",
-    "bio": "Passionate 2nd Year Computer Science student at Sona College of Technology focusing on Operating Systems, Data Structures, DBMS, and AI. Always curious to learn and build scalable projects.",
+    "departmentId": "dept-civil",
+    "department": "Civil Engineering",
+    "course": "B.Tech Civil Engineering",
+    "year": "3rd Year",
+    "semester": "Semester 1",
+    "rollNo": "CIVIL-3021",
+    "gender": "Student",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+    "cgpa": "8.80",
+    "attendance": "95%",
+    "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
     "badges": [
-      { "id": "b1", "name": "AI Power User", "icon": "✨", "desc": "Generated over 25+ AI study notes" },
-      { "id": "b2", "name": "Consistent Learner", "icon": "🔥", "desc": "14-day continuous study streak" },
-      { "id": "b3", "name": "Deadline Master", "icon": "🎯", "desc": "Submitted 100% assignments on time" },
-      { "id": "b4", "name": "Project Lead", "icon": "🚀", "desc": "Leading Smart Campus Management System" }
-    ]
+      {
+        "id": "b-welcome",
+        "name": "New Scholar",
+        "icon": "🎓",
+        "desc": "Joined StudentHub Academic Platform"
+      }
+    ],
+    "createdAt": "2026-09-08"
   },
   "subjects": [
     {
@@ -32,12 +38,34 @@
       "assignmentsCount": 2,
       "progress": 78,
       "units": [
-        { "id": 1, "name": "Introduction & System Structures", "status": "Completed" },
-        { "id": 2, "name": "Process Management & Threads", "status": "Completed" },
-        { "id": 3, "name": "CPU Scheduling & Synchronization", "status": "In Progress" },
-        { "id": 4, "name": "Deadlocks & Memory Management", "status": "Pending" },
-        { "id": 5, "name": "Storage Management & File Systems", "status": "Pending" }
-      ]
+        {
+          "id": 1,
+          "name": "Introduction & System Structures",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Process Management & Threads",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "CPU Scheduling & Synchronization",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Deadlocks & Memory Management",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Storage Management & File Systems",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
       "id": "sub-dbms",
@@ -51,12 +79,34 @@
       "assignmentsCount": 1,
       "progress": 82,
       "units": [
-        { "id": 1, "name": "ER Model & Relational Algebra", "status": "Completed" },
-        { "id": 2, "name": "SQL & Advanced Queries", "status": "Completed" },
-        { "id": 3, "name": "Normalization & Functional Dependencies", "status": "Completed" },
-        { "id": 4, "name": "Transaction Processing & Concurrency", "status": "In Progress" },
-        { "id": 5, "name": "NoSQL & Distributed Databases", "status": "Pending" }
-      ]
+        {
+          "id": 1,
+          "name": "ER Model & Relational Algebra",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "SQL & Advanced Queries",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Normalization & Functional Dependencies",
+          "status": "Completed"
+        },
+        {
+          "id": 4,
+          "name": "Transaction Processing & Concurrency",
+          "status": "In Progress"
+        },
+        {
+          "id": 5,
+          "name": "NoSQL & Distributed Databases",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
       "id": "sub-cn",
@@ -70,12 +120,34 @@
       "assignmentsCount": 1,
       "progress": 65,
       "units": [
-        { "id": 1, "name": "Network Models & Physical Layer", "status": "Completed" },
-        { "id": 2, "name": "Data Link Layer & Error Control", "status": "Completed" },
-        { "id": 3, "name": "Network Layer & Routing Protocols", "status": "In Progress" },
-        { "id": 4, "name": "Transport Layer (TCP/UDP) & Congestion", "status": "In Progress" },
-        { "id": 5, "name": "Application Layer & Security", "status": "Pending" }
-      ]
+        {
+          "id": 1,
+          "name": "Network Models & Physical Layer",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Data Link Layer & Error Control",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Network Layer & Routing Protocols",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Transport Layer (TCP/UDP) & Congestion",
+          "status": "In Progress"
+        },
+        {
+          "id": 5,
+          "name": "Application Layer & Security",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
       "id": "sub-java",
@@ -89,12 +161,34 @@
       "assignmentsCount": 1,
       "progress": 88,
       "units": [
-        { "id": 1, "name": "OOP Concepts & Java Fundamentals", "status": "Completed" },
-        { "id": 2, "name": "Inheritance, Interfaces & Packages", "status": "Completed" },
-        { "id": 3, "name": "Exception Handling & Multithreading", "status": "Completed" },
-        { "id": 4, "name": "Java Collections Framework & Streams", "status": "In Progress" },
-        { "id": 5, "name": "GUI with JavaFX & JDBC Connectivity", "status": "In Progress" }
-      ]
+        {
+          "id": 1,
+          "name": "OOP Concepts & Java Fundamentals",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Inheritance, Interfaces & Packages",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Exception Handling & Multithreading",
+          "status": "Completed"
+        },
+        {
+          "id": 4,
+          "name": "Java Collections Framework & Streams",
+          "status": "In Progress"
+        },
+        {
+          "id": 5,
+          "name": "GUI with JavaFX & JDBC Connectivity",
+          "status": "In Progress"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
       "id": "sub-math",
@@ -108,11 +202,443 @@
       "assignmentsCount": 1,
       "progress": 70,
       "units": [
-        { "id": 1, "name": "Set Theory, Relations & Functions", "status": "Completed" },
-        { "id": 2, "name": "Propositional & Predicate Logic", "status": "Completed" },
-        { "id": 3, "name": "Combinatorics & Recurrence Relations", "status": "In Progress" },
-        { "id": 4, "name": "Graph Theory & Trees", "status": "Pending" },
-        { "id": 5, "name": "Algebraic Structures & Groups", "status": "Pending" }
+        {
+          "id": 1,
+          "name": "Set Theory, Relations & Functions",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Propositional & Predicate Logic",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Combinatorics & Recurrence Relations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Graph Theory & Trees",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Algebraic Structures & Groups",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
+    },
+    {
+      "id": "sub-ml",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "name": "Machine Learning Foundations",
+      "code": "AI-301",
+      "color": "#8b5cf6",
+      "icon": "brain",
+      "credits": 4,
+      "faculty": "Dr. Ananya Roy",
+      "notesCount": 14,
+      "assignmentsCount": 2,
+      "progress": 82,
+      "units": [
+        {
+          "id": 1,
+          "name": "Supervised Learning & Regression",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Classification & SVMs",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Ensemble Methods & Random Forests",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unsupervised Clustering & PCA",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Model Evaluation & Bias-Variance Tradeoff",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-dl",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "name": "Deep Learning & Neural Networks",
+      "code": "AI-302",
+      "color": "#ec4899",
+      "icon": "network",
+      "credits": 4,
+      "faculty": "Prof. S. Varma",
+      "notesCount": 10,
+      "assignmentsCount": 2,
+      "progress": 60,
+      "units": [
+        {
+          "id": 1,
+          "name": "Perceptrons & Backpropagation",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "CNN Architectures & Vision",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "RNN, LSTM & Transformers",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Generative Models & GANs",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Optimization & Regularization",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-dsp",
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "name": "Digital Signal Processing",
+      "code": "EC-301",
+      "color": "#06b6d4",
+      "icon": "activity",
+      "credits": 4,
+      "faculty": "Dr. G. Venkatesh",
+      "notesCount": 11,
+      "assignmentsCount": 2,
+      "progress": 70,
+      "units": [
+        {
+          "id": 1,
+          "name": "Discrete Fourier Transform & FFT",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "IIR Filter Design (Butterworth/Chebyshev)",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "FIR Filter Design & Windowing",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Finite Word Length Effects",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Multirate Signal Processing",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-vlsi",
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "name": "VLSI Design & CMOS Circuits",
+      "code": "EC-302",
+      "color": "#f97316",
+      "icon": "cpu",
+      "credits": 4,
+      "faculty": "Prof. R. Revathi",
+      "notesCount": 9,
+      "assignmentsCount": 1,
+      "progress": 62,
+      "units": [
+        {
+          "id": 1,
+          "name": "MOS Transistor Theory",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "CMOS Inverter Characteristics",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Combinational Logic & Stick Diagrams",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Sequential Circuit Design",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "FPGA Architecture & Verilog HDL",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-control",
+      "departmentId": "dept-eee",
+      "department": "Electrical & Electronics Engineering",
+      "name": "Control Systems Engineering",
+      "code": "EE-301",
+      "color": "#eab308",
+      "icon": "sliders",
+      "credits": 4,
+      "faculty": "Dr. K. Murugesan",
+      "notesCount": 10,
+      "assignmentsCount": 2,
+      "progress": 68,
+      "units": [
+        {
+          "id": 1,
+          "name": "Transfer Function Models & Block Diagrams",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Time Response Analysis",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Root Locus & Routh-Hurwitz Stability",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Bode Plots & Nyquist Criterion",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "State Space Representation",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-thermo",
+      "departmentId": "dept-mech",
+      "department": "Mechanical Engineering",
+      "name": "Applied Thermodynamics",
+      "code": "ME-301",
+      "color": "#f97316",
+      "icon": "flame",
+      "credits": 4,
+      "faculty": "Dr. V. Natarajan",
+      "notesCount": 12,
+      "assignmentsCount": 2,
+      "progress": 72,
+      "units": [
+        {
+          "id": 1,
+          "name": "Laws of Thermodynamics & Entropy",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Gas Power Cycles (Otto, Diesel, Brayton)",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Vapour Power Cycles & Rankine Cycle",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Refrigeration & Psychrometry",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Combustion Stoichiometry",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-structural",
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering",
+      "name": "Structural Analysis & Design",
+      "code": "CE-301",
+      "color": "#84cc16",
+      "icon": "grid",
+      "credits": 4,
+      "faculty": "Dr. M. Senthilkumar",
+      "notesCount": 10,
+      "assignmentsCount": 2,
+      "progress": 64,
+      "units": [
+        {
+          "id": 1,
+          "name": "Determinate Trusses & Cables",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Slope Deflection & Moment Distribution",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Matrix Stiffness Method",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Influence Lines for Indeterminate Beams",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Plastic Theory of Structures",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-cloud",
+      "departmentId": "dept-it",
+      "department": "Information Technology",
+      "name": "Cloud Computing & AWS Architecture",
+      "code": "IT-301",
+      "color": "#0284c7",
+      "icon": "cloud",
+      "credits": 3,
+      "faculty": "Dr. J. Preethi",
+      "notesCount": 11,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Virtualization & Hypervisors",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "IaaS, PaaS, SaaS Models",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "AWS EC2, S3, VPC & IAM",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Serverless Architecture (Lambda)",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Cloud Security & Compliance",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-genetics",
+      "departmentId": "dept-bt",
+      "department": "Biotechnology",
+      "name": "Genetic Engineering & Cloning",
+      "code": "BT-301",
+      "color": "#10b981",
+      "icon": "git-commit",
+      "credits": 4,
+      "faculty": "Dr. R. Kavitha",
+      "notesCount": 13,
+      "assignmentsCount": 2,
+      "progress": 85,
+      "units": [
+        {
+          "id": 1,
+          "name": "Restriction Enzymes & Plasmids",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "PCR Amplification & Gel Electrophoresis",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "CRISPR-Cas9 Genome Editing",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Recombinant Protein Expression",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Transgenic Animals & Bioethics",
+          "status": "Pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-finman",
+      "departmentId": "dept-mba",
+      "department": "Management Studies",
+      "name": "Financial Management & Valuation",
+      "code": "MB-201",
+      "color": "#6366f1",
+      "icon": "dollar-sign",
+      "credits": 4,
+      "faculty": "Dr. S. Raghuram",
+      "notesCount": 12,
+      "assignmentsCount": 2,
+      "progress": 75,
+      "units": [
+        {
+          "id": 1,
+          "name": "Time Value of Money (NPV, IRR)",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Capital Budgeting & WACC",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Working Capital Management",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Capital Structure & MM Propositions",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Dividend Policy & Corporate Valuation",
+          "status": "Pending"
+        }
       ]
     }
   ],
@@ -126,7 +652,13 @@
       "date": "2026-09-05",
       "pinned": true,
       "isAiGenerated": true,
-      "tags": ["Scheduling", "CPU", "FCFS", "Round Robin", "Priority"],
+      "tags": [
+        "Scheduling",
+        "CPU",
+        "FCFS",
+        "Round Robin",
+        "Priority"
+      ],
       "content": {
         "shortNotes": "### 1. Introduction\nProcess scheduling is the mechanism by which an operating system selects a process from the ready queue and allocates the CPU to it. The goal is to maximize CPU utilization and provide fair sharing of system resources among active processes.\n\n### 2. Types of Schedulers\n* **Long-term Scheduler (Job Scheduler)**: Selects processes from the job pool on disk and loads them into memory (ready queue). Controls the degree of multiprogramming.\n* **Short-term Scheduler (CPU Scheduler)**: Selects a process from the ready queue and allocates the CPU to it. Runs very frequently (milliseconds).\n* **Medium-term Scheduler (Swapper)**: Temporarily removes processes from memory to disk (swapping) to reduce degree of multiprogramming and free RAM when overloaded.\n\n### 3. Scheduling Criteria\n* **CPU Utilization**: Percentage of time the CPU is actively executing user/system code. Aim: 40% (light) to 90% (heavy).\n* **Throughput**: Number of processes completed per unit time.\n* **Turnaround Time (TAT)**: Total time interval from process submission to its completion. ($TAT = Completion\\ Time - Arrival\\ Time$).\n* **Waiting Time (WT)**: Total time spent waiting inside the ready queue. ($WT = TAT - Burst\\ Time$).\n* **Response Time (RT)**: Time from process submission until the very first CPU response is produced.\n* **Fairness**: Guaranteeing that every eligible process receives an equitable share of execution cycles without starvation.\n\n### 4. Scheduling Algorithms Summary\n1. **FCFS (First-Come, First-Served)**: Non-preemptive, simple, suffers from Convoy Effect.\n2. **SJF (Shortest Job First)**: Optimal average waiting time; Non-preemptive / Preemptive (SRTF); requires predicting next CPU burst.\n3. **Priority Scheduling**: Allocates CPU based on priority; susceptible to Starvation (solved via Aging).\n4. **Round Robin (RR)**: Preemptive, time-quantum driven, designed specifically for time-sharing systems.",
         "keyPoints": "• Process scheduling allocates CPU cycles to ready processes to maximize utilization and throughput.\n• Long-term scheduler controls degree of multiprogramming; Short-term scheduler selects next running process.\n• Primary optimization targets: Minimize Turnaround Time & Waiting Time; Maximize Throughput & CPU Utilization.\n• Convoy Effect occurs in FCFS when short processes queue behind long CPU-bound processes.\n• Starvation in Priority scheduling is mitigated using 'Aging' (gradually boosting waiting process priority).\n• Optimal time quantum in Round Robin should cover roughly 80% of standard CPU bursts without excessive context-switch overhead.",
@@ -145,7 +677,14 @@
       "date": "2026-09-03",
       "pinned": true,
       "isAiGenerated": true,
-      "tags": ["Normalization", "1NF", "2NF", "3NF", "BCNF", "DBMS"],
+      "tags": [
+        "Normalization",
+        "1NF",
+        "2NF",
+        "3NF",
+        "BCNF",
+        "DBMS"
+      ],
       "content": {
         "shortNotes": "### Database Normalization Overview\nNormalization is the systematic approach of decomposing tables to eliminate data redundancy and undesirable anomalies (Insertion, Deletion, and Update anomalies).\n\n### Normal Forms Breakdown:\n* **1NF (First Normal Form)**: Each column must contain only atomic (indivisible) values. No repeating groups or multivalued attributes.\n* **2NF (Second Normal Form)**: Table must be in 1NF and have NO Partial Dependency (no non-prime attribute should depend on a subset of any candidate key).\n* **3NF (Third Normal Form)**: Table must be in 2NF and have NO Transitive Dependency ($X \\rightarrow Y$ where neither $X$ is superkey nor $Y$ is prime attribute).\n* **BCNF (Boyce-Codd Normal Form)**: Stricter version of 3NF. For every non-trivial functional dependency $X \\rightarrow Y$, $X$ must be a Super Key.",
         "keyPoints": "• 1NF = Atomic values only, unique rows.\n• 2NF = 1NF + No partial dependencies.\n• 3NF = 2NF + No transitive dependencies ($A \\rightarrow B$ and $B \\rightarrow C$).\n• BCNF = Every determinant must be a candidate/super key.\n• Normalization reduces redundancy at the cost of requiring more SQL JOIN operations for queries.",
@@ -164,7 +703,13 @@
       "date": "2026-08-30",
       "pinned": false,
       "isAiGenerated": true,
-      "tags": ["Networking", "TCP", "UDP", "Handshake", "Protocols"],
+      "tags": [
+        "Networking",
+        "TCP",
+        "UDP",
+        "Handshake",
+        "Protocols"
+      ],
       "content": {
         "shortNotes": "### Transport Layer Protocols: TCP vs UDP\nTCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are the two core transport layer protocols in the Internet Protocol suite.\n\n### Key Comparisons:\n* **Connection Oriented vs Connectionless**: TCP establishes a 3-way handshake (SYN, SYN-ACK, ACK) before data transfer; UDP sends datagrams without prior connection establishment.\n* **Reliability**: TCP guarantees ordered, error-checked delivery via ACK and retransmissions. UDP is 'best-effort' with no acknowledgments.\n* **Header Size**: TCP header is 20-60 bytes; UDP header is fixed at a lightweight 8 bytes.\n* **Flow & Congestion Control**: TCP implements sliding window and AIMD congestion control; UDP does not manage flow or network congestion.\n* **Use Cases**: TCP is used for Web (HTTP/HTTPS), Email (SMTP), File Transfer (FTP). UDP is used for Live Video Streaming, Online Gaming, DNS, VoIP.",
         "keyPoints": "• TCP provides reliable, in-order, stream-oriented data delivery with a 3-way handshake.\n• UDP is lightweight, connectionless, and optimized for low-latency real-time applications.\n• TCP header overhead is 20 bytes minimum; UDP header is only 8 bytes.\n• Retransmission of lost packets is built into TCP, whereas UDP drops packets without recovery.",
@@ -183,7 +728,12 @@
       "date": "2026-08-25",
       "pinned": false,
       "isAiGenerated": false,
-      "tags": ["Java", "OOP", "TryCatch", "Exceptions"],
+      "tags": [
+        "Java",
+        "OOP",
+        "TryCatch",
+        "Exceptions"
+      ],
       "content": {
         "shortNotes": "### Java Exception Hierarchy\nAll exception and error types in Java inherit from `java.lang.Throwable`.\n\n* **Throwable**\n  * **Error**: Severe system-level issues not intended to be caught (e.g. `OutOfMemoryError`, `StackOverflowError`).\n  * **Exception**:\n    * **Checked Exceptions**: Checked at compile-time (e.g., `IOException`, `SQLException`). Must be caught with `try-catch` or declared using `throws`.\n    * **Unchecked Exceptions (RuntimeExceptions)**: Occur at runtime due to programming flaws (e.g., `NullPointerException`, `ArrayIndexOutOfBoundsException`, `ArithmeticException`).\n\n### Keywords:\n* `try`: Encloses code that may throw an exception.\n* `catch`: Handles the specific exception type.\n* `finally`: Block that always executes regardless of exceptions (resource cleanup).\n* `throw`: Explicitly throws an instance of an exception.\n* `throws`: Declares exceptions in method signature.",
         "keyPoints": "• `Throwable` is the root class of Java exception hierarchy.\n• Checked exceptions are validated at compile-time; Unchecked (`RuntimeException`) occur at runtime.\n• The `finally` block executes even if a return statement exists inside try/catch.\n• Java 7 introduced `try-with-resources` which automatically closes instances implementing `AutoCloseable`.",
@@ -259,8 +809,8 @@
       "subjectId": "sub-dbms",
       "dueDate": "2026-09-08",
       "priority": "High",
-      "status": "In Progress",
-      "progress": 60,
+      "status": "Completed",
+      "progress": 100,
       "description": "Write and test relational algebra expressions and nested SQL queries with GROUP BY, HAVING, and correlated subqueries on the University schema.",
       "attachment": "DBMS_Assignment_2_Questions.pdf"
     },
@@ -324,34 +874,136 @@
       "progress": 55,
       "currentStage": "Development",
       "stages": [
-        { "name": "Planning", "status": "Completed" },
-        { "name": "Research", "status": "Completed" },
-        { "name": "Design", "status": "Completed" },
-        { "name": "Development", "status": "In Progress" },
-        { "name": "Testing", "status": "Pending" },
-        { "name": "Documentation", "status": "Pending" },
-        { "name": "PPT", "status": "Pending" },
-        { "name": "Completed", "status": "Pending" }
+        {
+          "name": "Planning",
+          "status": "Completed"
+        },
+        {
+          "name": "Research",
+          "status": "Completed"
+        },
+        {
+          "name": "Design",
+          "status": "Completed"
+        },
+        {
+          "name": "Development",
+          "status": "In Progress"
+        },
+        {
+          "name": "Testing",
+          "status": "Pending"
+        },
+        {
+          "name": "Documentation",
+          "status": "Pending"
+        },
+        {
+          "name": "PPT",
+          "status": "Pending"
+        },
+        {
+          "name": "Completed",
+          "status": "Pending"
+        }
       ],
       "team": [
-        { "name": "Bijay Mandal", "role": "Team Lead & Backend Dev", "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80", "isLead": true },
-        { "name": "Rahul Verma", "role": "Frontend Engineer", "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80", "isLead": false },
-        { "name": "Ananya Sharma", "role": "Database & API Specialist", "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80", "isLead": false },
-        { "name": "Deepak Patel", "role": "IoT & Hardware Integration", "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80", "isLead": false }
+        {
+          "name": "Bijay Mandal",
+          "role": "Team Lead & Backend Dev",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+          "isLead": true
+        },
+        {
+          "name": "Rahul Verma",
+          "role": "Frontend Engineer",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
+          "isLead": false
+        },
+        {
+          "name": "Ananya Sharma",
+          "role": "Database & API Specialist",
+          "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+          "isLead": false
+        },
+        {
+          "name": "Deepak Patel",
+          "role": "IoT & Hardware Integration",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
+          "isLead": false
+        }
       ],
       "tasks": [
-        { "id": "tsk-1", "title": "Implement JWT Authentication & RBAC", "assignedTo": "Bijay Mandal", "priority": "High", "status": "Completed", "deadline": "2026-09-01" },
-        { "id": "tsk-2", "title": "Design Figma UI Prototypes for Student Portal", "assignedTo": "Rahul Verma", "priority": "High", "status": "Completed", "deadline": "2026-09-03" },
-        { "id": "tsk-3", "title": "Develop REST APIs for Attendance Logging", "assignedTo": "Ananya Sharma", "priority": "High", "status": "In Progress", "deadline": "2026-09-10" },
-        { "id": "tsk-4", "title": "Integrate RFID Sensor with ESP32 Controller", "assignedTo": "Deepak Patel", "priority": "Medium", "status": "In Progress", "deadline": "2026-09-12" },
-        { "id": "tsk-5", "title": "Write Unit Tests for Payment Gateway Webhook", "assignedTo": "Bijay Mandal", "priority": "Medium", "status": "To Do", "deadline": "2026-09-18" },
-        { "id": "tsk-6", "title": "Draft Chapter 3: System Architecture Document", "assignedTo": "Rahul Verma", "priority": "Low", "status": "To Do", "deadline": "2026-09-25" }
+        {
+          "id": "tsk-1",
+          "title": "Implement JWT Authentication & RBAC",
+          "assignedTo": "Bijay Mandal",
+          "priority": "High",
+          "status": "Completed",
+          "deadline": "2026-09-01"
+        },
+        {
+          "id": "tsk-2",
+          "title": "Design Figma UI Prototypes for Student Portal",
+          "assignedTo": "Rahul Verma",
+          "priority": "High",
+          "status": "Completed",
+          "deadline": "2026-09-03"
+        },
+        {
+          "id": "tsk-3",
+          "title": "Develop REST APIs for Attendance Logging",
+          "assignedTo": "Ananya Sharma",
+          "priority": "High",
+          "status": "In Progress",
+          "deadline": "2026-09-10"
+        },
+        {
+          "id": "tsk-4",
+          "title": "Integrate RFID Sensor with ESP32 Controller",
+          "assignedTo": "Deepak Patel",
+          "priority": "Medium",
+          "status": "In Progress",
+          "deadline": "2026-09-12"
+        },
+        {
+          "id": "tsk-5",
+          "title": "Write Unit Tests for Payment Gateway Webhook",
+          "assignedTo": "Bijay Mandal",
+          "priority": "Medium",
+          "status": "To Do",
+          "deadline": "2026-09-18"
+        },
+        {
+          "id": "tsk-6",
+          "title": "Draft Chapter 3: System Architecture Document",
+          "assignedTo": "Rahul Verma",
+          "priority": "Low",
+          "status": "To Do",
+          "deadline": "2026-09-25"
+        }
       ],
       "activities": [
-        { "user": "Bijay Mandal", "action": "merged PR for Auth & Role Management", "time": "2 hours ago" },
-        { "user": "Rahul Verma", "action": "completed UI Design System in Figma", "time": "Yesterday at 4:30 PM" },
-        { "user": "Ananya Sharma", "action": "uploaded Database Schema v2.1", "time": "2 days ago" },
-        { "user": "Deepak Patel", "action": "tested ESP32 RFID hardware communication", "time": "3 days ago" }
+        {
+          "user": "Bijay Mandal",
+          "action": "merged PR for Auth & Role Management",
+          "time": "2 hours ago"
+        },
+        {
+          "user": "Rahul Verma",
+          "action": "completed UI Design System in Figma",
+          "time": "Yesterday at 4:30 PM"
+        },
+        {
+          "user": "Ananya Sharma",
+          "action": "uploaded Database Schema v2.1",
+          "time": "2 days ago"
+        },
+        {
+          "user": "Deepak Patel",
+          "action": "tested ESP32 RFID hardware communication",
+          "time": "3 days ago"
+        }
       ]
     },
     {
@@ -364,32 +1016,123 @@
       "progress": 80,
       "currentStage": "Testing",
       "stages": [
-        { "name": "Planning", "status": "Completed" },
-        { "name": "Research", "status": "Completed" },
-        { "name": "Design", "status": "Completed" },
-        { "name": "Development", "status": "Completed" },
-        { "name": "Testing", "status": "In Progress" },
-        { "name": "Documentation", "status": "Pending" },
-        { "name": "PPT", "status": "Pending" },
-        { "name": "Completed", "status": "Pending" }
+        {
+          "name": "Planning",
+          "status": "Completed"
+        },
+        {
+          "name": "Research",
+          "status": "Completed"
+        },
+        {
+          "name": "Design",
+          "status": "Completed"
+        },
+        {
+          "name": "Development",
+          "status": "Completed"
+        },
+        {
+          "name": "Testing",
+          "status": "In Progress"
+        },
+        {
+          "name": "Documentation",
+          "status": "Pending"
+        },
+        {
+          "name": "PPT",
+          "status": "Pending"
+        },
+        {
+          "name": "Completed",
+          "status": "Pending"
+        }
       ],
       "team": [
-        { "name": "Bijay Mandal", "role": "Full Stack & AI Engineer", "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80", "isLead": true }
+        {
+          "name": "Bijay Mandal",
+          "role": "Full Stack & AI Engineer",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+          "isLead": true
+        }
       ],
       "tasks": [
-        { "id": "tsk-201", "title": "Optimize Vector Search with Hybrid Indexing", "assignedTo": "Bijay Mandal", "priority": "High", "status": "In Progress", "deadline": "2026-09-09" },
-        { "id": "tsk-202", "title": "Benchmark Latency with Stream Responses", "assignedTo": "Bijay Mandal", "priority": "Medium", "status": "To Do", "deadline": "2026-09-15" }
+        {
+          "id": "tsk-201",
+          "title": "Optimize Vector Search with Hybrid Indexing",
+          "assignedTo": "Bijay Mandal",
+          "priority": "High",
+          "status": "In Progress",
+          "deadline": "2026-09-09"
+        },
+        {
+          "id": "tsk-202",
+          "title": "Benchmark Latency with Stream Responses",
+          "assignedTo": "Bijay Mandal",
+          "priority": "Medium",
+          "status": "To Do",
+          "deadline": "2026-09-15"
+        }
       ],
       "activities": [
-        { "user": "Bijay Mandal", "action": "integrated chunking and embedding pipeline", "time": "1 day ago" }
+        {
+          "user": "Bijay Mandal",
+          "action": "integrated chunking and embedding pipeline",
+          "time": "1 day ago"
+        }
       ]
     }
   ],
   "todayTasks": [
-    { "id": "task-1", "title": "Review OS CPU Scheduling notes (Unit 3)", "subject": "Operating Systems", "completed": true },
-    { "id": "task-2", "title": "Solve 5 nested SQL query problems for DBMS Assignment 2", "subject": "DBMS", "completed": false },
-    { "id": "task-3", "title": "Write Round Robin C simulation code for OS Lab", "subject": "Operating Systems", "completed": false },
-    { "id": "task-4", "title": "Complete Smart Campus project task: REST API review", "subject": "Projects", "completed": false }
+    {
+      "id": "task-1",
+      "title": "Review OS CPU Scheduling notes (Unit 3)",
+      "subject": "Operating Systems",
+      "completed": true
+    },
+    {
+      "id": "task-2",
+      "title": "Solve 5 nested SQL query problems for DBMS Assignment 2",
+      "subject": "DBMS",
+      "completed": false
+    },
+    {
+      "id": "task-3",
+      "title": "Write Round Robin C simulation code for OS Lab",
+      "subject": "Operating Systems",
+      "completed": false
+    },
+    {
+      "id": "task-4",
+      "title": "Complete Smart Campus project task: REST API review",
+      "subject": "Projects",
+      "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
+    }
   ],
   "calendarEvents": [
     {
@@ -436,6 +1179,30 @@
       "time": "09:30 AM",
       "color": "#ef4444",
       "location": "Main Auditorium"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
     }
   ],
   "notifications": [
@@ -473,11 +1240,211 @@
     }
   ],
   "settings": {
-    "theme": "light",
+    "theme": "dark",
     "aiModelPreference": "balanced",
     "emailNotifications": true,
     "deadlineReminders": true,
     "autoSaveNotes": true,
     "fontSize": "medium"
-  }
+  },
+  "source": "local",
+  "departments": [
+    {
+      "id": "dept-cse",
+      "name": "Computer Science & Engineering",
+      "code": "CSE",
+      "icon": "💻",
+      "degree": "B.Tech",
+      "color": "#3b82f6",
+      "description": "Software architecture, operating systems, cloud, data structures, and database systems."
+    },
+    {
+      "id": "dept-aids",
+      "name": "Artificial Intelligence & Data Science",
+      "code": "AI & DS",
+      "icon": "🧠",
+      "degree": "B.Tech",
+      "color": "#8b5cf6",
+      "description": "Deep learning, natural language processing, predictive modeling, and neural networks."
+    },
+    {
+      "id": "dept-ece",
+      "name": "Electronics & Communication Engineering",
+      "code": "ECE",
+      "icon": "📡",
+      "degree": "B.E. / B.Tech",
+      "color": "#06b6d4",
+      "description": "Digital signal processing, VLSI design, embedded systems, and wireless communications."
+    },
+    {
+      "id": "dept-eee",
+      "name": "Electrical & Electronics Engineering",
+      "code": "EEE",
+      "icon": "⚡",
+      "degree": "B.E.",
+      "color": "#eab308",
+      "description": "Power systems, control systems, electrical machines, and renewable energy grids."
+    },
+    {
+      "id": "dept-mech",
+      "name": "Mechanical Engineering",
+      "code": "MECH",
+      "icon": "⚙️",
+      "degree": "B.E. / B.Tech",
+      "color": "#f97316",
+      "description": "Thermodynamics, fluid mechanics, CAD/CAM automation, and strength of materials."
+    },
+    {
+      "id": "dept-civil",
+      "name": "Civil Engineering",
+      "code": "CIVIL",
+      "icon": "🏗️",
+      "degree": "B.E.",
+      "color": "#84cc16",
+      "description": "Structural engineering, concrete technology, geotechnical analysis, and environmental systems."
+    },
+    {
+      "id": "dept-it",
+      "name": "Information Technology",
+      "code": "IT",
+      "icon": "🌐",
+      "degree": "B.Tech",
+      "color": "#0284c7",
+      "description": "Cloud infrastructure, cybersecurity, DevOps pipelines, and enterprise software systems."
+    },
+    {
+      "id": "dept-bt",
+      "name": "Biotechnology",
+      "code": "BIO-TECH",
+      "icon": "🧬",
+      "degree": "B.Tech",
+      "color": "#10b981",
+      "description": "Genetic engineering, bioprocess kinetics, bioinformatics, and immunology."
+    },
+    {
+      "id": "dept-mba",
+      "name": "Management Studies (MBA)",
+      "code": "MBA / BBA",
+      "icon": "📊",
+      "degree": "MBA",
+      "color": "#6366f1",
+      "description": "Financial management, brand marketing, business analytics, and organizational behavior."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-bijay-1",
+      "name": "Bijay Mandal",
+      "email": "bijay.mandal@sonatech.ac.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona College of Technology",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "course": "B.Tech Computer Science & Engineering",
+      "year": "2nd Year",
+      "semester": "Semester 4",
+      "rollNo": "CSE2024-4108",
+      "gender": "Male",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+      "cgpa": "8.92",
+      "attendance": "92%",
+      "bio": "2nd Year CSE student passionate about Operating Systems, DBMS, and AI.",
+      "badges": [
+        {
+          "id": "b1",
+          "name": "AI Power User",
+          "icon": "✨",
+          "desc": "Generated 25+ AI study notes"
+        },
+        {
+          "id": "b2",
+          "name": "Consistent Learner",
+          "icon": "🔥",
+          "desc": "14-day study streak"
+        }
+      ],
+      "createdAt": "2026-08-01"
+    },
+    {
+      "id": "user-ananya-2",
+      "name": "Ananya Sharma",
+      "email": "ananya.sharma@sonatech.ac.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona College of Technology",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "course": "B.Tech AI & Data Science",
+      "year": "3rd Year",
+      "semester": "Semester 6",
+      "rollNo": "AIDS2023-3012",
+      "gender": "Female",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "cgpa": "9.15",
+      "attendance": "96%",
+      "bio": "AI & Data Science researcher focusing on Transformers and LLM architectures.",
+      "badges": [
+        {
+          "id": "b1",
+          "name": "AI Researcher",
+          "icon": "🧠",
+          "desc": "Published 2 conference papers"
+        }
+      ],
+      "createdAt": "2026-08-10"
+    },
+    {
+      "id": "user-rahul-3",
+      "name": "Rahul Verma",
+      "email": "rahul.verma@sonatech.ac.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona College of Technology",
+      "departmentId": "dept-mech",
+      "department": "Mechanical Engineering",
+      "course": "B.E. Mechanical Engineering",
+      "year": "4th Year",
+      "semester": "Semester 7",
+      "rollNo": "MECH2022-1089",
+      "gender": "Male",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "cgpa": "8.70",
+      "attendance": "89%",
+      "bio": "Mechanical design lead working on Formula Student electric vehicle chassis.",
+      "badges": [
+        {
+          "id": "b1",
+          "name": "CAD Master",
+          "icon": "⚙️",
+          "desc": "Certified SolidWorks Professional"
+        }
+      ],
+      "createdAt": "2026-08-12"
+    },
+    {
+      "id": "user-1788881131",
+      "name": "Vikram Sethi",
+      "email": "vikram.civil@sonatech.ac.in",
+      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "college": "Sona College of Technology",
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering",
+      "course": "B.Tech Civil Engineering",
+      "year": "3rd Year",
+      "semester": "Semester 1",
+      "rollNo": "CIVIL-3021",
+      "gender": "Student",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+      "cgpa": "8.80",
+      "attendance": "95%",
+      "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
+      "badges": [
+        {
+          "id": "b-welcome",
+          "name": "New Scholar",
+          "icon": "🎓",
+          "desc": "Joined StudentHub Academic Platform"
+        }
+      ],
+      "createdAt": "2026-09-08"
+    }
+  ]
 }

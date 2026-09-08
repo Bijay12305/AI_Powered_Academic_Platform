@@ -32,7 +32,7 @@ class SupabaseManager:
     def __init__(self):
         self.url = os.environ.get("SUPABASE_URL", "").strip().rstrip("/")
         self.key = (os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("SUPABASE_KEY", "")).strip()
-        self.timeout = 8
+        self.timeout = 3
 
     def reload_config(self):
         """Reload configuration from .env file or environment."""
@@ -42,7 +42,7 @@ class SupabaseManager:
 
     def is_configured(self):
         """Check if Supabase URL and Key are provided."""
-        return bool(self.url and self.key and "supabase.co" in self.url and not self.url.startswith("https://your-project"))
+        return bool(self.url and self.key and "supabase.co" in self.url and not self.url.startswith("https://your-project") and len(self.key) > 10)
 
     def _headers(self, prefer=None):
         headers = {

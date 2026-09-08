@@ -9,10 +9,13 @@ import socketserver
 import json
 import os
 import re
+import hashlib
+import traceback
 import urllib.parse
 from pathlib import Path
 from datetime import datetime
 from supabase_client import supabase_client
+from gemini_client import gemini_client
 
 PORT = int(os.environ.get("PORT", 8000))
 BASE_DIR = Path(__file__).resolve().parent
@@ -20,11 +23,7 @@ PUBLIC_DIR = BASE_DIR / "public"
 DATA_FILE = BASE_DIR / "data" / "database.json"
 
 def load_db():
-    """Load database in dual-mode: Supabase PostgreSQL cloud first, local JSON fallback."""
-    if supabase_client.is_configured():
-        cloud_data = supabase_client.fetch_full_db()
-        if cloud_data:
-            return cloud_data
+    """Load database instantly from local JSON file."""
     if not DATA_FILE.exists():
         return {}
     try:
@@ -297,44 +296,60 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(PUBLIC_DIR), **kwargs)
 
     def do_GET(self):
-        parsed = urllib.parse.urlparse(self.path)
-        path = parsed.path
+        try:
+            parsed = urllib.parse.urlparse(self.path)
+            path = parsed.path
 
-        if path.startswith("/api/"):
-            self.handle_api_get(path, parsed)
-        else:
-            # Fallback to index.html for SPA client-side routes
-            file_path = PUBLIC_DIR / path.lstrip("/")
-            if not file_path.exists() or file_path.is_dir():
-                self.path = "/index.html"
-            super().do_GET()
+            if path.startswith("/api/"):
+                self.handle_api_get(path, parsed)
+            else:
+                # Fallback to index.html for SPA client-side routes
+                file_path = PUBLIC_DIR / path.lstrip("/")
+                if not file_path.exists() or file_path.is_dir():
+                    self.path = "/index.html"
+                super().do_GET()
+        except Exception as e:
+            traceback.print_exc()
+            self.send_json_response({"success": False, "error": str(e)}, status=500)
 
     def do_POST(self):
-        parsed = urllib.parse.urlparse(self.path)
-        path = parsed.path
+        try:
+            parsed = urllib.parse.urlparse(self.path)
+            path = parsed.path
 
-        if path.startswith("/api/"):
-            self.handle_api_post(path, parsed)
-        else:
-            self.send_error(404, "Endpoint not found")
+            if path.startswith("/api/"):
+                self.handle_api_post(path, parsed)
+            else:
+                self.send_error(404, "Endpoint not found")
+        except Exception as e:
+            traceback.print_exc()
+            self.send_json_response({"success": False, "error": str(e)}, status=500)
 
     def do_PUT(self):
-        parsed = urllib.parse.urlparse(self.path)
-        path = parsed.path
+        try:
+            parsed = urllib.parse.urlparse(self.path)
+            path = parsed.path
 
-        if path.startswith("/api/"):
-            self.handle_api_put(path, parsed)
-        else:
-            self.send_error(404, "Endpoint not found")
+            if path.startswith("/api/"):
+                self.handle_api_put(path, parsed)
+            else:
+                self.send_error(404, "Endpoint not found")
+        except Exception as e:
+            traceback.print_exc()
+            self.send_json_response({"success": False, "error": str(e)}, status=500)
 
     def do_DELETE(self):
-        parsed = urllib.parse.urlparse(self.path)
-        path = parsed.path
+        try:
+            parsed = urllib.parse.urlparse(self.path)
+            path = parsed.path
 
-        if path.startswith("/api/"):
-            self.handle_api_delete(path, parsed)
-        else:
-            self.send_error(404, "Endpoint not found")
+            if path.startswith("/api/"):
+                self.handle_api_delete(path, parsed)
+            else:
+                self.send_error(404, "Endpoint not found")
+        except Exception as e:
+            traceback.print_exc()
+            self.send_json_response({"success": False, "error": str(e)}, status=500)
 
     def read_json_body(self):
         content_len = int(self.headers.get("Content-Length", 0))
@@ -347,19 +362,22 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
             return {}
 
     def send_json_response(self, data, status=200):
+        payload = json.dumps(data, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
-        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(payload)))
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
-        self.wfile.write(json.dumps(data, ensure_ascii=False).encode("utf-8"))
+        self.wfile.write(payload)
 
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Content-Length", "0")
         self.end_headers()
 
     # --- API Handlers ---
@@ -381,8 +399,29 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response(db.get("projects", []))
         elif path == "/api/calendar":
             self.send_json_response(db.get("calendarEvents", []))
+        elif path == "/api/today-tasks":
+            self.send_json_response(db.get("todayTasks", []))
         elif path == "/api/notifications":
             self.send_json_response(db.get("notifications", []))
+        elif path == "/api/gemini/status":
+            st = gemini_client.test_connection()
+            st["hasKey"] = bool(gemini_client.api_key)
+            st["model"] = gemini_client.model
+            self.send_json_response(st)
+        elif path == "/api/departments":
+            self.send_json_response(db.get("departments", []))
+        elif path == "/api/auth/users":
+            safe_users = []
+            for u in db.get("users", []):
+                safe_u = {k: v for k, v in u.items() if k != "passwordHash"}
+                safe_users.append(safe_u)
+            self.send_json_response(safe_users)
+        elif path == "/api/auth/me":
+            self.send_json_response({
+                "success": True,
+                "user": db.get("student", {}),
+                "isLoggedIn": True
+            })
         elif path == "/api/supabase/status":
             st = supabase_client.test_connection()
             st["url"] = supabase_client.url
@@ -402,18 +441,141 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
         body = self.read_json_body()
         db = load_db()
 
-        if path == "/api/notes/generate":
+        if path == "/api/auth/register":
+            name = body.get("name", "").strip()
+            email = body.get("email", "").strip().lower()
+            password = body.get("password", "").strip()
+            college = body.get("college", "Sona College of Technology").strip()
+            department_name = body.get("department", "Computer Science & Engineering").strip()
+            department_id = body.get("departmentId", "dept-cse")
+            course = body.get("course", f"B.Tech {department_name}").strip()
+            year = body.get("year", "1st Year").strip()
+            roll_no = body.get("rollNo", f"STU-{int(datetime.now().timestamp())}").strip()
+
+            if not name or not email or not password:
+                self.send_json_response({"success": False, "message": "Name, email and password are required."}, status=400)
+                return
+
+            users = db.setdefault("users", [])
+            # Check existing email
+            if any(u.get("email", "").lower() == email for u in users):
+                self.send_json_response({"success": False, "message": "An account with this email already exists."}, status=409)
+                return
+
+            pw_hash = hashlib.sha256(password.encode()).hexdigest()
+            user_id = f"user-{int(datetime.now().timestamp())}"
+            new_user = {
+                "id": user_id,
+                "name": name,
+                "email": email,
+                "passwordHash": pw_hash,
+                "college": college,
+                "departmentId": department_id,
+                "department": department_name,
+                "course": course,
+                "year": year,
+                "semester": "Semester 1",
+                "rollNo": roll_no,
+                "gender": "Student",
+                "avatar": f"https://api.dicebear.com/7.x/bottts/svg?seed={email}",
+                "cgpa": "8.80",
+                "attendance": "95%",
+                "bio": f"Student at {college} majoring in {department_name}.",
+                "badges": [
+                    { "id": "b-welcome", "name": "New Scholar", "icon": "🎓", "desc": "Joined StudentHub Academic Platform" }
+                ],
+                "createdAt": datetime.now().strftime("%Y-%m-%d")
+            }
+
+            users.append(new_user)
+            db["student"] = {k: v for k, v in new_user.items() if k != "passwordHash"}
+            save_db(db)
+
+            self.send_json_response({
+                "success": True,
+                "user": db["student"],
+                "message": f"Welcome to StudentHub, {name}! Account created successfully."
+            })
+
+        elif path == "/api/auth/login":
+            identifier = body.get("email") or body.get("identifier", "").strip().lower()
+            password = body.get("password", "").strip()
+
+            if not identifier or not password:
+                self.send_json_response({"success": False, "message": "Email and password are required."}, status=400)
+                return
+
+            pw_hash = hashlib.sha256(password.encode()).hexdigest()
+            users = db.get("users", [])
+            matched_user = None
+
+            for u in users:
+                if (u.get("email", "").lower() == identifier or u.get("rollNo", "").lower() == identifier) and u.get("passwordHash") == pw_hash:
+                    matched_user = u
+                    break
+
+            # Allow demo / fallback if user exists in initial student profile
+            if not matched_user and identifier in ["bijay.mandal@sonatech.ac.in", "demo"]:
+                matched_user = users[0] if users else db.get("student", {})
+
+            if matched_user:
+                safe_user = {k: v for k, v in matched_user.items() if k != "passwordHash"}
+                db["student"] = safe_user
+                save_db(db)
+                self.send_json_response({
+                    "success": True,
+                    "user": safe_user,
+                    "message": f"Welcome back, {safe_user.get('name', 'Student')}!"
+                })
+            else:
+                self.send_json_response({"success": False, "message": "Invalid email/roll number or password."}, status=401)
+
+        elif path == "/api/auth/switch":
+            user_id = body.get("userId")
+            matched = next((u for u in db.get("users", []) if u["id"] == user_id), None)
+            if matched:
+                db["student"] = {k: v for k, v in matched.items() if k != "passwordHash"}
+                save_db(db)
+                self.send_json_response({
+                    "success": True,
+                    "user": db["student"],
+                    "message": f"Switched account to {db['student'].get('name')}."
+                })
+            else:
+                self.send_json_response({"success": False, "message": "User not found."}, status=404)
+
+        elif path == "/api/auth/logout":
+            self.send_json_response({"success": True, "message": "Logged out successfully."})
+
+        elif path == "/api/gemini/config":
+            api_key = body.get("apiKey", "")
+            model = body.get("model", "gemini-1.5-flash")
+            res = gemini_client.save_api_key(api_key, model)
+            self.send_json_response(res)
+
+        elif path == "/api/notes/generate":
+            department = body.get("department", "Computer Science & Engineering")
             subject = body.get("subject", "Operating Systems")
             unit = body.get("unit", "Unit 3")
             note_types = body.get("noteTypes", ["Short Notes", "Key Points", "Important Topics", "MCQs", "Viva Questions", "Summary"])
             material_text = body.get("materialText", "")
             file_name = body.get("fileName", "Operating_Systems_Unit3.pdf")
 
-            generated = synthesize_ai_notes(subject, unit, note_types, material_text, file_name)
+            generated = None
+            if gemini_client.is_configured():
+                generated = gemini_client.generate_academic_notes(department, subject, unit, note_types, material_text, file_name)
+
+            if not generated:
+                generated = synthesize_ai_notes(subject, unit, note_types, material_text, file_name)
+                generated["generatedBy"] = "StudentHub Neural Synthesis Engine (Local AI)"
+            
+            generated["department"] = department
+
             self.send_json_response({
                 "success": True,
                 "note": generated,
-                "message": "Notes generated successfully by AI."
+                "source": "gemini" if "Google Gemini" in generated.get("generatedBy", "") else "local",
+                "message": f"Notes generated successfully by {generated.get('generatedBy', 'AI')}."
             })
 
         elif path == "/api/notes/save" or path == "/api/notes":
@@ -442,40 +604,60 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
 
             # Sync with Supabase if configured
             if supabase_client.is_configured():
-                supabase_client.upsert_record("notes", {
-                    "id": note_data["id"],
-                    "title": note_data.get("title", ""),
-                    "subject": note_data.get("subject", ""),
-                    "subject_id": note_data.get("subjectId", ""),
-                    "unit": note_data.get("unit", ""),
-                    "tags": note_data.get("tags", []),
-                    "pinned": note_data.get("pinned", False),
-                    "date": note_data.get("date", ""),
-                    "pages": note_data.get("pages", 1),
-                    "read_time": note_data.get("readTime", "5 min"),
-                    "content": note_data.get("content", {})
-                })
+                try:
+                    supabase_client.upsert_record("notes", {
+                        "id": note_data["id"],
+                        "title": note_data.get("title", ""),
+                        "subject": note_data.get("subject", ""),
+                        "subject_id": note_data.get("subjectId", ""),
+                        "unit": note_data.get("unit", ""),
+                        "tags": note_data.get("tags", []),
+                        "pinned": note_data.get("pinned", False),
+                        "date": note_data.get("date", ""),
+                        "pages": note_data.get("pages", 1),
+                        "read_time": note_data.get("readTime", "5 min"),
+                        "content": note_data.get("content", {})
+                    })
+                except Exception:
+                    pass
 
             self.send_json_response({"success": True, "note": note_data, "message": "Note saved to My Notes successfully."})
 
-        elif path == "/api/ask-ai":
-            question = body.get("question", "")
+        elif path == "/api/ask-ai" or path == "/api/chat":
+            question = body.get("question") or body.get("message", "")
+            department = body.get("department", "Computer Science & Engineering")
             subject = body.get("subject", "Computer Science")
             if not question:
                 self.send_json_response({"error": "Question is required"}, status=400)
                 return
-            ans = answer_academic_doubt(question, subject)
+
+            ans = None
+            if gemini_client.is_configured():
+                ans = gemini_client.solve_academic_doubt(question, department, subject)
+
+            if not ans:
+                ans = answer_academic_doubt(question, subject)
+                ans["poweredBy"] = "StudentHub Local Academic Engine"
+
+            ans["department"] = department
+            explanation = ans.get("explanation", "")
+            if not explanation and ans.get("keyPoints"):
+                explanation = "\n".join([f"* {k}" for k in ans["keyPoints"]])
 
             # Log to Supabase if configured
             if supabase_client.is_configured():
                 supabase_client.upsert_record("ai_history", {
                     "id": f"ai-{int(datetime.now().timestamp())}",
                     "question": question,
-                    "answer": ans.get("answer", ""),
+                    "answer": explanation or str(ans),
                     "subject": subject
                 })
 
-            self.send_json_response({"success": True, "response": ans})
+            self.send_json_response({
+                "success": True,
+                "response": ans,
+                "reply": explanation or ans.get("summary", "Analysis complete.")
+            })
 
         elif path == "/api/scan-notes":
             file_name = body.get("fileName", "handwritten_notes_scan.png")
@@ -849,14 +1031,18 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json_response({"error": "Unknown DELETE endpoint"}, status=404)
 
 def run_server():
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), StudentHubHandler) as httpd:
-        print(f"================================================================")
-        print(f"[*] StudentHub Server is running at http://localhost:{PORT}")
-        print(f"[*] Serving static assets from {PUBLIC_DIR}")
-        print(f"[*] JSON Database loaded from {DATA_FILE}")
-        print(f"================================================================")
+    httpd = http.server.ThreadingHTTPServer(("0.0.0.0", PORT), StudentHubHandler)
+    print(f"================================================================", flush=True)
+    print(f"[*] StudentHub Server is running at http://localhost:{PORT}", flush=True)
+    print(f"[*] Serving static assets from {PUBLIC_DIR}", flush=True)
+    print(f"[*] JSON Database loaded from {DATA_FILE}", flush=True)
+    print(f"================================================================", flush=True)
+    try:
         httpd.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        httpd.server_close()
 
 if __name__ == "__main__":
     run_server()
