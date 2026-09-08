@@ -3953,9 +3953,7 @@
     const unit = $('#ai-unit-select')?.value || 'Unit 3';
     const pasteText = $('#ai-text-paste')?.value || '';
     const uploaded = state.aiStudio.uploadedFile;
-    const fullMaterialText = (uploaded?.rawText ? uploaded.rawText + '
-
-' : '') + pasteText;
+    const fullMaterialText = (uploaded?.rawText ? uploaded.rawText + '\n\n' : '') + pasteText;
     const fileName = uploaded?.name || 'Operating_Systems_Unit3.pdf';
     const btn = $('#btn-generate-notes') || $('#btn-regenerate-notes');
 
