@@ -3041,11 +3041,24 @@
     }, 3500);
   }
 
-  function openModal(modalId) {
+  async function openModal(modalId) {
     const modal = $(`#${modalId}`);
     if (modal) {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      if (modalId === 'modal-supabase-schema') {
+        const textarea = $('#supabase-sql-code-display');
+        if (textarea && (textarea.value.includes('Loading') || !textarea.value.trim())) {
+          try {
+            const res = await fetch('/api/supabase/schema');
+            if (res.ok) {
+              const data = await res.json();
+              if (data.sql) textarea.value = data.sql;
+            }
+          } catch (e) {}
+        }
+      }
     }
   }
 
@@ -3804,10 +3817,24 @@
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
   }
 
-  function handleUploadedStudyFile(file) {
+    function handleUploadedStudyFile(file) {
     if (!file) return;
+    const allowedExtensions = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'txt', 'jpg', 'jpeg', 'png', 'md', 'json', 'csv', 'rtf'];
     const ext = (file.name.split('.').pop() || 'FILE').toUpperCase();
+    const lowerExt = file.name.split('.').pop().toLowerCase();
     const formattedSize = formatFileSize(file.size);
+    const feedbackEl = $('#ai-upload-feedback');
+
+    // Format validation
+    if (!allowedExtensions.includes(lowerExt)) {
+      if (feedbackEl) {
+        feedbackEl.className = 'upload-feedback-msg error';
+        feedbackEl.textContent = `❌ Unsupported file type (.${lowerExt}). Please upload PDF, DOC, DOCX, PPT, PPTX, TXT, JPG, or PNG.`;
+        feedbackEl.style.display = 'block';
+      }
+      showToast(`❌ Unsupported file format (.${lowerExt})`, 'error');
+      return;
+    }
 
     state.aiStudio.uploadedFile = {
       name: file.name,
@@ -3816,6 +3843,12 @@
       rawText: '',
       file: file
     };
+
+    if (feedbackEl) {
+      feedbackEl.className = 'upload-feedback-msg success';
+      feedbackEl.textContent = `✓ Uploaded: ${file.name} (${ext} • ${formattedSize})`;
+      feedbackEl.style.display = 'block';
+    }
 
     const activePill = $('#active-file-pill');
     const fileNameEl = $('#uploaded-file-name');
@@ -3848,7 +3881,6 @@
 
     // If text-readable file, read text directly into the AI prompt editor
     const textExts = ['txt', 'md', 'json', 'csv', 'py', 'java', 'cpp', 'c', 'js', 'html', 'css', 'sql', 'log'];
-    const lowerExt = file.name.split('.').pop().toLowerCase();
     if (textExts.includes(lowerExt) || file.type.startsWith('text/')) {
       const reader = new FileReader();
       reader.onload = (re) => {
@@ -4145,20 +4177,80 @@
   };
 
   // --- Event Listener Initializer ---
+    function applyTextareaFormat(cmd) {
+    const textarea = $('#note-edit-textarea');
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const val = textarea.value;
+    const selectedText = val.substring(start, end);
+    let replacement = '';
+
+    switch (cmd) {
+      case 'bold':
+        replacement = `**${selectedText || 'bold text'}**`;
+        break;
+      case 'italic':
+        replacement = `*${selectedText || 'italic text'}*`;
+        break;
+      case 'heading':
+        replacement = `\n### ${selectedText || 'Heading Title'}\n`;
+        break;
+      case 'bullet':
+        replacement = `\n• ${selectedText || 'List item'}\n`;
+        break;
+      case 'code':
+        replacement = selectedText.includes('\n') ? `\n\`\`\`\n${selectedText || '// code'}\n\`\`\`\n` : `\`${selectedText || 'code'}\``;
+        break;
+      default:
+        replacement = selectedText;
+    }
+
+    textarea.setRangeText(replacement, start, end, 'end');
+    textarea.focus();
+    const currentTab = state.aiStudio.activeTab || 'shortNotes';
+    if (state.aiStudio.currentGeneratedNote && state.aiStudio.currentGeneratedNote.content) {
+      state.aiStudio.currentGeneratedNote.content[currentTab] = textarea.value;
+    }
+  }
+
   function initEventListeners() {
     // Sidebar Navigation Links
     $$('.sidebar .nav-item').forEach(item => {
       item.addEventListener('click', () => {
         const view = item.dataset.view;
         if (view) switchView(view);
+        const sidebar = $('.sidebar');
+        if (sidebar && window.innerWidth <= 768) {
+          sidebar.classList.remove('active', 'open');
+        }
       });
+    });
+
+    // Mobile Brand Link
+    $('#brand-link')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchView('dashboard');
+    });
+
+    // Mobile Menu Toggle (Sidebar Open/Close)
+    $('#mobile-menu-toggle')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const sidebar = $('.sidebar');
+      if (sidebar) sidebar.classList.toggle('open');
     });
 
     // Bottom Mobile Nav Links
     $$('.bottom-nav-item').forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
         const view = item.dataset.view;
-        if (view) switchView(view);
+        if (view) {
+          switchView(view);
+        } else if (item.id === 'bnav-menu-btn') {
+          e.preventDefault();
+          const sidebar = $('.sidebar');
+          if (sidebar) sidebar.classList.toggle('open');
+        }
       });
     });
 
@@ -4233,7 +4325,9 @@
         }
         else if (action === 'toggle-theme') {
           const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-          document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+          const newTheme = isLight ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('studenthub_theme', newTheme);
           showToast(`Switched to ${isLight ? 'Dark' : 'Light'} theme`, 'info');
         }
         else if (action === 'logout') {
@@ -4242,6 +4336,13 @@
         }
       }
     });
+
+    // --- Dashboard Quick Action Buttons ---
+    $('#dash-btn-ai-notes')?.addEventListener('click', () => switchView('ai-notes'));
+    $('#dash-create-note-btn')?.addEventListener('click', () => openModal('modal-note-editor'));
+    $('#dash-upload-mat-btn')?.addEventListener('click', () => openModal('modal-upload-material'));
+    $('#dash-add-asg-btn')?.addEventListener('click', () => openModal('modal-add-assignment'));
+    $('#dash-create-proj-btn')?.addEventListener('click', () => openModal('modal-create-project'));
 
     // --- Authentication Modal Tabs & Form Submissions ---
     const tabSignIn = $('#tab-btn-signin');
@@ -4274,7 +4375,6 @@
       if (authModalTitle) authModalTitle.textContent = 'Create Student Account';
     });
 
-    // Sign In Form Submit
     formSignIn?.addEventListener('submit', (e) => {
       e.preventDefault();
       const identifier = $('#signin-email-input')?.value.trim();
@@ -4282,7 +4382,6 @@
       handleSignIn(identifier, password);
     });
 
-    // Sign Up Form Submit
     formSignUp?.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = $('#signup-name-input')?.value.trim();
@@ -4393,6 +4492,22 @@
       openModal('modal-supabase-schema');
     });
 
+    $('#btn-copy-supabase-sql')?.addEventListener('click', () => {
+      const codeEl = $('#supabase-sql-code-display');
+      if (codeEl) {
+        const text = codeEl.value || codeEl.textContent;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('✓ Supabase SQL schema copied to clipboard!', 'success');
+          }).catch(() => {
+            showToast('✓ SQL schema copied!', 'success');
+          });
+        } else {
+          showToast('✓ SQL schema copied!', 'success');
+        }
+      }
+    });
+
     $('#toggle-supabase-key-visibility')?.addEventListener('click', () => {
       const keyInp = $('#supabase-key-input');
       if (keyInp) {
@@ -4415,14 +4530,22 @@
       });
     });
 
-    // --- File Upload & Dropzone Handlers (Full Native System Access) ---
-    // 1. AI Studio Primary Dropzone & File Picker
+    // --- File Upload & Dropzone Handlers ---
+    // 1. AI Studio Primary Dropzone & Upload Button
     const aiDropzone = $('#ai-dropzone');
     const fileUploadInput = $('#file-upload-input');
+    const browseUploadBtn = $('#btn-browse-study-file');
+
+    if (browseUploadBtn && fileUploadInput) {
+      browseUploadBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileUploadInput.click();
+      });
+    }
 
     if (aiDropzone && fileUploadInput) {
       aiDropzone.addEventListener('click', (e) => {
-        if (e.target.id !== 'file-upload-input') {
+        if (e.target.id !== 'file-upload-input' && e.target.id !== 'btn-browse-study-file' && !e.target.closest('#btn-browse-study-file')) {
           fileUploadInput.click();
         }
       });
@@ -4452,16 +4575,12 @@
 
       aiDropzone.addEventListener('drop', (e) => {
         const file = e.dataTransfer?.files?.[0];
-        if (file) {
-          handleUploadedStudyFile(file);
-        }
+        if (file) handleUploadedStudyFile(file);
       });
 
       fileUploadInput.addEventListener('change', (e) => {
         const file = e.target.files?.[0];
-        if (file) {
-          handleUploadedStudyFile(file);
-        }
+        if (file) handleUploadedStudyFile(file);
       });
     }
 
@@ -4472,6 +4591,11 @@
       if (fileUploadInput) fileUploadInput.value = '';
       const pill = $('#active-file-pill');
       if (pill) pill.style.display = 'none';
+      const feedbackEl = $('#ai-upload-feedback');
+      if (feedbackEl) {
+        feedbackEl.style.display = 'none';
+        feedbackEl.textContent = '';
+      }
       showToast('Uploaded file removed.', 'info');
     });
 
@@ -4481,9 +4605,7 @@
 
     if (scanDropzone && scanFileInput) {
       scanDropzone.addEventListener('click', (e) => {
-        if (e.target.id !== 'scan-file-input') {
-          scanFileInput.click();
-        }
+        if (e.target.id !== 'scan-file-input') scanFileInput.click();
       });
 
       ['dragenter', 'dragover'].forEach(evt => {
@@ -4519,9 +4641,7 @@
 
     if (audioDropzone && audioFileInput) {
       audioDropzone.addEventListener('click', (e) => {
-        if (e.target.id !== 'audio-file-input') {
-          audioFileInput.click();
-        }
+        if (e.target.id !== 'audio-file-input') audioFileInput.click();
       });
 
       ['dragenter', 'dragover'].forEach(evt => {
@@ -4561,9 +4681,7 @@
 
     if (modalMatDropzone && modalMatFileInput) {
       modalMatDropzone.addEventListener('click', (e) => {
-        if (e.target.id !== 'modal-mat-file-input') {
-          modalMatFileInput.click();
-        }
+        if (e.target.id !== 'modal-mat-file-input') modalMatFileInput.click();
       });
 
       ['dragenter', 'dragover'].forEach(evt => {
@@ -4752,13 +4870,64 @@
       showToast('✓ Note exported as JSON file.', 'success');
     });
 
-    // AI Studio Tabs Switcher
-    $$('.note-tab-btn').forEach(btn => {
+    // AI Studio Note Tabs Switcher (Short Notes, Key Points, Important Topics, MCQs, Viva, Summary)
+    $$('#note-preview-tabs .tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        $$('.note-tab-btn').forEach(b => b.classList.remove('active'));
+        $$('#note-preview-tabs .tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         state.aiStudio.activeTab = btn.dataset.tab;
+
+        // If inline editor is active, load active tab markdown into textarea
+        const editorWrap = $('#inline-editor-container');
+        const textarea = $('#note-edit-textarea');
+        const note = state.aiStudio.currentGeneratedNote;
+        if (editorWrap && editorWrap.style.display !== 'none' && textarea && note && note.content) {
+          textarea.value = note.content[state.aiStudio.activeTab] || '';
+        }
         renderCurrentNoteTab();
+      });
+    });
+
+    // Inline Note Editor Toggle Button (✎ Edit Notes / 👁 View Rendered)
+    $('#btn-toggle-edit')?.addEventListener('click', () => {
+      const editorWrap = $('#inline-editor-container');
+      const renderedView = $('#rendered-note-view');
+      const editBtnLabel = $('#edit-btn-label');
+      const textarea = $('#note-edit-textarea');
+
+      if (!editorWrap || !renderedView) return;
+
+      const isHidden = editorWrap.style.display === 'none' || !editorWrap.style.display;
+      const currentTab = state.aiStudio.activeTab || 'shortNotes';
+      const note = state.aiStudio.currentGeneratedNote;
+
+      if (isHidden) {
+        // Activate Editor
+        if (textarea && note && note.content) {
+          textarea.value = note.content[currentTab] || '';
+        }
+        renderedView.style.display = 'none';
+        editorWrap.style.display = 'block';
+        if (editBtnLabel) editBtnLabel.textContent = '👁 View Rendered';
+        showToast('Editing note tab in rich editor', 'info');
+      } else {
+        // Save & View Rendered
+        if (textarea && note && note.content) {
+          note.content[currentTab] = textarea.value;
+        }
+        renderCurrentNoteTab();
+        editorWrap.style.display = 'none';
+        renderedView.style.display = 'block';
+        if (editBtnLabel) editBtnLabel.textContent = '✎ Edit Notes';
+        showToast('✓ Note edits saved & rendered!', 'success');
+      }
+    });
+
+    // Inline Editor Formatting Toolbar Buttons
+    $$('.editor-tool-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cmd = btn.dataset.cmd;
+        if (cmd) applyTextareaFormat(cmd);
       });
     });
 
@@ -4848,6 +5017,8 @@
       const faculty = $('#subject-faculty-input')?.value.trim() || 'Faculty';
       if (!name) return;
 
+      const credits = parseInt($('#subject-credits-input')?.value) || 3;
+      const color = $('#subject-color-select')?.value || '#3b82f6';
       const newSubj = {
         id: `sub-${Date.now()}`,
         departmentId: state.currentDepartmentId,
@@ -4855,8 +5026,8 @@
         name,
         code,
         faculty,
-        credits: 3,
-        color: '#3b82f6',
+        credits,
+        color,
         progress: 0,
         notesCount: 0,
         assignmentsCount: 0
@@ -4868,34 +5039,111 @@
       showToast('✓ Subject added successfully!', 'success');
     });
 
-    // Add Event Modal
+    // Calendar Navigation & Event Modal
     $('#btn-add-calendar-event')?.addEventListener('click', () => openModal('modal-add-event'));
     $('#btn-submit-event')?.addEventListener('click', () => {
       const title = $('#event-title-input')?.value.trim();
       const date = $('#event-date-input')?.value || '2026-09-15';
       if (!title) return;
 
-      state.calendarEvents.push({ id: `evt-${Date.now()}`, title, date, type: 'event' });
+      const time = $('#event-time-input')?.value || '10:00 AM';
+      const loc = $('#event-location-input')?.value || 'Campus';
+      const type = $('#event-type-select')?.value || 'event';
+      state.calendarEvents.push({ id: `evt-${Date.now()}`, title, date, time, location: loc, type });
       closeModal('modal-add-event');
       showToast('✓ Event added to calendar!', 'success');
     });
 
-    // Create Project Modal
+    $('#cal-prev-btn')?.addEventListener('click', () => {
+      if (!state.calendarDate) state.calendarDate = new Date();
+      state.calendarDate.setMonth(state.calendarDate.getMonth() - 1);
+      renderCalendar();
+      showToast('Previous month loaded', 'info');
+    });
+
+    $('#cal-today-btn')?.addEventListener('click', () => {
+      state.calendarDate = new Date();
+      renderCalendar();
+      showToast('Today loaded', 'info');
+    });
+
+    $('#cal-next-btn')?.addEventListener('click', () => {
+      if (!state.calendarDate) state.calendarDate = new Date();
+      state.calendarDate.setMonth(state.calendarDate.getMonth() + 1);
+      renderCalendar();
+      showToast('Next month loaded', 'info');
+    });
+
+    // Create Project Modal & Task
     $('#dash-create-proj-btn')?.addEventListener('click', () => openModal('modal-create-project'));
     $('#btn-create-project')?.addEventListener('click', () => openModal('modal-create-project'));
+    $('#btn-add-project-task')?.addEventListener('click', () => openModal('modal-create-project'));
     $('#btn-submit-project')?.addEventListener('click', () => {
       const title = $('#project-title-input')?.value.trim();
       if (!title) return;
+      const category = $('#project-category-input')?.value || 'Academic';
+      const deadline = $('#project-deadline-input')?.value || '2026-11-30';
+      const guide = $('#project-guide-input')?.value || 'Faculty Guide';
+      const desc = $('#project-desc-input')?.value || 'Student Academic Project';
       state.projects.push({
         id: `proj-${Date.now()}`,
         title,
+        category,
+        deadline,
+        guide,
+        description: desc,
         status: 'In Progress',
-        progress: 10,
-        tasks: []
+        progress: 15,
+        tasks: [
+          { id: `ptask-${Date.now()}-1`, title: 'Literature Survey & Topic Finalization', status: 'Done', priority: 'High' },
+          { id: `ptask-${Date.now()}-2`, title: 'System Architecture & Design Specs', status: 'In Progress', priority: 'High' },
+          { id: `ptask-${Date.now()}-3`, title: 'Core Implementation & Unit Testing', status: 'To Do', priority: 'Medium' }
+        ]
       });
       renderProjects();
       closeModal('modal-create-project');
       showToast('✓ Project created!', 'success');
+    });
+
+    // Project status filters
+    $$('.project-filter-btn, [data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        $$('.project-filter-btn, [data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter || 'All';
+        renderProjects(filter);
+      });
+    });
+
+    // Theme Switch Buttons
+    $('#theme-btn-light')?.addEventListener('click', () => {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('studenthub_theme', 'light');
+      showToast('Switched to Light theme', 'info');
+    });
+
+    $('#theme-btn-dark')?.addEventListener('click', () => {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('studenthub_theme', 'dark');
+      showToast('Switched to Dark theme', 'info');
+    });
+
+    // Settings Preferences
+    $('#setting-ai-depth')?.addEventListener('change', (e) => {
+      localStorage.setItem('studenthub_ai_depth', e.target.value);
+      showToast(`AI generation depth set to: ${e.target.value}`, 'info');
+    });
+
+    $('#setting-font-family')?.addEventListener('change', (e) => {
+      document.body.style.fontFamily = e.target.value;
+      localStorage.setItem('studenthub_font_family', e.target.value);
+      showToast(`Font family updated: ${e.target.value}`, 'info');
+    });
+
+    $('#setting-font-size')?.addEventListener('change', (e) => {
+      document.documentElement.style.fontSize = e.target.value;
+      localStorage.setItem('studenthub_font_size', e.target.value);
+      showToast(`Font size updated: ${e.target.value}`, 'info');
     });
 
     // OCR & Lecture Modals
@@ -4927,6 +5175,81 @@
       const dept = state.departments.find(d => d.name === deptName);
       if (dept) switchDepartment(dept.id);
     });
+
+    // Modal Form Submissions (enter key press prevention/forwarding)
+    $('#manual-note-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-save-manual-note')?.click();
+    });
+    $('#add-assignment-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-submit-assignment')?.click();
+    });
+    $('#add-task-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-submit-task')?.click();
+    });
+    $('#add-subject-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-submit-subject')?.click();
+    });
+    $('#add-event-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-submit-event')?.click();
+    });
+    $('#create-project-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-submit-project')?.click();
+    });
+    $('#gemini-config-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      $('#btn-save-gemini')?.click();
+    });
+
+    // Topbar Global Search Input
+    $('#global-search-input')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value.trim();
+        if (query) {
+          switchView('notes');
+          const noteSearch = $('#notes-search-box');
+          if (noteSearch) {
+            noteSearch.value = query;
+            renderNotes();
+          }
+          showToast(`Searching for: "${query}"`, 'info');
+        }
+      }
+    });
+
+    // Mark All Notifications as Read
+    $('#mark-all-read-btn')?.addEventListener('click', () => {
+      $$('.notif-item').forEach(n => n.classList.remove('unread'));
+      const badge = $('#notif-badge');
+      if (badge) badge.style.display = 'none';
+      showToast('✓ All notifications marked as read', 'info');
+    });
+
+    // Dashboard OCR & Lecture Note Quick Buttons
+    $('#dash-scan-notes-btn')?.addEventListener('click', () => openModal('modal-scan-notes'));
+    $('#dash-lecture-notes-btn')?.addEventListener('click', () => openModal('modal-lecture-notes'));
+
+    // Settings Checkbox Preferences
+    $('#setting-auto-save')?.addEventListener('change', (e) => {
+      localStorage.setItem('studenthub_setting_autosave', e.target.checked);
+      showToast(`Auto-save ${e.target.checked ? 'Enabled' : 'Disabled'}`, 'info');
+    });
+
+    $('#setting-deadline-alert')?.addEventListener('change', (e) => {
+      localStorage.setItem('studenthub_setting_deadline_alert', e.target.checked);
+      showToast(`Deadline reminders ${e.target.checked ? 'Enabled' : 'Disabled'}`, 'info');
+    });
+
+    $('#setting-team-alert')?.addEventListener('change', (e) => {
+      localStorage.setItem('studenthub_setting_team_alert', e.target.checked);
+      showToast(`Project activity alerts ${e.target.checked ? 'Enabled' : 'Disabled'}`, 'info');
+    });
+
   }
 
   // --- Bootstrapping Application ---

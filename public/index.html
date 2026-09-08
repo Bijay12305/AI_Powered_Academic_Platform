@@ -353,12 +353,17 @@
 
                 <!-- Drag & Drop Upload Zone -->
                 <div class="dropzone-container" id="ai-dropzone" role="button" tabindex="0" title="Click or drag and drop to select a file from your system">
-                  <input type="file" id="file-upload-input" style="display:none;" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt,.md,.json,.rtf,.csv,image/*">
+                  <input type="file" id="file-upload-input" style="display:none;" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.jpg,.jpeg,.png,.md,.json">
                   <div class="dropzone-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
                   </div>
                   <div class="dropzone-main-text">Drag & drop your file here <span>or click to upload</span></div>
-                  <div class="dropzone-sub-text">Supports PDF, PPT, DOC, TXT (Max 20MB)</div>
+                  <div class="dropzone-sub-text">Supports PDF, DOC, DOCX, PPT, PPTX, TXT, JPG, PNG (Max 25MB)</div>
+                  <button type="button" class="btn-upload-browse" id="btn-browse-study-file">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    <span>Upload File</span>
+                  </button>
+                  <div class="upload-feedback-msg" id="ai-upload-feedback"></div>
                 </div>
 
                 <!-- Active Uploaded File Display -->
@@ -546,7 +551,7 @@
                   </div>
 
                   <!-- Inline Rich Editor (Activated via "✎ Edit Notes") -->
-                  <div class="inline-editor-wrap" id="inline-editor-container">
+                  <div class="inline-editor-wrap" id="inline-editor-container" style="display: none;">
                     <div class="editor-toolbar">
                       <button class="editor-tool-btn" data-cmd="bold" title="Bold">B</button>
                       <button class="editor-tool-btn" data-cmd="italic" title="Italic"><i>I</i></button>
