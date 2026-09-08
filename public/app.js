@@ -9,18 +9,18 @@
   // --- Embedded Default Database (Guarantees 100% functionality offline and online) ---
   const DEFAULT_DB = {
   "student": {
-    "name": "Bijay Mandal",
+    "name": "Student Account",
     "course": "B.Tech Computer Science & Engineering",
     "year": "2nd Year",
     "semester": "Semester 4",
-    "gender": "Male",
-    "rollNo": "CSE2024-4108",
-    "college": "Sona College of Technology",
-    "email": "bijay.mandal@sonatech.ac.in",
-    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
-    "cgpa": "8.92",
-    "attendance": "92%",
-    "bio": "Passionate 2nd Year Computer Science student at Sona College of Technology focusing on Operating Systems, Data Structures, DBMS, and AI. Always curious to learn and build scalable projects.",
+    "gender": "Student",
+    "rollNo": "CSE-2024-001",
+    "college": "College of Engineering",
+    "email": "student@college.edu",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=student",
+    "cgpa": "8.80",
+    "attendance": "95%",
+    "bio": "Passionate student focusing on computer science, AI, and modern software systems.",
     "badges": [
       {
         "id": "b1",
@@ -1932,19 +1932,19 @@
     if (!s) return;
     
     // Update Header Pill
-    $$('.profile-name').forEach(el => el.textContent = s.name || 'Bijay Mandal');
-    $$('.profile-role').forEach(el => el.textContent = s.course || 'B.Tech CSE');
+    $$('.profile-name').forEach(el => el.textContent = s.name || 'Student Account');
+    $$('.profile-role').forEach(el => el.textContent = s.course || 'Academic Scholar');
     $$('.profile-avatar-img').forEach(el => {
       if (s.avatar) el.src = s.avatar;
     });
 
     // Update Dropdown Menu
     const menuName = $('#menu-student-name');
-    if (menuName) menuName.textContent = s.name || 'Bijay Mandal';
+    if (menuName) menuName.textContent = s.name || 'Student Account';
     const menuEmail = $('#menu-student-email');
-    if (menuEmail) menuEmail.textContent = s.email || 'student@sonatech.ac.in';
+    if (menuEmail) menuEmail.textContent = s.email || 'student@college.edu';
     const menuDept = $('#menu-student-dept');
-    if (menuDept) menuDept.textContent = `${s.course || 'B.Tech'} • ${s.college || 'Sona College'}`;
+    if (menuDept) menuDept.textContent = `${s.course || 'B.Tech'} • ${s.college || 'College of Engineering'}`;
 
     // Update Profile View Inputs & Card
     const nameInp = $('#prof-name');
@@ -1954,7 +1954,7 @@
     const courseInp = $('#prof-course');
     if (courseInp) courseInp.value = s.course || '';
     const yearInp = $('#prof-year');
-    if (yearInp) yearInp.value = `${s.year || '2nd Year'} (${s.semester || 'Semester 4'})`;
+    if (yearInp) yearInp.value = s.year ? `${s.year} (${s.semester || 'Semester 1'})` : '';
     const collegeInp = $('#prof-college');
     if (collegeInp) collegeInp.value = s.college || '';
     const bioInp = $('#prof-bio');
@@ -1964,11 +1964,11 @@
     const sidebarAvatar = $('.profile-sidebar-card .profile-big-avatar');
     if (sidebarAvatar && s.avatar) sidebarAvatar.src = s.avatar;
     const sidebarName = $('.profile-sidebar-card h3');
-    if (sidebarName) sidebarName.textContent = s.name || 'Student';
+    if (sidebarName) sidebarName.textContent = s.name || 'Student Account';
     const sidebarCourse = $('.profile-sidebar-card p:nth-of-type(1)');
-    if (sidebarCourse) sidebarCourse.textContent = `${s.course || 'B.Tech'} (${s.year || '2nd Year'})`;
+    if (sidebarCourse) sidebarCourse.textContent = `${s.course || 'Academic Scholar'} (${s.year || '1st Year'})`;
     const sidebarRoll = $('.profile-sidebar-card p:nth-of-type(2)');
-    if (sidebarRoll) sidebarRoll.textContent = `${s.semester || 'Semester 4'} • Roll: ${s.rollNo || 'STU-1001'}`;
+    if (sidebarRoll) sidebarRoll.textContent = `${s.semester || 'Semester 1'} • Roll: ${s.rollNo || 'STU-1001'}`;
 
     // Render Badges
     const badgeContainer = $('#profile-badges-container');
@@ -2016,9 +2016,7 @@
         showToast(data.message || 'Invalid credentials. Please try again.', 'error');
       }
     } catch (e) {
-      // Offline fallback
-      showToast('Offline mode: Signed in as demo user.', 'info');
-      closeModal('modal-auth');
+      showToast('Connection error. Please try again.', 'error');
     }
   }
 
@@ -2052,6 +2050,16 @@
 
   async function handleLogout() {
     localStorage.removeItem('studenthub_user');
+    state.student = {
+      name: 'Student Account',
+      email: '',
+      course: 'Academic Scholar',
+      college: 'College of Engineering',
+      year: '1st Year',
+      rollNo: '',
+      avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=student'
+    };
+    updateStudentProfileUI(state.student);
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
     } catch (e) {}
@@ -2408,16 +2416,6 @@
         year,
         course: `B.Tech ${department}`,
         password
-      });
-    });
-
-    // 1-Click Quick Demo User Buttons
-    $$('.demo-user-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const demoEmail = btn.dataset.demoEmail;
-        if (demoEmail) {
-          handleSignIn(demoEmail, 'password123');
-        }
       });
     });
 

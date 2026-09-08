@@ -514,10 +514,6 @@ class StudentHubHandler(http.server.SimpleHTTPRequestHandler):
                     matched_user = u
                     break
 
-            # Allow demo / fallback if user exists in initial student profile
-            if not matched_user and identifier in ["bijay.mandal@sonatech.ac.in", "demo"]:
-                matched_user = users[0] if users else db.get("student", {})
-
             if matched_user:
                 safe_user = {k: v for k, v in matched_user.items() if k != "passwordHash"}
                 db["student"] = safe_user

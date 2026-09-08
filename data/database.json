@@ -1,20 +1,20 @@
 {
   "student": {
-    "id": "user-1788881131",
-    "name": "Vikram Sethi",
-    "email": "vikram.civil@sonatech.ac.in",
-    "college": "Sona College of Technology",
-    "departmentId": "dept-civil",
-    "department": "Civil Engineering",
-    "course": "B.Tech Civil Engineering",
-    "year": "3rd Year",
+    "id": "user-1788882466",
+    "name": "Pooja Patel",
+    "email": "pooja.patel@college.edu",
+    "college": "Salem Institute of Technology",
+    "departmentId": "dept-it",
+    "department": "Information Technology",
+    "course": "B.Tech Information Technology",
+    "year": "2nd Year",
     "semester": "Semester 1",
-    "rollNo": "CIVIL-3021",
+    "rollNo": "IT-2024-88",
     "gender": "Student",
-    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=pooja.patel@college.edu",
     "cgpa": "8.80",
     "attendance": "95%",
-    "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
+    "bio": "Student at Salem Institute of Technology majoring in Information Technology.",
     "badges": [
       {
         "id": "b-welcome",
@@ -1333,109 +1333,22 @@
   ],
   "users": [
     {
-      "id": "user-bijay-1",
-      "name": "Bijay Mandal",
-      "email": "bijay.mandal@sonatech.ac.in",
-      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
-      "college": "Sona College of Technology",
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering",
-      "course": "B.Tech Computer Science & Engineering",
+      "id": "user-1788882466",
+      "name": "Pooja Patel",
+      "email": "pooja.patel@college.edu",
+      "passwordHash": "6e659deaa85842cdabb5c6305fcc40033ba43772ec00d45c2a3c921741a5e377",
+      "college": "Salem Institute of Technology",
+      "departmentId": "dept-it",
+      "department": "Information Technology",
+      "course": "B.Tech Information Technology",
       "year": "2nd Year",
-      "semester": "Semester 4",
-      "rollNo": "CSE2024-4108",
-      "gender": "Male",
-      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
-      "cgpa": "8.92",
-      "attendance": "92%",
-      "bio": "2nd Year CSE student passionate about Operating Systems, DBMS, and AI.",
-      "badges": [
-        {
-          "id": "b1",
-          "name": "AI Power User",
-          "icon": "✨",
-          "desc": "Generated 25+ AI study notes"
-        },
-        {
-          "id": "b2",
-          "name": "Consistent Learner",
-          "icon": "🔥",
-          "desc": "14-day study streak"
-        }
-      ],
-      "createdAt": "2026-08-01"
-    },
-    {
-      "id": "user-ananya-2",
-      "name": "Ananya Sharma",
-      "email": "ananya.sharma@sonatech.ac.in",
-      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
-      "college": "Sona College of Technology",
-      "departmentId": "dept-aids",
-      "department": "Artificial Intelligence & Data Science",
-      "course": "B.Tech AI & Data Science",
-      "year": "3rd Year",
-      "semester": "Semester 6",
-      "rollNo": "AIDS2023-3012",
-      "gender": "Female",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-      "cgpa": "9.15",
-      "attendance": "96%",
-      "bio": "AI & Data Science researcher focusing on Transformers and LLM architectures.",
-      "badges": [
-        {
-          "id": "b1",
-          "name": "AI Researcher",
-          "icon": "🧠",
-          "desc": "Published 2 conference papers"
-        }
-      ],
-      "createdAt": "2026-08-10"
-    },
-    {
-      "id": "user-rahul-3",
-      "name": "Rahul Verma",
-      "email": "rahul.verma@sonatech.ac.in",
-      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
-      "college": "Sona College of Technology",
-      "departmentId": "dept-mech",
-      "department": "Mechanical Engineering",
-      "course": "B.E. Mechanical Engineering",
-      "year": "4th Year",
-      "semester": "Semester 7",
-      "rollNo": "MECH2022-1089",
-      "gender": "Male",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-      "cgpa": "8.70",
-      "attendance": "89%",
-      "bio": "Mechanical design lead working on Formula Student electric vehicle chassis.",
-      "badges": [
-        {
-          "id": "b1",
-          "name": "CAD Master",
-          "icon": "⚙️",
-          "desc": "Certified SolidWorks Professional"
-        }
-      ],
-      "createdAt": "2026-08-12"
-    },
-    {
-      "id": "user-1788881131",
-      "name": "Vikram Sethi",
-      "email": "vikram.civil@sonatech.ac.in",
-      "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
-      "college": "Sona College of Technology",
-      "departmentId": "dept-civil",
-      "department": "Civil Engineering",
-      "course": "B.Tech Civil Engineering",
-      "year": "3rd Year",
       "semester": "Semester 1",
-      "rollNo": "CIVIL-3021",
+      "rollNo": "IT-2024-88",
       "gender": "Student",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=pooja.patel@college.edu",
       "cgpa": "8.80",
       "attendance": "95%",
-      "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
+      "bio": "Student at Salem Institute of Technology majoring in Information Technology.",
       "badges": [
         {
           "id": "b-welcome",
