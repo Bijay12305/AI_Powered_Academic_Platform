@@ -352,8 +352,8 @@
                 </div>
 
                 <!-- Drag & Drop Upload Zone -->
-                <div class="dropzone-container" id="ai-dropzone">
-                  <input type="file" id="file-upload-input" style="display:none;" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt">
+                <div class="dropzone-container" id="ai-dropzone" role="button" tabindex="0" title="Click or drag and drop to select a file from your system">
+                  <input type="file" id="file-upload-input" style="display:none;" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt,.md,.json,.rtf,.csv,image/*">
                   <div class="dropzone-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
                   </div>
@@ -1439,10 +1439,12 @@
         </div>
         <div class="modal-body">
           <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:16px;">Take a photo of your handwritten notebook or upload an image. AI will extract and clean the handwriting into formatted digital notes.</p>
-          <div class="dropzone-container" id="scan-dropzone">
+          <div class="dropzone-container" id="scan-dropzone" role="button" tabindex="0" title="Click to browse image from your computer">
+            <input type="file" id="scan-file-input" style="display:none;" accept="image/*,.png,.jpg,.jpeg,.heic,.webp">
             <div class="dropzone-icon">📷</div>
             <div class="dropzone-main-text">Upload photo of notebook page</div>
-            <div class="dropzone-sub-text">PNG, JPG, HEIC supported</div>
+            <div class="dropzone-sub-text">PNG, JPG, HEIC supported (click or drag & drop)</div>
+            <div id="scan-selected-file-info" style="display:none;margin-top:10px;font-size:0.82rem;color:#38bdf8;font-weight:600;"></div>
           </div>
         </div>
         <div class="modal-footer">
@@ -1461,10 +1463,12 @@
         </div>
         <div class="modal-body">
           <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:16px;">Upload a lecture recording (MP3, WAV, M4A) or paste the transcript to synthesize clean study notes.</p>
-          <div class="dropzone-container" id="audio-dropzone">
+          <div class="dropzone-container" id="audio-dropzone" role="button" tabindex="0" title="Click to select audio from your computer">
+            <input type="file" id="audio-file-input" style="display:none;" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg">
             <div class="dropzone-icon">🎙️</div>
             <div class="dropzone-main-text">Upload Lecture Audio Recording</div>
-            <div class="dropzone-sub-text">Supports MP3, WAV, AAC (Up to 100MB)</div>
+            <div class="dropzone-sub-text">Supports MP3, WAV, AAC (click or drag & drop)</div>
+            <div id="audio-selected-file-info" style="display:none;margin-top:10px;font-size:0.82rem;color:#38bdf8;font-weight:600;"></div>
           </div>
         </div>
         <div class="modal-footer">
@@ -1622,6 +1626,16 @@
         </div>
         <div class="modal-body">
           <div class="form-group" style="margin-bottom:14px;">
+            <label>Select File from Computer</label>
+            <div class="dropzone-container" id="modal-mat-dropzone" style="padding:16px;text-align:center;cursor:pointer;" role="button" tabindex="0" title="Click to browse file from your system">
+              <input type="file" id="modal-mat-file-input" style="display:none;" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt,.md,.json,image/*">
+              <div style="font-size:1.4rem;margin-bottom:4px;">📁</div>
+              <div style="font-size:0.88rem;color:#ffffff;font-weight:600;">Click to select file from system or drag here</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">PDF, PPT, DOC, TXT (Max 50MB)</div>
+              <div id="modal-mat-file-info" style="display:none;margin-top:8px;font-size:0.82rem;color:#38bdf8;font-weight:700;"></div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
             <label>Document Title / File Name</label>
             <input type="text" class="form-input" id="mat-name-input" placeholder="e.g. OS_Unit4_MemoryManagement.pdf">
           </div>
@@ -1642,6 +1656,7 @@
                 <option value="PDF">PDF Document</option>
                 <option value="PPT">PPT Slide Deck</option>
                 <option value="DOC">Word Document</option>
+                <option value="TXT">Text / Notes</option>
               </select>
             </div>
           </div>

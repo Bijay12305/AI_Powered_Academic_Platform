@@ -2154,12 +2154,136 @@
     if (note) renderGeneratedNotePreview(note);
   }
 
+  // --- Utility File & Notes Helpers ---
+  function formatFileSize(bytes) {
+    if (!bytes || bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+  }
+
+  function handleUploadedStudyFile(file) {
+    if (!file) return;
+    const ext = (file.name.split('.').pop() || 'FILE').toUpperCase();
+    const formattedSize = formatFileSize(file.size);
+
+    state.aiStudio.uploadedFile = {
+      name: file.name,
+      size: formattedSize,
+      type: ext,
+      rawText: '',
+      file: file
+    };
+
+    const activePill = $('#active-file-pill');
+    const fileNameEl = $('#uploaded-file-name');
+    const fileSizeEl = $('#uploaded-file-size');
+    const fileTypeIcon = activePill ? activePill.querySelector('.file-type-icon') : null;
+
+    if (fileNameEl) fileNameEl.textContent = file.name;
+    if (fileSizeEl) fileSizeEl.textContent = `${formattedSize} • Ready for AI extraction`;
+    if (fileTypeIcon) {
+      fileTypeIcon.textContent = ext.slice(0, 4);
+      if (ext === 'PDF') {
+        fileTypeIcon.style.color = '#ef4444';
+        fileTypeIcon.style.background = 'rgba(239, 68, 68, 0.15)';
+        fileTypeIcon.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+      } else if (ext === 'PPT' || ext === 'PPTX') {
+        fileTypeIcon.style.color = '#f97316';
+        fileTypeIcon.style.background = 'rgba(249, 115, 22, 0.15)';
+        fileTypeIcon.style.borderColor = 'rgba(249, 115, 22, 0.3)';
+      } else if (ext === 'DOC' || ext === 'DOCX') {
+        fileTypeIcon.style.color = '#3b82f6';
+        fileTypeIcon.style.background = 'rgba(59, 130, 246, 0.15)';
+        fileTypeIcon.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+      } else {
+        fileTypeIcon.style.color = '#10b981';
+        fileTypeIcon.style.background = 'rgba(16, 185, 129, 0.15)';
+        fileTypeIcon.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+      }
+    }
+    if (activePill) activePill.style.display = 'flex';
+
+    // If text-readable file, read text directly into the AI prompt editor
+    const textExts = ['txt', 'md', 'json', 'csv', 'py', 'java', 'cpp', 'c', 'js', 'html', 'css', 'sql', 'log'];
+    const lowerExt = file.name.split('.').pop().toLowerCase();
+    if (textExts.includes(lowerExt) || file.type.startsWith('text/')) {
+      const reader = new FileReader();
+      reader.onload = (re) => {
+        const textContent = re.target ? re.target.result : '';
+        if (state.aiStudio.uploadedFile) state.aiStudio.uploadedFile.rawText = textContent;
+        const pasteArea = $('#ai-text-paste');
+        if (pasteArea && !pasteArea.value.trim()) {
+          pasteArea.value = textContent.slice(0, 4000);
+        }
+        showToast(`✓ Loaded "${file.name}" (${formattedSize}) into AI workspace!`, 'success');
+      };
+      reader.onerror = () => {
+        showToast(`✓ Selected "${file.name}" (${formattedSize}) from system.`, 'info');
+      };
+      reader.readAsText(file);
+    } else {
+      showToast(`✓ Selected "${file.name}" (${formattedSize}) from your computer!`, 'success');
+    }
+  }
+
+  function handleScanFile(file) {
+    if (!file) return;
+    state.aiStudio.scanFile = file;
+    const info = $('#scan-selected-file-info');
+    if (info) {
+      info.textContent = `✓ Selected: ${file.name} (${formatFileSize(file.size)})`;
+      info.style.display = 'block';
+    }
+    showToast(`✓ Selected notebook photo: ${file.name}`, 'success');
+  }
+
+  function handleAudioFile(file) {
+    if (!file) return;
+    state.aiStudio.audioFile = file;
+    const info = $('#audio-selected-file-info');
+    if (info) {
+      info.textContent = `✓ Selected: ${file.name} (${formatFileSize(file.size)})`;
+      info.style.display = 'block';
+    }
+    showToast(`✓ Selected lecture audio: ${file.name}`, 'success');
+  }
+
+  function handleModalMatFile(file) {
+    if (!file) return;
+    state.selectedMatFile = file;
+    const info = $('#modal-mat-file-info');
+    if (info) {
+      info.textContent = `✓ Selected: ${file.name} (${formatFileSize(file.size)})`;
+      info.style.display = 'block';
+    }
+    const nameInput = $('#mat-name-input');
+    if (nameInput && !nameInput.value) {
+      nameInput.value = file.name;
+    }
+    const typeSelect = $('#mat-type-select');
+    if (typeSelect) {
+      const ext = file.name.split('.').pop().toUpperCase();
+      if (ext.includes('PDF')) typeSelect.value = 'PDF';
+      else if (ext.includes('PPT')) typeSelect.value = 'PPT';
+      else if (ext.includes('DOC')) typeSelect.value = 'DOC';
+      else typeSelect.value = 'TXT';
+    }
+    showToast(`✓ Selected material file: ${file.name}`, 'success');
+  }
+
   // --- AI Notes Studio Execution ---
   async function generateAiNotes() {
     const dept = state.currentDepartment;
     const subj = $('#ai-subject-select')?.value || 'Operating Systems';
     const unit = $('#ai-unit-select')?.value || 'Unit 3';
     const pasteText = $('#ai-text-paste')?.value || '';
+    const uploaded = state.aiStudio.uploadedFile;
+    const fullMaterialText = (uploaded?.rawText ? uploaded.rawText + '
+
+' : '') + pasteText;
+    const fileName = uploaded?.name || 'Operating_Systems_Unit3.pdf';
     const btn = $('#btn-generate-notes') || $('#btn-regenerate-notes');
 
     if (btn) {
@@ -2178,7 +2302,9 @@
           department: dept,
           subject: subj,
           unit: unit,
-          materialText: pasteText,
+          materialText: fullMaterialText,
+          fileName: fileName,
+          fileSize: uploaded?.size || '2.4 MB',
           noteTypes: ['Short Notes', 'Key Points', 'Important Topics', 'MCQs', 'Viva Questions', 'Summary']
         })
       });
@@ -2196,7 +2322,7 @@
 
     // Bulletproof zero-latency fallback if server was offline or busy
     if (!noteResult) {
-      noteResult = synthesizeLocalNotes(dept, subj, unit, pasteText);
+      noteResult = synthesizeLocalNotes(dept, subj, unit, fullMaterialText);
       showToast(`✓ Notes synthesized successfully by Neural Engine!`, 'success');
     }
 
@@ -2646,6 +2772,305 @@
         const mId = btn.dataset.closeModal;
         if (mId) closeModal(mId);
       });
+    });
+
+    // --- File Upload & Dropzone Handlers (Full Native System Access) ---
+    // 1. AI Studio Primary Dropzone & File Picker
+    const aiDropzone = $('#ai-dropzone');
+    const fileUploadInput = $('#file-upload-input');
+
+    if (aiDropzone && fileUploadInput) {
+      aiDropzone.addEventListener('click', (e) => {
+        if (e.target.id !== 'file-upload-input') {
+          fileUploadInput.click();
+        }
+      });
+
+      aiDropzone.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          fileUploadInput.click();
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        aiDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          aiDropzone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'dragend', 'drop'].forEach(evt => {
+        aiDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          aiDropzone.classList.remove('dragover');
+        });
+      });
+
+      aiDropzone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer?.files?.[0];
+        if (file) {
+          handleUploadedStudyFile(file);
+        }
+      });
+
+      fileUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) {
+          handleUploadedStudyFile(file);
+        }
+      });
+    }
+
+    // Remove active uploaded file
+    $('#btn-remove-file')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.aiStudio.uploadedFile = null;
+      if (fileUploadInput) fileUploadInput.value = '';
+      const pill = $('#active-file-pill');
+      if (pill) pill.style.display = 'none';
+      showToast('Uploaded file removed.', 'info');
+    });
+
+    // 2. Scan Handwritten Notes Modal Dropzone
+    const scanDropzone = $('#scan-dropzone');
+    const scanFileInput = $('#scan-file-input');
+
+    if (scanDropzone && scanFileInput) {
+      scanDropzone.addEventListener('click', (e) => {
+        if (e.target.id !== 'scan-file-input') {
+          scanFileInput.click();
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        scanDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          scanDropzone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'dragend', 'drop'].forEach(evt => {
+        scanDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          scanDropzone.classList.remove('dragover');
+        });
+      });
+
+      scanDropzone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer?.files?.[0];
+        if (file) handleScanFile(file);
+      });
+
+      scanFileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) handleScanFile(file);
+      });
+    }
+
+    // 3. Audio Lecture Modal Dropzone
+    const audioDropzone = $('#audio-dropzone');
+    const audioFileInput = $('#audio-file-input');
+
+    if (audioDropzone && audioFileInput) {
+      audioDropzone.addEventListener('click', (e) => {
+        if (e.target.id !== 'audio-file-input') {
+          audioFileInput.click();
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        audioDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          audioDropzone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'dragend', 'drop'].forEach(evt => {
+        audioDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          audioDropzone.classList.remove('dragover');
+        });
+      });
+
+      audioDropzone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer?.files?.[0];
+        if (file) handleAudioFile(file);
+      });
+
+      audioFileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) handleAudioFile(file);
+      });
+    }
+
+    // 4. Study Material Vault Modal Dropzone & Upload Action
+    $('#btn-upload-new-material')?.addEventListener('click', () => {
+      openModal('modal-upload-material');
+    });
+
+    const modalMatDropzone = $('#modal-mat-dropzone');
+    const modalMatFileInput = $('#modal-mat-file-input');
+
+    if (modalMatDropzone && modalMatFileInput) {
+      modalMatDropzone.addEventListener('click', (e) => {
+        if (e.target.id !== 'modal-mat-file-input') {
+          modalMatFileInput.click();
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        modalMatDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          modalMatDropzone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'dragend', 'drop'].forEach(evt => {
+        modalMatDropzone.addEventListener(evt, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          modalMatDropzone.classList.remove('dragover');
+        });
+      });
+
+      modalMatDropzone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer?.files?.[0];
+        if (file) handleModalMatFile(file);
+      });
+
+      modalMatFileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) handleModalMatFile(file);
+      });
+    }
+
+    $('#btn-submit-upload-mat')?.addEventListener('click', async () => {
+      const name = $('#mat-name-input')?.value.trim() || 'Uploaded_Document.pdf';
+      const subj = $('#mat-subject-select')?.value || 'Operating Systems';
+      const type = $('#mat-type-select')?.value || 'PDF';
+      const summary = $('#mat-summary-input')?.value.trim() || 'Uploaded study material document.';
+
+      const newMaterial = {
+        id: `mat-${Date.now()}`,
+        title: name,
+        fileName: name,
+        subject: subj,
+        type: type,
+        size: state.selectedMatFile ? formatFileSize(state.selectedMatFile.size) : '3.2 MB',
+        date: new Date().toISOString().split('T')[0],
+        summary: summary,
+        url: '#'
+      };
+
+      state.studyMaterials.unshift(newMaterial);
+      renderStudyMaterials();
+      closeModal('modal-upload-material');
+      showToast(`✓ Document "${name}" uploaded to Study Material Vault!`, 'success');
+
+      try {
+        await fetch('/api/materials', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newMaterial)
+        });
+      } catch (e) {}
+    });
+
+    // 5. Manual Note and Assignment creation buttons
+    $('#btn-create-manual-note')?.addEventListener('click', () => {
+      openModal('modal-note-editor');
+    });
+
+    $('#btn-save-manual-note')?.addEventListener('click', async () => {
+      const title = $('#manual-note-title-input')?.value.trim();
+      const subj = $('#manual-note-subject-select')?.value || 'Operating Systems';
+      const unit = $('#manual-note-unit-input')?.value.trim() || 'Unit 1';
+      const content = $('#manual-note-content-input')?.value.trim();
+      if (!title || !content) {
+        showToast('Please fill in title and content', 'warning');
+        return;
+      }
+
+      const manualNote = {
+        id: `note-${Date.now()}`,
+        title: title,
+        subject: subj,
+        unit: unit,
+        date: new Date().toISOString().split('T')[0],
+        pinned: false,
+        isAiGenerated: false,
+        department: state.currentDepartment,
+        generatedBy: state.student.name || 'Student Account',
+        tags: [subj.replace(/\s+/g, ''), 'ManualNote'],
+        content: {
+          shortNotes: content,
+          keyPoints: `• ${title}\n• Created manually by student`,
+          importantTopics: `1. ${title}`,
+          mcqs: 'No MCQs available for manual note.',
+          vivaQuestions: 'No viva questions available for manual note.',
+          summary: content.slice(0, 200) + '...'
+        }
+      };
+
+      state.notes.unshift(manualNote);
+      renderNotes();
+      closeModal('modal-note-editor');
+      showToast('✓ Note saved successfully!', 'success');
+
+      try {
+        await fetch('/api/notes/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ note: manualNote })
+        });
+      } catch (e) {}
+    });
+
+    $('#btn-add-assignment')?.addEventListener('click', () => {
+      openModal('modal-add-assignment');
+    });
+
+    $('#btn-submit-assignment')?.addEventListener('click', async () => {
+      const title = $('#asg-title-input')?.value.trim();
+      const subj = $('#asg-subject-select')?.value || 'Operating Systems';
+      const duedate = $('#asg-duedate-input')?.value || '2026-09-20';
+      const priority = $('#asg-priority-select')?.value || 'Medium';
+      const desc = $('#asg-desc-input')?.value.trim() || '';
+      if (!title) {
+        showToast('Please enter an assignment title', 'warning');
+        return;
+      }
+
+      const newAsg = {
+        id: `asg-${Date.now()}`,
+        title: title,
+        subject: subj,
+        dueDate: duedate,
+        priority: priority,
+        status: 'Pending',
+        description: desc
+      };
+
+      state.assignments.unshift(newAsg);
+      renderAssignments();
+      closeModal('modal-add-assignment');
+      showToast('✓ Assignment added successfully!', 'success');
+
+      try {
+        await fetch('/api/assignments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newAsg)
+        });
+      } catch (e) {}
     });
 
     // AI Note Generator Buttons
