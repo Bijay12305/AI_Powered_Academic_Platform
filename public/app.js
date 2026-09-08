@@ -9,821 +9,1496 @@
   // --- Embedded Default Database (Guarantees 100% functionality offline and online) ---
   const DEFAULT_DB = {
   "student": {
-    "name": "Student Account",
-    "course": "B.Tech Computer Science & Engineering",
-    "year": "2nd Year",
-    "semester": "Semester 4",
+    "id": "user-1788884110",
+    "name": "Vikram Sethi",
+    "email": "vikram.civil@sonatech.ac.in",
+    "college": "Sona College of Technology",
+    "departmentId": "dept-civil",
+    "department": "Civil Engineering",
+    "course": "B.Tech Civil Engineering",
+    "year": "3rd Year",
+    "semester": "Semester 1",
+    "rollNo": "CIVIL-3021",
     "gender": "Student",
-    "rollNo": "CSE-2024-001",
-    "college": "College of Engineering",
-    "email": "student@college.edu",
-    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=student",
+    "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=vikram.civil@sonatech.ac.in",
     "cgpa": "8.80",
     "attendance": "95%",
-    "bio": "Passionate student focusing on computer science, AI, and modern software systems.",
+    "bio": "Student at Sona College of Technology majoring in Civil Engineering.",
     "badges": [
       {
-        "id": "b1",
-        "name": "AI Power User",
-        "icon": "✨",
-        "desc": "Generated over 25+ AI study notes"
-      },
-      {
-        "id": "b2",
-        "name": "Consistent Learner",
-        "icon": "🔥",
-        "desc": "14-day continuous study streak"
-      },
-      {
-        "id": "b3",
-        "name": "Deadline Master",
-        "icon": "🎯",
-        "desc": "Submitted 100% assignments on time"
-      },
-      {
-        "id": "b4",
-        "name": "Project Lead",
-        "icon": "🚀",
-        "desc": "Leading Smart Campus Management System"
+        "id": "b-welcome",
+        "name": "New Scholar",
+        "icon": "\ud83c\udf93",
+        "desc": "Joined StudentHub Academic Platform"
       }
     ],
-    "currentDepartmentId": "dept-cse",
-    "currentDepartment": "Computer Science & Engineering"
+    "createdAt": "2026-09-08"
   },
+  "departments": [
+    {
+      "id": "dept-cse",
+      "name": "Computer Science & Engineering",
+      "shortCode": "CSE",
+      "icon": "\ud83d\udcbb",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 5
+    },
+    {
+      "id": "dept-aids",
+      "name": "Artificial Intelligence & Data Science",
+      "shortCode": "AI & DS",
+      "icon": "\ud83e\udde0",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 3
+    },
+    {
+      "id": "dept-ece",
+      "name": "Electronics & Communication Engineering",
+      "shortCode": "ECE",
+      "icon": "\ud83d\udce1",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 2
+    },
+    {
+      "id": "dept-eee",
+      "name": "Electrical & Electronics Engineering",
+      "shortCode": "EEE",
+      "icon": "\u26a1",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 1
+    },
+    {
+      "id": "dept-mech",
+      "name": "Mechanical Engineering",
+      "shortCode": "MECH",
+      "icon": "\u2699\ufe0f",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 1
+    },
+    {
+      "id": "dept-civil",
+      "name": "Civil Engineering",
+      "shortCode": "CIVIL",
+      "icon": "\ud83c\udfd7\ufe0f",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 1
+    },
+    {
+      "id": "dept-it",
+      "name": "Information Technology",
+      "shortCode": "IT",
+      "icon": "\ud83c\udf10",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 1
+    },
+    {
+      "id": "dept-biotech",
+      "name": "Biotechnology",
+      "shortCode": "BIO-TECH",
+      "icon": "\ud83e\uddec",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)",
+        "3rd Year (Sem 5-6)",
+        "4th Year / Final (Sem 7-8)"
+      ],
+      "subjectsCount": 1
+    },
+    {
+      "id": "dept-mgmt",
+      "name": "Management Studies",
+      "shortCode": "MBA / BBA",
+      "icon": "\ud83d\udcca",
+      "years": [
+        "1st Year (Sem 1-2)",
+        "2nd Year (Sem 3-4)"
+      ],
+      "subjectsCount": 1
+    }
+  ],
   "subjects": [
     {
-      "id": "sub-os",
-      "name": "Operating Systems",
-      "code": "CS-301",
+      "id": "sub-cse-m1",
+      "name": "Engineering Mathematics & Calculus",
+      "code": "MA-101",
+      "year": "1st Year",
+      "semester": "Semester 1",
+      "credits": 4,
       "color": "#3b82f6",
-      "icon": "cpu",
-      "credits": 4,
-      "faculty": "Dr. Ramesh Iyer",
-      "notesCount": 12,
-      "assignmentsCount": 2,
-      "progress": 78,
-      "units": [
-        {
-          "id": 1,
-          "name": "Introduction & System Structures",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Process Management & Threads",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "CPU Scheduling & Synchronization",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Deadlocks & Memory Management",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Storage Management & File Systems",
-          "status": "Pending"
-        }
-      ],
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering"
-    },
-    {
-      "id": "sub-dbms",
-      "name": "DBMS",
-      "code": "CS-302",
-      "color": "#8b5cf6",
-      "icon": "database",
-      "credits": 4,
-      "faculty": "Prof. Sunita Rao",
-      "notesCount": 10,
-      "assignmentsCount": 1,
-      "progress": 82,
-      "units": [
-        {
-          "id": 1,
-          "name": "ER Model & Relational Algebra",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "SQL & Advanced Queries",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Normalization & Functional Dependencies",
-          "status": "Completed"
-        },
-        {
-          "id": 4,
-          "name": "Transaction Processing & Concurrency",
-          "status": "In Progress"
-        },
-        {
-          "id": 5,
-          "name": "NoSQL & Distributed Databases",
-          "status": "Pending"
-        }
-      ],
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering"
-    },
-    {
-      "id": "sub-cn",
-      "name": "Computer Networks",
-      "code": "CS-303",
-      "color": "#10b981",
-      "icon": "network",
-      "credits": 4,
-      "faculty": "Dr. Arvind Nair",
-      "notesCount": 8,
-      "assignmentsCount": 1,
-      "progress": 65,
-      "units": [
-        {
-          "id": 1,
-          "name": "Network Models & Physical Layer",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Data Link Layer & Error Control",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Network Layer & Routing Protocols",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Transport Layer (TCP/UDP) & Congestion",
-          "status": "In Progress"
-        },
-        {
-          "id": 5,
-          "name": "Application Layer & Security",
-          "status": "Pending"
-        }
-      ],
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering"
-    },
-    {
-      "id": "sub-java",
-      "name": "Java Programming",
-      "code": "CS-304",
-      "color": "#f59e0b",
-      "icon": "code-xml",
-      "credits": 3,
-      "faculty": "Prof. Manoj Verma",
-      "notesCount": 7,
-      "assignmentsCount": 1,
-      "progress": 88,
-      "units": [
-        {
-          "id": 1,
-          "name": "OOP Concepts & Java Fundamentals",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Inheritance, Interfaces & Packages",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Exception Handling & Multithreading",
-          "status": "Completed"
-        },
-        {
-          "id": 4,
-          "name": "Java Collections Framework & Streams",
-          "status": "In Progress"
-        },
-        {
-          "id": 5,
-          "name": "GUI with JavaFX & JDBC Connectivity",
-          "status": "In Progress"
-        }
-      ],
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering"
-    },
-    {
-      "id": "sub-math",
-      "name": "Mathematics & Discrete Structures",
-      "code": "MA-301",
-      "color": "#ec4899",
-      "icon": "sigma",
-      "credits": 4,
-      "faculty": "Dr. Kalyani Sen",
-      "notesCount": 5,
-      "assignmentsCount": 1,
-      "progress": 70,
-      "units": [
-        {
-          "id": 1,
-          "name": "Set Theory, Relations & Functions",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Propositional & Predicate Logic",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Combinatorics & Recurrence Relations",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Graph Theory & Trees",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Algebraic Structures & Groups",
-          "status": "Pending"
-        }
-      ],
-      "departmentId": "dept-cse",
-      "department": "Computer Science & Engineering"
-    },
-    {
-      "id": "sub-ml",
-      "departmentId": "dept-aids",
-      "department": "Artificial Intelligence & Data Science",
-      "name": "Machine Learning Foundations",
-      "code": "AI-301",
-      "color": "#8b5cf6",
-      "icon": "brain",
-      "credits": 4,
-      "faculty": "Dr. Ananya Roy",
-      "notesCount": 14,
-      "assignmentsCount": 2,
-      "progress": 82,
-      "units": [
-        {
-          "id": 1,
-          "name": "Supervised Learning & Regression",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Classification & SVMs",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Ensemble Methods & Random Forests",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Unsupervised Clustering & PCA",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Model Evaluation & Bias-Variance Tradeoff",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-dl",
-      "departmentId": "dept-aids",
-      "department": "Artificial Intelligence & Data Science",
-      "name": "Deep Learning & Neural Networks",
-      "code": "AI-302",
-      "color": "#ec4899",
-      "icon": "network",
-      "credits": 4,
-      "faculty": "Prof. S. Varma",
-      "notesCount": 10,
-      "assignmentsCount": 2,
-      "progress": 60,
-      "units": [
-        {
-          "id": 1,
-          "name": "Perceptrons & Backpropagation",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "CNN Architectures & Vision",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "RNN, LSTM & Transformers",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Generative Models & GANs",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Optimization & Regularization",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-dsp",
-      "departmentId": "dept-ece",
-      "department": "Electronics & Communication Engineering",
-      "name": "Digital Signal Processing",
-      "code": "EC-301",
-      "color": "#06b6d4",
-      "icon": "activity",
-      "credits": 4,
-      "faculty": "Dr. G. Venkatesh",
-      "notesCount": 11,
-      "assignmentsCount": 2,
-      "progress": 70,
-      "units": [
-        {
-          "id": 1,
-          "name": "Discrete Fourier Transform & FFT",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "IIR Filter Design (Butterworth/Chebyshev)",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "FIR Filter Design & Windowing",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Finite Word Length Effects",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Multirate Signal Processing",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-vlsi",
-      "departmentId": "dept-ece",
-      "department": "Electronics & Communication Engineering",
-      "name": "VLSI Design & CMOS Circuits",
-      "code": "EC-302",
-      "color": "#f97316",
-      "icon": "cpu",
-      "credits": 4,
-      "faculty": "Prof. R. Revathi",
-      "notesCount": 9,
-      "assignmentsCount": 1,
-      "progress": 62,
-      "units": [
-        {
-          "id": 1,
-          "name": "MOS Transistor Theory",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "CMOS Inverter Characteristics",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Combinational Logic & Stick Diagrams",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Sequential Circuit Design",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "FPGA Architecture & Verilog HDL",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-control",
-      "departmentId": "dept-eee",
-      "department": "Electrical & Electronics Engineering",
-      "name": "Control Systems Engineering",
-      "code": "EE-301",
-      "color": "#eab308",
-      "icon": "sliders",
-      "credits": 4,
-      "faculty": "Dr. K. Murugesan",
-      "notesCount": 10,
-      "assignmentsCount": 2,
-      "progress": 68,
-      "units": [
-        {
-          "id": 1,
-          "name": "Transfer Function Models & Block Diagrams",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Time Response Analysis",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Root Locus & Routh-Hurwitz Stability",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Bode Plots & Nyquist Criterion",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "State Space Representation",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-thermo",
-      "departmentId": "dept-mech",
-      "department": "Mechanical Engineering",
-      "name": "Applied Thermodynamics",
-      "code": "ME-301",
-      "color": "#f97316",
-      "icon": "flame",
-      "credits": 4,
-      "faculty": "Dr. V. Natarajan",
-      "notesCount": 12,
-      "assignmentsCount": 2,
-      "progress": 72,
-      "units": [
-        {
-          "id": 1,
-          "name": "Laws of Thermodynamics & Entropy",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Gas Power Cycles (Otto, Diesel, Brayton)",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Vapour Power Cycles & Rankine Cycle",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Refrigeration & Psychrometry",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Combustion Stoichiometry",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-structural",
-      "departmentId": "dept-civil",
-      "department": "Civil Engineering",
-      "name": "Structural Analysis & Design",
-      "code": "CE-301",
-      "color": "#84cc16",
-      "icon": "grid",
-      "credits": 4,
-      "faculty": "Dr. M. Senthilkumar",
-      "notesCount": 10,
-      "assignmentsCount": 2,
-      "progress": 64,
-      "units": [
-        {
-          "id": 1,
-          "name": "Determinate Trusses & Cables",
-          "status": "Completed"
-        },
-        {
-          "id": 2,
-          "name": "Slope Deflection & Moment Distribution",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "Matrix Stiffness Method",
-          "status": "In Progress"
-        },
-        {
-          "id": 4,
-          "name": "Influence Lines for Indeterminate Beams",
-          "status": "Pending"
-        },
-        {
-          "id": 5,
-          "name": "Plastic Theory of Structures",
-          "status": "Pending"
-        }
-      ]
-    },
-    {
-      "id": "sub-cloud",
-      "departmentId": "dept-it",
-      "department": "Information Technology",
-      "name": "Cloud Computing & AWS Architecture",
-      "code": "IT-301",
-      "color": "#0284c7",
-      "icon": "cloud",
-      "credits": 3,
-      "faculty": "Dr. J. Preethi",
-      "notesCount": 11,
+      "icon": "calculator",
+      "faculty": "Dr. S. K. Raman",
+      "notesCount": 1,
       "assignmentsCount": 2,
       "progress": 80,
       "units": [
         {
           "id": 1,
-          "name": "Virtualization & Hypervisors",
+          "name": "Unit 1: Fundamentals & Theory of Engineering Mathematics & Calculus",
           "status": "Completed"
         },
         {
           "id": 2,
-          "name": "IaaS, PaaS, SaaS Models",
+          "name": "Unit 2: Analytical Models & Design Patterns",
           "status": "Completed"
         },
         {
           "id": 3,
-          "name": "AWS EC2, S3, VPC & IAM",
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
           "status": "In Progress"
         },
         {
           "id": 4,
-          "name": "Serverless Architecture (Lambda)",
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
           "status": "Pending"
         },
         {
           "id": 5,
-          "name": "Cloud Security & Compliance",
+          "name": "Unit 5: Applications, Case Studies & Projects",
           "status": "Pending"
         }
-      ]
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
-      "id": "sub-genetics",
-      "departmentId": "dept-bt",
-      "department": "Biotechnology",
-      "name": "Genetic Engineering & Cloning",
-      "code": "BT-301",
+      "id": "sub-cse-dsa",
+      "name": "Data Structures & Algorithms",
+      "code": "CS-201",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "credits": 4,
+      "color": "#8b5cf6",
+      "icon": "git-branch",
+      "faculty": "Prof. Arvind Kumar",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 65,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Data Structures & Algorithms",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "In Progress"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "Pending"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
+    },
+    {
+      "id": "sub-cse-os",
+      "name": "Operating Systems",
+      "code": "CS-301",
+      "year": "2nd Year",
+      "semester": "Semester 4",
+      "credits": 4,
+      "color": "#3b82f6",
+      "icon": "cpu",
+      "faculty": "Dr. Ramesh Iyer",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 65,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Operating Systems",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
+    },
+    {
+      "id": "sub-cse-cn",
+      "name": "Computer Networks",
+      "code": "CS-303",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "credits": 4,
       "color": "#10b981",
-      "icon": "git-commit",
-      "credits": 4,
-      "faculty": "Dr. R. Kavitha",
-      "notesCount": 13,
+      "icon": "network",
+      "faculty": "Prof. Meenakshi Sundaram",
+      "notesCount": 1,
       "assignmentsCount": 2,
-      "progress": 85,
+      "progress": 65,
       "units": [
         {
           "id": 1,
-          "name": "Restriction Enzymes & Plasmids",
+          "name": "Unit 1: Fundamentals & Theory of Computer Networks",
           "status": "Completed"
         },
         {
           "id": 2,
-          "name": "PCR Amplification & Gel Electrophoresis",
-          "status": "Completed"
-        },
-        {
-          "id": 3,
-          "name": "CRISPR-Cas9 Genome Editing",
+          "name": "Unit 2: Analytical Models & Design Patterns",
           "status": "In Progress"
         },
         {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "Pending"
+        },
+        {
           "id": 4,
-          "name": "Recombinant Protein Expression",
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
           "status": "Pending"
         },
         {
           "id": 5,
-          "name": "Transgenic Animals & Bioethics",
+          "name": "Unit 5: Applications, Case Studies & Projects",
           "status": "Pending"
         }
-      ]
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
     },
     {
-      "id": "sub-finman",
-      "departmentId": "dept-mba",
-      "department": "Management Studies",
-      "name": "Financial Management & Valuation",
-      "code": "MB-201",
-      "color": "#6366f1",
-      "icon": "dollar-sign",
+      "id": "sub-cse-ai",
+      "name": "Artificial Intelligence & Expert Systems",
+      "code": "CS-401",
+      "year": "4th Year / Final",
+      "semester": "Semester 7",
       "credits": 4,
-      "faculty": "Dr. S. Raghuram",
-      "notesCount": 12,
+      "color": "#ec4899",
+      "icon": "sparkles",
+      "faculty": "Dr. Ananya Roy",
+      "notesCount": 1,
       "assignmentsCount": 2,
-      "progress": 75,
+      "progress": 65,
       "units": [
         {
           "id": 1,
-          "name": "Time Value of Money (NPV, IRR)",
+          "name": "Unit 1: Fundamentals & Theory of Artificial Intelligence & Expert Systems",
           "status": "Completed"
         },
         {
           "id": 2,
-          "name": "Capital Budgeting & WACC",
+          "name": "Unit 2: Analytical Models & Design Patterns",
           "status": "Completed"
         },
         {
           "id": 3,
-          "name": "Working Capital Management",
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
           "status": "In Progress"
         },
         {
           "id": 4,
-          "name": "Capital Structure & MM Propositions",
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
           "status": "Pending"
         },
         {
           "id": 5,
-          "name": "Dividend Policy & Corporate Valuation",
+          "name": "Unit 5: Applications, Case Studies & Projects",
           "status": "Pending"
         }
-      ]
+      ],
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering"
+    },
+    {
+      "id": "sub-aids-math",
+      "name": "Linear Algebra & Statistics for AI",
+      "code": "AI-101",
+      "year": "1st Year",
+      "semester": "Semester 1",
+      "credits": 4,
+      "color": "#8b5cf6",
+      "icon": "matrix",
+      "faculty": "Dr. Kavita Narang",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Linear Algebra & Statistics for AI",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science"
+    },
+    {
+      "id": "sub-aids-ml",
+      "name": "Machine Learning Algorithms",
+      "code": "AI-301",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "credits": 4,
+      "color": "#3b82f6",
+      "icon": "cpu",
+      "faculty": "Dr. Rajiv Menon",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 65,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Machine Learning Algorithms",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "In Progress"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "Pending"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science"
+    },
+    {
+      "id": "sub-aids-dl",
+      "name": "Deep Learning & Neural Networks",
+      "code": "AI-401",
+      "year": "4th Year / Final",
+      "semester": "Semester 7",
+      "credits": 4,
+      "color": "#ec4899",
+      "icon": "layers",
+      "faculty": "Prof. Sneha Ganguly",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 65,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Deep Learning & Neural Networks",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science"
+    },
+    {
+      "id": "sub-ece-edc",
+      "name": "Electronic Devices & Circuits",
+      "code": "EC-201",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "credits": 4,
+      "color": "#f59e0b",
+      "icon": "cpu",
+      "faculty": "Dr. V. K. Sharma",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Electronic Devices & Circuits",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering"
+    },
+    {
+      "id": "sub-ece-dsp",
+      "name": "Digital Signal Processing",
+      "code": "EC-301",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "credits": 4,
+      "color": "#10b981",
+      "icon": "activity",
+      "faculty": "Prof. T. R. Subramanian",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 65,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Digital Signal Processing",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "In Progress"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "Pending"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering"
+    },
+    {
+      "id": "sub-eee-machines",
+      "name": "Electrical Machines & Transformers",
+      "code": "EE-202",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "credits": 4,
+      "color": "#eab308",
+      "icon": "zap",
+      "faculty": "Prof. G. N. Murthy",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Electrical Machines & Transformers",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-eee",
+      "department": "Electrical & Electronics Engineering"
+    },
+    {
+      "id": "sub-mech-thermo",
+      "name": "Engineering Thermodynamics",
+      "code": "ME-201",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "credits": 4,
+      "color": "#ef4444",
+      "icon": "flame",
+      "faculty": "Dr. Rajeshwar Rao",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Engineering Thermodynamics",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-mech",
+      "department": "Mechanical Engineering"
+    },
+    {
+      "id": "sub-civil-struct",
+      "name": "Structural Analysis",
+      "code": "CE-301",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "credits": 4,
+      "color": "#06b6d4",
+      "icon": "home",
+      "faculty": "Dr. Pradeep Sen",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Structural Analysis",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering"
+    },
+    {
+      "id": "sub-it-web",
+      "name": "Full Stack Web Technologies & Cloud",
+      "code": "IT-302",
+      "year": "3rd Year",
+      "semester": "Semester 6",
+      "credits": 4,
+      "color": "#14b8a6",
+      "icon": "globe",
+      "faculty": "Prof. Harish Nair",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Full Stack Web Technologies & Cloud",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-it",
+      "department": "Information Technology"
+    },
+    {
+      "id": "sub-bio-gen",
+      "name": "Genetic Engineering & Recombinant DNA",
+      "code": "BT-301",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "credits": 4,
+      "color": "#10b981",
+      "icon": "activity",
+      "faculty": "Dr. Malini Sen",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Genetic Engineering & Recombinant DNA",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-biotech",
+      "department": "Biotechnology"
+    },
+    {
+      "id": "sub-mgmt-strat",
+      "name": "Strategic Management & Corporate Governance",
+      "code": "MB-201",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "credits": 4,
+      "color": "#8b5cf6",
+      "icon": "pie-chart",
+      "faculty": "Prof. Alok Singhal",
+      "notesCount": 1,
+      "assignmentsCount": 2,
+      "progress": 80,
+      "units": [
+        {
+          "id": 1,
+          "name": "Unit 1: Fundamentals & Theory of Strategic Management & Corporate Governance",
+          "status": "Completed"
+        },
+        {
+          "id": 2,
+          "name": "Unit 2: Analytical Models & Design Patterns",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "name": "Unit 3: Core Algorithms & Problem Formulations",
+          "status": "In Progress"
+        },
+        {
+          "id": 4,
+          "name": "Unit 4: Advanced Systems & Industry Engineering",
+          "status": "Pending"
+        },
+        {
+          "id": 5,
+          "name": "Unit 5: Applications, Case Studies & Projects",
+          "status": "Pending"
+        }
+      ],
+      "departmentId": "dept-mgmt",
+      "department": "Management Studies"
     }
   ],
   "notes": [
     {
-      "id": "note-1",
-      "title": "Unit 3: Process Scheduling",
+      "id": "note-sub-cse-m1-1",
+      "title": "Engineering Mathematics & Calculus \u2022 Unit 1: Differential Calculus & Taylor Series",
+      "subject": "Engineering Mathematics & Calculus",
+      "unit": "Unit 1",
+      "year": "1st Year",
+      "semester": "Semester 1",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "EngineeringMathematics&Calculus",
+        "Unit1",
+        "ExamReady",
+        "CSE"
+      ],
+      "content": {
+        "shortNotes": "### 1. Introduction to Differential Calculus\nDifferential calculus investigates the rates at which quantities change. In computer science, it provides the mathematical foundation for gradient descent optimization, algorithmic complexity analysis, and graphics rendering transformations.\n\n### 2. Mean Value Theorems\n* **Rolle's Theorem**: If $f(x)$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)$, then there exists at least one $c \\in (a,b)$ where $f'(c) = 0$.\n* **Lagrange's Mean Value Theorem**: $f'(c) = \\frac{f(b) - f(a)}{b - a}$.\n* **Cauchy's Mean Value Theorem**: $\\frac{f'(c)}{g'(c)} = \\frac{f(b) - f(a)}{g(b) - g(a)}$.\n\n### 3. Taylor and Maclaurin Series\n* Any infinitely differentiable function $f(x)$ near $x = a$ can be expanded as:\n  $$f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\dots + \\frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x)$$\n* Maclaurin series is the special case centered at $a = 0$.\n\n### 4. Curvature & Asymptotes\n* Radius of curvature $\\rho = \\frac{[1 + (y')^2]^{3/2}}{|y''|}$.",
+        "keyPoints": "\u2022 Taylor series approximates non-linear continuous functions using polynomial powers around an anchor point.\n\u2022 Gradient descent in machine learning is derived directly from multi-variable first-order Taylor expansion.\n\u2022 Radius of curvature reaches minimum at points of maximum curve bend.",
+        "importantTopics": "1. Proof and application of Lagrange's Mean Value Theorem.\n2. Expansion of $\\sin(x)$, $e^x$, and $\\log(1+x)$ using Maclaurin series.\n3. Radius of curvature in Cartesian and polar coordinates.\n4. Maxima and minima of functions of two variables using Hessian determinant.",
+        "mcqs": "1. What condition guarantees at least one point $c$ with $f'(c)=0$ in Rolle's Theorem?\n   A) $f(a) = f(b)$ with continuity on $[a,b]$ and differentiability on $(a,b)$ [CORRECT]\n   B) $f'(a) = f'(b)$\n   C) Function is discontinuous at $x=0$\n   D) Function is strictly increasing\n\n2. The Maclaurin series of $e^x$ is:\n   A) $1 + x + x^2/2! + x^3/3! + \\dots$ [CORRECT]\n   B) $x - x^3/3! + x^5/5! - \\dots$\n   C) $1 - x^2/2! + x^4/4! - \\dots$\n   D) $x + x^2 + x^3 + \\dots$",
+        "vivaQuestions": "Q1: What is the physical and geometric interpretation of Lagrange's MVT?\nAns: It states that the instantaneous rate of change (tangent slope) at some point $c$ equals the average rate of change (secant slope) over the entire interval $[a,b]$.\n\nQ2: How is Taylor expansion utilized in numerical optimization?\nAns: Algorithms like Newton-Raphson and Gradient Descent approximate objective loss surfaces by retaining first-order and second-order Taylor terms.",
+        "summary": "Differential calculus establishes fundamental optimization models, Taylor series expansions, and analytical curvature bounds for engineering computations."
+      }
+    },
+    {
+      "id": "note-sub-cse-dsa-1",
+      "title": "Data Structures & Algorithms \u2022 Unit 2: Balanced Search Trees & AVL Rotations",
+      "subject": "Data Structures & Algorithms",
+      "unit": "Unit 2",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "date": "2026-09-08",
+      "pinned": false,
+      "isAiGenerated": true,
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "DataStructures&Algorithms",
+        "Unit2",
+        "ExamReady",
+        "CSE"
+      ],
+      "content": {
+        "shortNotes": "### 1. Introduction to Balanced Trees\nBinary Search Trees (BST) provide average $O(\\log n)$ search, insert, and delete operations. However, degenerate skewed BSTs degrade to $O(n)$. Self-balancing trees guarantee $O(\\log n)$ worst-case bounds.\n\n### 2. AVL Tree Invariants\n* An AVL tree is a self-balancing BST where the **Balance Factor ($BF$)** of every node satisfies:\n  $$BF(node) = Height(LeftSubtree) - Height(RightSubtree) \\in \\{-1, 0, +1\\}$$\n* If $|BF| > 1$, self-balancing rotations are performed immediately.\n\n### 3. AVL Rotation Cases\n1. **Left-Left (LL) Case**: Solved with single Right Rotation at critical node.\n2. **Right-Right (RR) Case**: Solved with single Left Rotation at critical node.\n3. **Left-Right (LR) Case**: Solved with Left Rotation on left child followed by Right Rotation on critical node.\n4. **Right-Left (RL) Case**: Solved with Right Rotation on right child followed by Left Rotation on critical node.\n\n### 4. Comparison Table\n| Data Structure | Search Time | Insertion Time | Deletion Time | Memory Overhead |\n| :--- | :--- | :--- | :--- | :--- |\n| **Standard BST** | $O(n)$ worst | $O(n)$ worst | $O(n)$ worst | Low |\n| **AVL Tree** | $O(\\log n)$ | $O(\\log n)$ | $O(\\log n)$ | 1 byte balance factor |\n| **Red-Black Tree**| $O(\\log n)$ | $O(\\log n)$ | $O(\\log n)$ | 1 bit color flag |",
+        "keyPoints": "\u2022 AVL trees maintain strictly height-balanced subtrees with maximum height difference $\\le 1$.\n\u2022 Searching is faster in AVL trees than Red-Black trees due to tighter height bounds.\n\u2022 Single rotations (LL, RR) take $O(1)$ pointer operations; double rotations (LR, RL) take two $O(1)$ rotations.",
+        "importantTopics": "1. Step-by-step AVL insertion and rebalancing numerical problems.\n2. Proof of maximum height $h < 1.44 \\log_2(n+2)$ for an AVL tree with $n$ nodes.\n3. Comparison of AVL Tree vs Red-Black Tree vs B-Tree.\n4. Deletion in AVL trees and cascading rebalancing propagation.",
+        "mcqs": "1. What is the allowable Balance Factor range for any node in a valid AVL tree?\n   A) {-1, 0, 1} [CORRECT]\n   B) {-2, -1, 0, 1, 2}\n   C) {0, 1}\n   D) {-1, 1}\n\n2. When a node is inserted into the left subtree of the right child of an unbalanced node, the required rotation is:\n   A) Right-Left (RL) Rotation [CORRECT]\n   B) Left-Left (LL) Rotation\n   C) Single Right Rotation\n   D) Left-Right (LR) Rotation",
+        "vivaQuestions": "Q1: Why is an AVL tree preferred over a regular BST in database indexing?\nAns: Standard BSTs can degenerate into $O(n)$ linked lists under ordered inputs. AVL trees guarantee strict $O(\\log n)$ search time.\n\nQ2: How does an AVL tree differ from a Red-Black tree?\nAns: AVL trees are more rigidly balanced, making lookup faster. Red-Black trees require fewer rotations during frequent insertions and deletions.",
+        "summary": "AVL trees guarantee logarithmic lookup, insertion, and deletion complexity by continuously maintaining a balance factor between -1 and +1 through deterministic rotations."
+      }
+    },
+    {
+      "id": "note-sub-cse-os-1",
+      "title": "Operating Systems \u2022 Unit 3: Process Scheduling & CPU Optimization",
       "subject": "Operating Systems",
-      "subjectId": "sub-os",
       "unit": "Unit 3",
-      "date": "2026-09-05",
-      "pinned": true,
+      "year": "2nd Year",
+      "semester": "Semester 4",
+      "date": "2026-09-08",
+      "pinned": false,
       "isAiGenerated": true,
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
       "tags": [
-        "Scheduling",
-        "CPU",
-        "FCFS",
-        "Round Robin",
-        "Priority"
+        "OperatingSystems",
+        "Unit3",
+        "ExamReady",
+        "CSE"
       ],
       "content": {
-        "shortNotes": "### 1. Introduction\nProcess scheduling is the mechanism by which an operating system selects a process from the ready queue and allocates the CPU to it. The goal is to maximize CPU utilization and provide fair sharing of system resources among active processes.\n\n### 2. Types of Schedulers\n* **Long-term Scheduler (Job Scheduler)**: Selects processes from the job pool on disk and loads them into memory (ready queue). Controls the degree of multiprogramming.\n* **Short-term Scheduler (CPU Scheduler)**: Selects a process from the ready queue and allocates the CPU to it. Runs very frequently (milliseconds).\n* **Medium-term Scheduler (Swapper)**: Temporarily removes processes from memory to disk (swapping) to reduce degree of multiprogramming and free RAM when overloaded.\n\n### 3. Scheduling Criteria\n* **CPU Utilization**: Percentage of time the CPU is actively executing user/system code. Aim: 40% (light) to 90% (heavy).\n* **Throughput**: Number of processes completed per unit time.\n* **Turnaround Time (TAT)**: Total time interval from process submission to its completion. ($TAT = Completion\\ Time - Arrival\\ Time$).\n* **Waiting Time (WT)**: Total time spent waiting inside the ready queue. ($WT = TAT - Burst\\ Time$).\n* **Response Time (RT)**: Time from process submission until the very first CPU response is produced.\n* **Fairness**: Guaranteeing that every eligible process receives an equitable share of execution cycles without starvation.\n\n### 4. Scheduling Algorithms Summary\n1. **FCFS (First-Come, First-Served)**: Non-preemptive, simple, suffers from Convoy Effect.\n2. **SJF (Shortest Job First)**: Optimal average waiting time; Non-preemptive / Preemptive (SRTF); requires predicting next CPU burst.\n3. **Priority Scheduling**: Allocates CPU based on priority; susceptible to Starvation (solved via Aging).\n4. **Round Robin (RR)**: Preemptive, time-quantum driven, designed specifically for time-sharing systems.",
-        "keyPoints": "• Process scheduling allocates CPU cycles to ready processes to maximize utilization and throughput.\n• Long-term scheduler controls degree of multiprogramming; Short-term scheduler selects next running process.\n• Primary optimization targets: Minimize Turnaround Time & Waiting Time; Maximize Throughput & CPU Utilization.\n• Convoy Effect occurs in FCFS when short processes queue behind long CPU-bound processes.\n• Starvation in Priority scheduling is mitigated using 'Aging' (gradually boosting waiting process priority).\n• Optimal time quantum in Round Robin should cover roughly 80% of standard CPU bursts without excessive context-switch overhead.",
-        "importantTopics": "1. Comparison between Preemptive vs Non-Preemptive Scheduling.\n2. Mathematical calculation of Average Waiting Time and Turnaround Time for SJF & Round Robin.\n3. The Convoy Effect: Causes, real-world symptoms, and mitigation.\n4. Starvation and the Aging technique in Priority Scheduling.\n5. Multi-Level Queue (MLQ) and Multi-Level Feedback Queue (MLFQ) architectures.",
-        "mcqs": "1. Which scheduling algorithm guarantees minimum average waiting time for a given set of processes?\n   A) FCFS\n   B) Round Robin\n   C) Shortest Job First (SJF) [CORRECT]\n   D) Priority Scheduling\n\n2. The problem of indefinite blocking (starvation) in priority scheduling is resolved by:\n   A) Paging\n   B) Aging [CORRECT]\n   C) Compaction\n   D) Swapping\n\n3. In Round Robin scheduling, if the time quantum is chosen to be extremely large, it behaves like:\n   A) Shortest Job First\n   B) Priority Scheduling\n   C) FCFS [CORRECT]\n   D) LJF",
-        "vivaQuestions": "Q1: What is the primary difference between Preemptive and Non-Preemptive scheduling?\nAns: In preemptive scheduling, the OS can interrupt an active running process and reallocate CPU (e.g. Round Robin, SRTF). In non-preemptive, once a process gets the CPU, it holds it until termination or I/O request (e.g. FCFS).\n\nQ2: What is the Convoy Effect in Operating Systems?\nAns: It is a scenario in FCFS where numerous fast I/O-bound processes are blocked waiting for one lengthy CPU-heavy process to finish, resulting in poor CPU and device utilization.\n\nQ3: What role does the Dispatcher play after the CPU scheduler makes a decision?\nAns: The dispatcher gives CPU control to the selected process by switching context, changing to user mode, and jumping to the proper instruction location.",
-        "summary": "Process scheduling is fundamental to multitasking operating systems. By utilizing long-term, short-term, and medium-term schedulers alongside tailored algorithms (FCFS, SJF, Priority, Round Robin), the OS balances resource utilization, throughput, waiting latency, and process fairness."
+        "shortNotes": "### 1. Introduction & Process Scheduling\nProcess scheduling is the core mechanism by which the operating system selects an active thread/process from the ready queue and allocates the CPU to maximize utilization and responsiveness.\n\n### 2. Schedulers Hierarchy\n* **Long-Term Scheduler (Job Scheduler)**: Loads programs from secondary storage into main memory; regulates the degree of multiprogramming.\n* **Short-Term Scheduler (CPU Scheduler)**: Selects the next process from the ready queue at millisecond frequency.\n* **Medium-Term Scheduler (Swapper)**: Temporarily suspends processes to secondary storage during heavy memory contention.\n\n### 3. Scheduling Criteria\n* **CPU Utilization**: % of time processor computes active instructions (Target: 40% - 90%).\n* **Throughput**: Processes completed per unit of time.\n* **Turnaround Time ($TAT$)**: $Completion\\ Time - Arrival\\ Time$.\n* **Waiting Time ($WT$)**: $TAT - Burst\\ Time$.\n* **Response Time**: Time from request submission to first response.\n\n### 4. Comparison of Classic Scheduling Algorithms\n| Algorithm | Preemption | Advantages | Disadvantages |\n| :--- | :--- | :--- | :--- |\n| **FCFS** | Non-preemptive | Simple FIFO queue implementation | Convoy Effect |\n| **SJF / SRTF** | Both | Provably optimal minimum average waiting time | Hard to predict next CPU burst |\n| **Round Robin** | Preemptive | Excellent interactive responsiveness | High context-switch overhead if $q$ is too small |\n| **Priority** | Both | Respects task urgency | Starvation (fixed via Aging) |",
+        "keyPoints": "\u2022 CPU utilization target: 40% (light load) to 90% (heavy load).\n\u2022 In FCFS, the 'Convoy Effect' causes short I/O jobs to wait behind a single CPU-heavy process.\n\u2022 Shortest Job First (SJF) achieves the minimum average waiting time for any fixed set of processes.\n\u2022 Priority scheduling starvation is resolved through Aging (gradually increasing priority of waiting processes).\n\u2022 Round Robin time quantum ($q$) should be chosen so ~80% of CPU bursts are shorter than $q$.",
+        "importantTopics": "1. Mathematical problem solving for Gantt Charts (Average Waiting Time & Turnaround Time across FCFS, SJF, and Round Robin).\n2. The Convoy Effect: causes, impacts, and solutions.\n3. Starvation and Priority Aging mechanism.\n4. Multi-Level Queue (MLQ) vs Multi-Level Feedback Queue (MLFQ) design.",
+        "mcqs": "1. Which scheduling algorithm guarantees minimum average waiting time for fixed stationary processes?\n   A) Shortest Job First (SJF) [CORRECT]\n   B) First-Come, First-Served (FCFS)\n   C) Round Robin (RR)\n   D) Priority Scheduling\n\n2. The phenomenon of short I/O processes waiting behind a heavy CPU task in FCFS is:\n   A) Starvation\n   B) Convoy Effect [CORRECT]\n   C) Thrashing\n   D) Belady's Anomaly\n\n3. In Round Robin, if the time quantum is extremely large, the algorithm behaves identically to:\n   A) FCFS [CORRECT]\n   B) SJF\n   C) Priority\n   D) MLFQ",
+        "vivaQuestions": "Q1: What is the primary role of the Dispatcher during context switching?\nAns: It switches CPU context, switches mode to User Mode, and jumps to the program counter to start execution.\n\nQ2: Why is choosing the optimal time quantum critical in Round Robin?\nAns: If quantum is too small, context-switch overhead degrades throughput; if too large, it degrades into FCFS and destroys responsiveness.\n\nQ3: What is Starvation and how does Aging solve it?\nAns: Starvation occurs when low priority tasks wait indefinitely. Aging gradually increases task priority over time.",
+        "summary": "Process scheduling is foundational to modern multitasking operating systems, balancing CPU efficiency, system throughput, and process fairness through tuned algorithms."
       }
     },
     {
-      "id": "note-2",
-      "title": "Types of Normalization (1NF to BCNF)",
-      "subject": "DBMS",
-      "subjectId": "sub-dbms",
-      "unit": "Unit 3",
-      "date": "2026-09-03",
-      "pinned": true,
-      "isAiGenerated": true,
-      "tags": [
-        "Normalization",
-        "1NF",
-        "2NF",
-        "3NF",
-        "BCNF",
-        "DBMS"
-      ],
-      "content": {
-        "shortNotes": "### Database Normalization Overview\nNormalization is the systematic approach of decomposing tables to eliminate data redundancy and undesirable anomalies (Insertion, Deletion, and Update anomalies).\n\n### Normal Forms Breakdown:\n* **1NF (First Normal Form)**: Each column must contain only atomic (indivisible) values. No repeating groups or multivalued attributes.\n* **2NF (Second Normal Form)**: Table must be in 1NF and have NO Partial Dependency (no non-prime attribute should depend on a subset of any candidate key).\n* **3NF (Third Normal Form)**: Table must be in 2NF and have NO Transitive Dependency ($X \\rightarrow Y$ where neither $X$ is superkey nor $Y$ is prime attribute).\n* **BCNF (Boyce-Codd Normal Form)**: Stricter version of 3NF. For every non-trivial functional dependency $X \\rightarrow Y$, $X$ must be a Super Key.",
-        "keyPoints": "• 1NF = Atomic values only, unique rows.\n• 2NF = 1NF + No partial dependencies.\n• 3NF = 2NF + No transitive dependencies ($A \\rightarrow B$ and $B \\rightarrow C$).\n• BCNF = Every determinant must be a candidate/super key.\n• Normalization reduces redundancy at the cost of requiring more SQL JOIN operations for queries.",
-        "importantTopics": "1. Identifying Candidate Keys from Functional Dependencies.\n2. Lossless Join Decomposition vs Dependency Preserving Decomposition.\n3. Comparing 3NF vs BCNF with real schema examples.\n4. Trade-offs between Normalization (OLTP) and Denormalization (OLAP/Data Warehousing).",
-        "mcqs": "1. A relation is in 2NF if it is in 1NF and does not contain:\n   A) Transitive dependency\n   B) Partial dependency [CORRECT]\n   C) Multivalued dependency\n   D) Join dependency\n\n2. For every functional dependency X -> Y in BCNF, X must be a:\n   A) Prime attribute\n   B) Foreign key\n   C) Super key [CORRECT]\n   D) Non-prime attribute",
-        "vivaQuestions": "Q1: Why is BCNF considered strictly stronger than 3NF?\nAns: In 3NF, the dependency X -> Y is allowed if Y is a prime attribute even if X is not a super key. BCNF strictly forbids this and mandates that X must always be a super key.\n\nQ2: What are the three update anomalies prevented by normalization?\nAns: Insertion anomaly, Deletion anomaly, and Update/Modification anomaly.",
-        "summary": "Database normalization systematically organizes relational tables from 1NF through BCNF to prevent data redundancy and anomalies while ensuring data consistency and referential integrity."
-      }
-    },
-    {
-      "id": "note-3",
-      "title": "TCP vs UDP: Comprehensive Comparison",
+      "id": "note-sub-cse-cn-1",
+      "title": "Computer Networks \u2022 Unit 3: IP Addressing, Subnetting & Routing Algorithms",
       "subject": "Computer Networks",
-      "subjectId": "sub-cn",
-      "unit": "Unit 4",
-      "date": "2026-08-30",
+      "unit": "Unit 3",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "date": "2026-09-08",
       "pinned": false,
       "isAiGenerated": true,
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
       "tags": [
-        "Networking",
-        "TCP",
-        "UDP",
-        "Handshake",
-        "Protocols"
+        "ComputerNetworks",
+        "Unit3",
+        "ExamReady",
+        "CSE"
       ],
       "content": {
-        "shortNotes": "### Transport Layer Protocols: TCP vs UDP\nTCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are the two core transport layer protocols in the Internet Protocol suite.\n\n### Key Comparisons:\n* **Connection Oriented vs Connectionless**: TCP establishes a 3-way handshake (SYN, SYN-ACK, ACK) before data transfer; UDP sends datagrams without prior connection establishment.\n* **Reliability**: TCP guarantees ordered, error-checked delivery via ACK and retransmissions. UDP is 'best-effort' with no acknowledgments.\n* **Header Size**: TCP header is 20-60 bytes; UDP header is fixed at a lightweight 8 bytes.\n* **Flow & Congestion Control**: TCP implements sliding window and AIMD congestion control; UDP does not manage flow or network congestion.\n* **Use Cases**: TCP is used for Web (HTTP/HTTPS), Email (SMTP), File Transfer (FTP). UDP is used for Live Video Streaming, Online Gaming, DNS, VoIP.",
-        "keyPoints": "• TCP provides reliable, in-order, stream-oriented data delivery with a 3-way handshake.\n• UDP is lightweight, connectionless, and optimized for low-latency real-time applications.\n• TCP header overhead is 20 bytes minimum; UDP header is only 8 bytes.\n• Retransmission of lost packets is built into TCP, whereas UDP drops packets without recovery.",
-        "importantTopics": "1. TCP 3-Way Handshake and 4-Way Connection Teardown.\n2. TCP Flow Control (Sliding Window) vs Congestion Control (Slow Start, Congestion Avoidance).\n3. UDP packet format and why DNS/DHCP use UDP.\n4. Modern QUIC protocol (HTTP/3) built on top of UDP.",
-        "mcqs": "1. What is the minimum header size of a standard TCP segment?\n   A) 8 bytes\n   B) 16 bytes\n   C) 20 bytes [CORRECT]\n   D) 32 bytes\n\n2. Which protocol is preferred for real-time video multiplayer gaming?\n   A) TCP\n   B) UDP [CORRECT]\n   C) FTP\n   D) SMTP",
-        "vivaQuestions": "Q1: Explain how the TCP 3-way handshake works.\nAns: Client sends SYN to Server -> Server responds with SYN-ACK -> Client replies with ACK. The bidirectional connection is now established.",
-        "summary": "TCP delivers guaranteed reliability and congestion control for critical data transfers, while UDP offers ultra-fast, low-overhead transmission ideal for live media and time-sensitive networking."
+        "shortNotes": "### 1. Network Layer Responsibilities\nThe Network Layer enables end-to-end packet delivery across heterogeneous networks using logical addressing (IPv4/IPv6), packet forwarding, and dynamic routing.\n\n### 2. IPv4 Addressing & CIDR\n* An IPv4 address is 32 bits divided into Network ID and Host ID.\n* **Classless Inter-Domain Routing (CIDR)** format: `a.b.c.d/n`, where `/n` denotes prefix network mask bits.\n* **Subnetting Formula**: Number of subnets $= 2^s$; Usable hosts per subnet $= 2^h - 2$ (subtracting Network ID and Broadcast ID).\n\n### 3. Routing Algorithms\n* **Distance Vector Routing (Bellman-Ford)**: Routers share their routing tables with immediate neighbors periodically. Subject to Count-to-Infinity problem (mitigated via Split Horizon & Poison Reverse).\n* **Link State Routing (Dijkstra's Shortest Path)**: Every router floods link state packets (LSPs) across the entire network to construct a global topology map and independently compute shortest path trees.\n\n### 4. Comparison Table\n| Feature | Distance Vector (RIP) | Link State (OSPF) |\n| :--- | :--- | :--- |\n| **Algorithm** | Bellman-Ford | Dijkstra's Shortest Path |\n| **Topology Knowledge**| Neighbors only | Global entire network map |\n| **Convergence** | Slow | Fast |\n| **Overhead** | Low CPU, High periodic bandwidth | Higher CPU & Memory, Low steady-state bandwidth |",
+        "keyPoints": "\u2022 Network layer handles logical addressing and packet routing across autonomous systems.\n\u2022 In CIDR, subnet masks dynamically allocate address blocks without rigid class boundaries.\n\u2022 Distance Vector suffers from Count-to-Infinity; Link State avoids this through global link-state flooding.",
+        "importantTopics": "1. Numerical problems on IP Subnetting, Network ID, Broadcast ID, and Host ranges.\n2. Dijkstra's Shortest Path algorithm step-by-step matrix derivation.\n3. Comparison of IPv4 vs IPv6 headers and features.\n4. Address Resolution Protocol (ARP) vs Reverse ARP (RARP).",
+        "mcqs": "1. How many usable host IP addresses are available in a `/26` subnet mask?\n   A) 62 [CORRECT]\n   B) 64\n   C) 126\n   D) 30\n\n2. Which routing protocol utilizes Dijkstra's shortest path algorithm?\n   A) OSPF (Open Shortest Path First) [CORRECT]\n   B) RIP (Routing Information Protocol)\n   C) BGP (Border Gateway Protocol)\n   D) ICMP",
+        "vivaQuestions": "Q1: What is the purpose of subnetting?\nAns: Subnetting divides a large network into smaller, manageable sub-networks to reduce broadcast traffic, enhance security, and prevent IP address exhaustion.\n\nQ2: What is the Count-to-Infinity problem?\nAns: In distance vector routing, routing loops cause disconnected nodes to increment distance estimates indefinitely until infinity threshold is reached.",
+        "summary": "Network layer architecture ensures robust global connectivity through CIDR addressing, hierarchical subnetting, and shortest-path routing protocols like OSPF and BGP."
       }
     },
     {
-      "id": "note-4",
-      "title": "Java Exception Handling Architecture",
-      "subject": "Java Programming",
-      "subjectId": "sub-java",
-      "unit": "Unit 3",
-      "date": "2026-08-25",
+      "id": "note-sub-cse-ai-1",
+      "title": "Artificial Intelligence & Expert Systems \u2022 Unit 2: Heuristic Search & A* Algorithm",
+      "subject": "Artificial Intelligence & Expert Systems",
+      "unit": "Unit 2",
+      "year": "4th Year / Final",
+      "semester": "Semester 7",
+      "date": "2026-09-08",
       "pinned": false,
-      "isAiGenerated": false,
+      "isAiGenerated": true,
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
       "tags": [
-        "Java",
-        "OOP",
-        "TryCatch",
-        "Exceptions"
+        "ArtificialIntelligence&ExpertSystems",
+        "Unit2",
+        "ExamReady",
+        "CSE"
       ],
       "content": {
-        "shortNotes": "### Java Exception Hierarchy\nAll exception and error types in Java inherit from `java.lang.Throwable`.\n\n* **Throwable**\n  * **Error**: Severe system-level issues not intended to be caught (e.g. `OutOfMemoryError`, `StackOverflowError`).\n  * **Exception**:\n    * **Checked Exceptions**: Checked at compile-time (e.g., `IOException`, `SQLException`). Must be caught with `try-catch` or declared using `throws`.\n    * **Unchecked Exceptions (RuntimeExceptions)**: Occur at runtime due to programming flaws (e.g., `NullPointerException`, `ArrayIndexOutOfBoundsException`, `ArithmeticException`).\n\n### Keywords:\n* `try`: Encloses code that may throw an exception.\n* `catch`: Handles the specific exception type.\n* `finally`: Block that always executes regardless of exceptions (resource cleanup).\n* `throw`: Explicitly throws an instance of an exception.\n* `throws`: Declares exceptions in method signature.",
-        "keyPoints": "• `Throwable` is the root class of Java exception hierarchy.\n• Checked exceptions are validated at compile-time; Unchecked (`RuntimeException`) occur at runtime.\n• The `finally` block executes even if a return statement exists inside try/catch.\n• Java 7 introduced `try-with-resources` which automatically closes instances implementing `AutoCloseable`.",
-        "importantTopics": "1. Checked vs Unchecked Exceptions difference with code examples.\n2. Writing custom user-defined Exception classes in Java.\n3. Try-with-resources and AutoCloseable interface.\n4. Best practices: Never catch generic `Throwable` or swallow exceptions silently.",
-        "mcqs": "1. Which class is the direct superclass of all Exception and Error classes in Java?\n   A) Object\n   B) Throwable [CORRECT]\n   C) RuntimeException\n   D) ErrorException",
-        "vivaQuestions": "Q1: Can a finally block be skipped from executing in Java?\nAns: Yes, only if `System.exit(0)` is invoked explicitly or if the JVM experiences an abrupt crash.",
-        "summary": "Java's robust exception handling model ensures graceful error recovery through structured try-catch-finally mechanisms, distinguishing between recoverable exceptions and fatal JVM errors."
+        "shortNotes": "### 1. Informed (Heuristic) Search\nInformed search utilizes domain-specific heuristic knowledge $h(n)$ to estimate the lowest cost from node $n$ to the goal state, guiding the search space exploration efficiently.\n\n### 2. The A* Search Algorithm\n* A* evaluates nodes combining actual path cost $g(n)$ and estimated heuristic cost $h(n)$:\n  $$f(n) = g(n) + h(n)$$\n* **Admissibility**: A heuristic $h(n)$ is admissible if it never overestimates the true cost to reach the goal ($h(n) \\le h^*(n)$).\n* **Consistency (Monotonicity)**: $h(n) \\le c(n, a, n') + h(n')$. Consistent heuristics guarantee optimality without reopening closed nodes.\n\n### 3. Comparison of Search Strategies\n| Search Strategy | Evaluation Function $f(n)$ | Complete? | Optimal? | Time Complexity |\n| :--- | :--- | :--- | :--- | :--- |\n| **Breadth-First Search** | Depth $d$ | Yes | Yes (unit cost) | $O(b^d)$ |\n| **Greedy Best-First** | $h(n)$ | No | No | $O(b^m)$ |\n| **A* Search** | $g(n) + h(n)$ | Yes | Yes (if admissible)| $O(b^d)$ |",
+        "keyPoints": "\u2022 A* algorithm combines uniform-cost search $g(n)$ and greedy heuristic search $h(n)$.\n\u2022 If $h(n)$ is admissible, tree-search A* is provably optimal.\n\u2022 If $h(n)$ is monotonic/consistent, graph-search A* is optimal and never re-expands visited nodes.",
+        "importantTopics": "1. Mathematical proof of A* optimality under admissible heuristic.\n2. Solved 8-Puzzle problem using Manhattan distance and Misplaced Tiles heuristics.\n3. Minimax Algorithm and Alpha-Beta Pruning with decision tree reduction.\n4. Constraint Satisfaction Problems (CSP) & Forward Checking.",
+        "mcqs": "1. What property of a heuristic ensures A* graph search finds the optimal solution without reopening visited nodes?\n   A) Consistency (Monotonicity) [CORRECT]\n   B) Overestimating the goal\n   C) Strictly zero heuristic\n   D) Non-linear transformation\n\n2. In Minimax search with Alpha-Beta pruning, Alpha represents:\n   A) The best value found so far for the Maximizer [CORRECT]\n   B) The best value for the Minimizer\n   C) Depth cutoff limit\n   D) Total tree branching factor",
+        "vivaQuestions": "Q1: What makes a heuristic admissible in A* search?\nAns: A heuristic is admissible if $h(n) \\le h^*(n)$ for all nodes $n$, meaning it never overestimates the true minimal cost to the goal.\n\nQ2: What is the advantage of Alpha-Beta pruning over standard Minimax?\nAns: Alpha-Beta pruning eliminates branches that cannot influence the final decision, reducing the effective branching factor from $b^d$ to $b^{d/2}$ in best-case ordering.",
+        "summary": "Heuristic search algorithms like A* and Alpha-Beta pruning enable deterministic problem solving, game playing, and state-space optimization across complex artificial intelligence domains."
+      }
+    },
+    {
+      "id": "note-sub-aids-math-1",
+      "title": "Linear Algebra & Statistics for AI \u2022 Unit 2: Eigenvalues, Eigenvectors & PCA",
+      "subject": "Linear Algebra & Statistics for AI",
+      "unit": "Unit 2",
+      "year": "1st Year",
+      "semester": "Semester 1",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "LinearAlgebra&StatisticsforAI",
+        "Unit2",
+        "ExamReady",
+        "AI & DS"
+      ],
+      "content": {
+        "shortNotes": "### 1. Matrix Transformations in AI\nIn data science, high-dimensional dataset matrices undergo linear transformations. Eigenvalues and eigenvectors capture the invariant axes and variance scaling factors of multidimensional feature spaces.\n\n### 2. Characteristic Equation & Eigendecomposition\n* For square matrix $A \\in \\mathbb{R}^{n \\times n}$, vector $v \\ne 0$, and scalar $\\lambda$:\n  $$A v = \\lambda v \\implies (A - \\lambda I)v = 0$$\n* Eigenvalues are roots of $\\det(A - \\lambda I) = 0$.\n\n### 3. Principal Component Analysis (PCA)\n1. Center data matrix $X$ by subtracting feature means ($\\mu = 0$).\n2. Compute sample covariance matrix $\\Sigma = \\frac{1}{m} X^T X$.\n3. Perform eigendecomposition on $\\Sigma$ to obtain eigenvectors (principal directions) and eigenvalues (variances).\n4. Sort eigenvectors in descending order of eigenvalues; select top $k$ components.\n5. Project original data $Z = X W_k$, reducing dimensions from $d$ to $k$ while maximizing retained variance.",
+        "keyPoints": "\u2022 Eigenvectors represent directions along which a linear transformation acts by solely scaling.\n\u2022 PCA projects high-dimensional data onto orthogonal axes of maximum variance, minimizing information loss.\n\u2022 The sum of eigenvalues equals the total variance of the original dataset.",
+        "importantTopics": "1. Step-by-step numerical derivation of eigenvalues and eigenvectors for $3 \\times 3$ matrices.\n2. Dimensionality reduction derivation using Principal Component Analysis (PCA).\n3. Singular Value Decomposition (SVD) relation to PCA ($A = U \\Sigma V^T$).\n4. Scree plot analysis and Cumulative Explained Variance ratio thresholding.",
+        "mcqs": "1. What does the eigenvector corresponding to the largest eigenvalue represent in PCA?\n   A) The principal direction of maximum variance in the data [CORRECT]\n   B) The direction of minimum variance\n   C) The mean vector of all features\n   D) Outlier noise dimension\n\n2. In eigendecomposition, the trace of a matrix is equal to:\n   A) The sum of its eigenvalues [CORRECT]\n   B) The product of its eigenvalues\n   C) Zero for all matrices\n   D) The determinant squared",
+        "vivaQuestions": "Q1: Why must data be standardized (zero mean, unit variance) before applying PCA?\nAns: Without standardization, features with larger numerical magnitudes dominate the covariance matrix and bias the principal components.\n\nQ2: What is the geometric significance of an orthogonal matrix in transformation?\nAns: Orthogonal matrices represent pure rotations or reflections that preserve vector lengths and angles without distortion.",
+        "summary": "Eigendecomposition and PCA form the cornerstone of dimensional reduction, covariance matrix transformation, and feature compression in modern machine learning."
+      }
+    },
+    {
+      "id": "note-sub-aids-ml-1",
+      "title": "Machine Learning Algorithms \u2022 Unit 3: Support Vector Machines & Ensemble Learning",
+      "subject": "Machine Learning Algorithms",
+      "unit": "Unit 3",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "date": "2026-09-08",
+      "pinned": false,
+      "isAiGenerated": true,
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "MachineLearningAlgorithms",
+        "Unit3",
+        "ExamReady",
+        "AI & DS"
+      ],
+      "content": {
+        "shortNotes": "### 1. Support Vector Machines (SVM)\nSVM is a powerful supervised learning model for classification and regression that finds the optimal separating hyperplane with maximum margin between classes.\n\n### 2. Maximum Margin Hyperplane & Dual Formulation\n* Decision boundary: $w^T x + b = 0$.\n* Geometric margin optimization: $\\min_{w,b} \\frac{1}{2} ||w||^2 \\quad \\text{s.t.} \\quad y_i(w^T x_i + b) \\ge 1$.\n* **Kernel Trick**: Projects non-linearly separable inputs into higher-dimensional feature space via kernel function $K(x_i, x_j) = \\phi(x_i)^T \\phi(x_j)$ (e.g. Radial Basis Function (RBF), Polynomial).\n\n### 3. Ensemble Learning: Bagging vs Boosting\n* **Bagging (Random Forest)**: Trains multiple independent trees on bootstrap subsets with random feature splits; reduces **variance**.\n* **Boosting (XGBoost, AdaBoost, LightGBM)**: Trains sequential models where each subsequent learner corrects the residual errors of prior learners; reduces **bias**.",
+        "keyPoints": "\u2022 SVM maximizes margin $\\frac{2}{||w||}$ between support vectors and decision hyperplane.\n\u2022 The Kernel trick calculates dot products in high-dimensional Hilbert space without explicitly evaluating coordinates.\n\u2022 Random Forest reduces variance via Bootstrap Aggregation; Gradient Boosting reduces bias via sequential gradient descent on loss residuals.",
+        "importantTopics": "1. Mathematical derivation of SVM dual problem with Lagrange multipliers.\n2. Kernel functions comparison: Linear, Polynomial, RBF/Gaussian, Sigmoid.\n3. Bias-Variance tradeoff analysis in Random Forest vs Gradient Boosted Trees.\n4. Precision, Recall, F1-Score, and ROC-AUC curve evaluation metrics.",
+        "mcqs": "1. Which vectors exclusively determine the decision boundary in an SVM model?\n   A) Support Vectors lying closest to the margin [CORRECT]\n   B) Outlier centroids\n   C) All training points equally\n   D) Only misclassified samples\n\n2. Random Forest primarily reduces which error component in machine learning?\n   A) Variance [CORRECT]\n   B) Bias\n   C) Irreducible Noise\n   D) Model Capacity",
+        "vivaQuestions": "Q1: What is the role of the hyperparameter $C$ in Support Vector Machines?\nAns: $C$ controls the tradeoff between maximizing the margin and minimizing classification errors. High $C$ penalizes misclassifications heavily (hard margin, risk of overfitting); low $C$ allows more margin violations (soft margin, higher tolerance).\n\nQ2: Why does Random Forest perform feature sub-sampling during split creation?\nAns: It decorrelates individual decision trees so their averaged ensemble predictions achieve substantially lower variance.",
+        "summary": "Support Vector Machines and modern gradient-boosted ensemble architectures provide state-of-the-art predictive performance across structured tabular and non-linear classification datasets."
+      }
+    },
+    {
+      "id": "note-sub-aids-dl-1",
+      "title": "Deep Learning & Neural Networks \u2022 Unit 2: Convolutional Neural Networks (CNN) & Transformers",
+      "subject": "Deep Learning & Neural Networks",
+      "unit": "Unit 2",
+      "year": "4th Year / Final",
+      "semester": "Semester 7",
+      "date": "2026-09-08",
+      "pinned": false,
+      "isAiGenerated": true,
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "DeepLearning&NeuralNetworks",
+        "Unit2",
+        "ExamReady",
+        "AI & DS"
+      ],
+      "content": {
+        "shortNotes": "### 1. Convolutional Neural Networks (CNN)\nCNNs exploit spatial locality in image and grid data using parameter sharing, translation invariance, and local receptive fields.\n\n### 2. Core CNN Layers\n* **Convolution Layer**: Filters slide across input using $2D$ cross-correlation to produce feature maps: $O = \\lfloor \\frac{W - K + 2P}{S} \\rfloor + 1$.\n* **Pooling Layer**: Max/Average pooling reduces spatial dimensions while preserving dominant activations.\n* **Batch Normalization**: Stabilizes training by normalizing layer activations across mini-batches.\n\n### 3. Attention & Transformer Architecture\n* **Self-Attention Mechanism**: Computes contextual weights across sequence tokens:\n  $$\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{Q K^T}{\\sqrt{d_k}}\\right) V$$\n* **Multi-Head Attention**: Projects Queries, Keys, and Values across $h$ distinct representation subspaces.",
+        "keyPoints": "\u2022 CNNs achieve parameter efficiency through weight sharing and local kernel receptive fields.\n\u2022 The Transformer replaces recurrent step-by-step loops with parallel multi-head self-attention mechanisms.\n\u2022 Scaling factor $\\frac{1}{\\sqrt{d_k}}$ prevents dot products from growing excessively large and causing vanishing gradients in softmax.",
+        "importantTopics": "1. Mathematical dimension calculation for Convolution and Pooling layers.\n2. Self-Attention and Multi-Head Attention equations in Transformers.\n3. Residual connections (ResNet) and vanishing gradient mitigation.\n4. Transformer Positional Encoding formulas.",
+        "mcqs": "1. In an attention mechanism, why are dot products scaled by $\\sqrt{d_k}$?\n   A) To prevent small softmax gradients caused by large dot-product magnitudes [CORRECT]\n   B) To increase matrix rank\n   C) To eliminate bias parameters\n   D) To enforce sparsity\n\n2. What is the output dimension when a $32 \\times 32$ image is convolved with a $5 \\times 5$ filter, stride $1$, and padding $0$?\n   A) $28 \\times 28$ [CORRECT]\n   B) $30 \\times 30$\n   C) $32 \\times 32$\n   D) $27 \\times 27$",
+        "vivaQuestions": "Q1: What is the primary advantage of Transformers over RNNs/LSTMs in sequence modeling?\nAns: Transformers process all input tokens simultaneously in parallel using self-attention, eliminating sequential bottlenecking and enabling massive scalable pre-training on GPUs.\n\nQ2: How do Residual Connections (Skip Connections) solve the degradation problem in deep networks?\nAns: They allow gradients to flow directly backward through identity mappings ($F(x) + x$), preventing vanishing gradients in networks with hundreds of layers.",
+        "summary": "CNNs and Transformer attention architectures power modern computer vision, natural language processing, and multimodal generative AI systems."
+      }
+    },
+    {
+      "id": "note-sub-ece-edc-1",
+      "title": "Electronic Devices & Circuits \u2022 Unit 2: BJT & MOSFET Small Signal Amplifiers",
+      "subject": "Electronic Devices & Circuits",
+      "unit": "Unit 2",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "ElectronicDevices&Circuits",
+        "Unit2",
+        "ExamReady",
+        "ECE"
+      ],
+      "content": {
+        "shortNotes": "### 1. Bipolar Junction Transistor (BJT) Characteristics\nBJTs are current-controlled semiconductor devices comprising two back-to-back PN junctions (Emitter, Base, Collector). Current relation: $I_E = I_B + I_C$, where $I_C = \\beta I_B$.\n\n### 2. MOSFET Operation & Regions\n* Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is a voltage-controlled majority carrier device.\n* **Cut-off Region**: $V_{GS} < V_{th} \\implies I_D = 0$.\n* **Linear (Triode) Region**: $V_{GS} > V_{th}$ and $V_{DS} < V_{GS} - V_{th} \\implies I_D = \\mu_n C_{ox} \\frac{W}{L} [(V_{GS} - V_{th})V_{DS} - \\frac{V_{DS}^2}{2}]$.\n* **Saturation (Active) Region**: $V_{DS} \\ge V_{GS} - V_{th} \\implies I_D = \\frac{1}{2} \\mu_n C_{ox} \\frac{W}{L} (V_{GS} - V_{th})^2 (1 + \\lambda V_{DS})$.\n\n### 3. Small-Signal Hybrid-$\\pi$ Model\n* Transconductance $g_m = \\frac{\\partial I_D}{\\partial V_{GS}} = \\sqrt{2 \\mu_n C_{ox} \\frac{W}{L} I_D}$.\n* Output resistance $r_o = \\frac{1}{\\lambda I_D}$.",
+        "keyPoints": "\u2022 BJT is current-controlled; MOSFET is voltage-controlled with near-infinite gate input impedance.\n\u2022 In saturation, MOSFET acts as a voltage-controlled current source for analog amplification.\n\u2022 Small-signal hybrid-pi model linearizes non-linear transistor equations around the DC operating point (Q-point).",
+        "importantTopics": "1. DC biasing and Q-point stability factors ($S, S', S''$) for BJT circuits.\n2. MOSFET I-V characteristic derivations in triode and saturation regimes.\n3. Common-Emitter and Common-Source amplifier gain and frequency response.\n4. High-frequency Miller effect and bandwidth limitation.",
+        "mcqs": "1. In which region must a MOSFET operate to function as a linear small-signal amplifier?\n   A) Saturation (Active) Region [CORRECT]\n   B) Triode (Linear) Region\n   C) Cut-off Region\n   D) Breakdown Region\n\n2. The transconductance $g_m$ of a MOSFET in saturation is proportional to:\n   A) $\\sqrt{I_D}$ [CORRECT]\n   B) $I_D^2$\n   C) $1/I_D$\n   D) $V_{DS}^2$",
+        "vivaQuestions": "Q1: What is the Early Effect in BJTs?\nAns: In reverse-biased collector-base junctions, increasing $V_{CE}$ widens the depletion layer, reducing effective base width and causing $I_C$ to increase slightly with voltage.\n\nQ2: Why is CMOS technology universally adopted in digital VLSI?\nAns: CMOS circuits draw virtually zero static power, dissipating energy only during high-to-low and low-to-high switching transitions.",
+        "summary": "Semiconductor physics, small-signal models, and biasing analysis provide the foundation for analog integrated circuits, filters, and high-frequency amplifiers."
+      }
+    },
+    {
+      "id": "note-sub-ece-dsp-1",
+      "title": "Digital Signal Processing \u2022 Unit 3: Discrete Fourier Transform (DFT) & FFT Algorithms",
+      "subject": "Digital Signal Processing",
+      "unit": "Unit 3",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "date": "2026-09-08",
+      "pinned": false,
+      "isAiGenerated": true,
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "DigitalSignalProcessing",
+        "Unit3",
+        "ExamReady",
+        "ECE"
+      ],
+      "content": {
+        "shortNotes": "### 1. Discrete Fourier Transform (DFT)\nThe DFT converts finite-length discrete-time signals $x[n]$ into discrete frequency-domain components $X[k]$:\n$$X[k] = \\sum_{n=0}^{N-1} x[n] W_N^{kn}, \\quad W_N = e^{-j 2\\pi / N}, \\quad k = 0, 1, \\dots, N-1$$\nDirect computation requires $N^2$ complex multiplications and $N(N-1)$ complex additions.\n\n### 2. Fast Fourier Transform (FFT) Algorithms\n* FFT exploits twiddle factor symmetry ($W_N^{k + N/2} = -W_N^k$) and periodicity ($W_N^{k+N} = W_N^k$) to reduce computational complexity to $\\frac{N}{2} \\log_2 N$ multiplications ($O(N \\log N)$).\n* **Decimation-in-Time (DIT-FFT)**: Decomposes input $x[n]$ into even and odd indexed sub-sequences (Radix-2 Cooley-Tukey).\n* **Decimation-in-Frequency (DIF-FFT)**: Decomposes output spectrum $X[k]$ into even and odd frequency bins.\n\n### 3. Digital Filter Design\n* **IIR Filters**: Butterworth (maximally flat passband), Chebyshev (equiripple passband/stopband). Designed using Bilinear Transformation: $s = \\frac{2}{T} \\frac{1 - z^{-1}}{1 + z^{-1}}$.\n* **FIR Filters**: Linear phase guarantee, designed via Windowing (Hamming, Hanning, Blackman).",
+        "keyPoints": "\u2022 Radix-2 FFT reduces computational complexity from $O(N^2)$ to $O(N \\log_2 N)$.\n\u2022 Bilinear transformation maps the entire left-half $s$-plane into the unit circle in the $z$-plane, avoiding aliasing.\n\u2022 FIR filters are always unconditionally stable and possess exact linear phase characteristics.",
+        "importantTopics": "1. 8-Point DIT-FFT and DIF-FFT butterfly signal flow graph derivations.\n2. Design of low-pass Butterworth IIR filter using Bilinear Transformation.\n3. Frequency Warping effect and pre-warping compensation in IIR design.\n4. Circular Convolution vs Linear Convolution using DFT.",
+        "mcqs": "1. How many complex multiplications are required for an 8-point direct DFT vs Radix-2 FFT?\n   A) 64 vs 12 [CORRECT]\n   B) 64 vs 64\n   C) 16 vs 8\n   D) 32 vs 16\n\n2. Which digital filter type is guaranteed to be unconditionally stable?\n   A) FIR Filter [CORRECT]\n   B) Chebyshev IIR Filter\n   C) Butterworth IIR Filter\n   D) Elliptic Filter",
+        "vivaQuestions": "Q1: What is Frequency Warping in Bilinear Transformation?\nAns: The non-linear mapping $\\Omega = \\frac{2}{T} \\tan(\\frac{\\omega}{2})$ compresses continuous frequencies $\\Omega \\in (-\\infty, +\\infty)$ onto discrete unit circle frequencies $\\omega \\in [-\\pi, \\pi]$, causing frequency warping compensated by pre-warping.\n\nQ2: What is the purpose of Bit Reversal in DIT-FFT?\nAns: In Decimation-in-Time FFT, the input sequence must be organized in bit-reversed order so that the frequency output appears in natural sequential order.",
+        "summary": "Discrete transforms, FFT butterfly graphs, and digital filter synthesis form the backbone of modern communications, radar, audio processing, and biomedical imaging."
+      }
+    },
+    {
+      "id": "note-sub-eee-machines-1",
+      "title": "Electrical Machines & Transformers \u2022 Unit 1: Single Phase Transformers & Equivalent Circuit",
+      "subject": "Electrical Machines & Transformers",
+      "unit": "Unit 1",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-eee",
+      "department": "Electrical & Electronics Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "ElectricalMachines&Transformers",
+        "Unit1",
+        "ExamReady",
+        "EEE"
+      ],
+      "content": {
+        "shortNotes": "### 1. Transformer Working Principle\nA transformer transfers electrical energy between circuits through electromagnetic induction without changing frequency. EMF equation:\n$$E_1 = 4.44 f N_1 \\Phi_m, \\quad E_2 = 4.44 f N_2 \\Phi_m$$\n\n### 2. Equivalent Circuit & Parameter Referral\n* Primary referred to secondary: $R_1' = R_1 (N_2/N_1)^2 = R_1 K^2$.\n* Core losses (Hysteresis & Eddy Current): $P_{core} = P_h + P_e = k_h f B_m^{1.6} + k_e f^2 B_m^2 t^2$.\n* **Open Circuit (OC) Test**: Determines core loss $P_{core}$ and magnetizing parameters ($R_0, X_0$) at rated voltage.\n* **Short Circuit (SC) Test**: Determines copper loss $P_{cu}$ and winding impedance ($R_{eq}, X_{eq}$) at rated current.\n\n### 3. Efficiency & Voltage Regulation\n* Efficiency: $\\eta = \\frac{x S \\cos\\phi}{x S \\cos\\phi + P_{core} + x^2 P_{cu,full}} \\times 100\\%$.\n* Maximum efficiency occurs when variable copper losses equal constant iron losses ($x^2 P_{cu} = P_{core}$).",
+        "keyPoints": "\u2022 Transformer operates on Faraday's law of mutual induction with constant magnetic flux $\\Phi_m$.\n\u2022 Maximum efficiency occurs when constant core losses equal variable copper losses ($P_{core} = x^2 P_{cu}$).\n\u2022 Voltage regulation evaluates terminal voltage drop from no-load to full-load at specified power factors.",
+        "importantTopics": "1. Exact and approximate equivalent circuit derivation referred to primary and secondary.\n2. Open-Circuit (OC) and Short-Circuit (SC) test calculations.\n3. Condition for maximum efficiency and all-day efficiency calculations.\n4. Voltage regulation formulas for lagging, leading, and unity power factors.",
+        "mcqs": "1. At what load fraction does a transformer operate at maximum efficiency?\n   A) $x = \\sqrt{P_{core} / P_{cu}}$ [CORRECT]\n   B) $x = P_{core} / P_{cu}$\n   C) $x = 1.0$\n   D) $x = P_{cu} / P_{core}$\n\n2. Open Circuit test on a transformer is conducted at:\n   A) Rated Voltage on LV side with HV open [CORRECT]\n   B) Rated Current on HV side with LV shorted\n   C) Maximum Overload\n   D) Zero Frequency",
+        "vivaQuestions": "Q1: Why is transformer core laminated with silicon steel?\nAns: Silicon steel provides high magnetic permeability and low hysteresis loss; thin laminations insulated with varnish restrict eddy current loops, minimizing $I^2R$ heating losses.\n\nQ2: Why is the transformer rated in kVA rather than kW?\nAns: Transformer losses depend on voltage (iron loss) and current (copper loss), independent of load power factor $\\cos\\phi$.",
+        "summary": "Transformers enable efficient high-voltage power transmission through electromagnetic induction, verified via open/short circuit equivalent circuit testing."
+      }
+    },
+    {
+      "id": "note-sub-mech-thermo-1",
+      "title": "Engineering Thermodynamics \u2022 Unit 2: Second Law of Thermodynamics & Entropy",
+      "subject": "Engineering Thermodynamics",
+      "unit": "Unit 2",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-mech",
+      "department": "Mechanical Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "EngineeringThermodynamics",
+        "Unit2",
+        "ExamReady",
+        "MECH"
+      ],
+      "content": {
+        "shortNotes": "### 1. Second Law Statements\n* **Kelvin-Planck Statement**: It is impossible to construct a heat engine operating in a cycle that absorbs heat from a single reservoir and produces an equivalent amount of net work.\n* **Clausius Statement**: It is impossible to construct a device operating in a cycle that transfers heat from a lower temperature body to a higher temperature body without external work input.\n\n### 2. Carnot Cycle & Theorems\n* The Carnot cycle represents the maximum theoretical efficiency for any heat engine operating between temperatures $T_H$ and $T_L$:\n  $$\\eta_{Carnot} = 1 - \\frac{T_L}{T_H} = \\frac{T_H - T_L}{T_H}$$\n* All reversible engines operating between the same two thermal reservoirs have identical efficiency.\n\n### 3. Concept of Entropy\n* Clausius Inequality: $\\oint \\frac{\\delta Q}{T} \\le 0$ (equals 0 for reversible cycles, $< 0$ for irreversible).\n* Entropy change for ideal gas: $\\Delta S = C_v \\ln\\left(\\frac{T_2}{T_1}\\right) + R \\ln\\left(\\frac{V_2}{V_1}\\right) = C_p \\ln\\left(\\frac{T_2}{T_1}\\right) - R \\ln\\left(\\frac{P_2}{P_1}\\right)$.",
+        "keyPoints": "\u2022 Second Law establishes the directional arrow of natural processes and limits conversion of heat into work.\n\u2022 Carnot engine achieves maximum efficiency $\\eta = 1 - T_L/T_H$ operating on two reversible isothermals and two reversible adiabatics.\n\u2022 For any isolated system, entropy never decreases (Principle of Increase of Entropy: $\\Delta S_{univ} \\ge 0$).",
+        "importantTopics": "1. Equivalence proof between Kelvin-Planck and Clausius statements.\n2. Carnot cycle P-V and T-s diagram analysis and efficiency derivation.\n3. Clausius theorem and mathematical definition of entropy.\n4. Available energy, Exergy, and Irreversibility ($I = T_0 S_{gen}$).",
+        "mcqs": "1. What is the maximum possible efficiency of a heat engine operating between 600 K and 300 K?\n   A) 50% [CORRECT]\n   B) 100%\n   C) 25%\n   D) 75%\n\n2. For an irreversible cyclic process, the Clausius inequality states that $\\oint \\delta Q / T$ is:\n   A) Less than 0 [CORRECT]\n   B) Equal to 0\n   C) Greater than 0\n   D) Infinite",
+        "vivaQuestions": "Q1: What is a perpetual motion machine of the second kind (PMM-2)?\nAns: A PMM-2 is a hypothetical machine that violates the Kelvin-Planck statement by converting 100% of absorbed heat into work with a single thermal reservoir.\n\nQ2: What is the physical meaning of Entropy?\nAns: Entropy measures microscopic molecular disorder and unavailable thermal energy that cannot be converted into useful work.",
+        "summary": "Thermodynamics governs energy transformations, Carnot heat engine cycles, entropy generation, and exergy destruction in thermal power systems."
+      }
+    },
+    {
+      "id": "note-sub-civil-struct-1",
+      "title": "Structural Analysis \u2022 Unit 2: Moment Distribution Method (Hardy Cross)",
+      "subject": "Structural Analysis",
+      "unit": "Unit 2",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "StructuralAnalysis",
+        "Unit2",
+        "ExamReady",
+        "CIVIL"
+      ],
+      "content": {
+        "shortNotes": "### 1. Introduction to Indeterminate Structures\nStatically indeterminate beams and frames have more reaction unknowns than available static equilibrium equations. The Moment Distribution Method (Hardy Cross) iteratively solves for joint bending moments without writing simultaneous equations.\n\n### 2. Fundamental Factors\n* **Stiffness Factor ($k$)**:\n  - Far end fixed: $k = \\frac{4EI}{L}$\n  - Far end hinged/pinned: $k = \\frac{3EI}{L}$\n* **Distribution Factor ($DF$)**: For members meeting at a joint: $DF_i = \\frac{k_i}{\\sum k}$. $\\sum DF = 1.0$.\n* **Carry-Over Factor ($COF$)**: Fraction of moment carried over to far end ($COF = +0.5$ if far end fixed, $0$ if pinned).\n\n### 3. Step-by-Step Procedure\n1. Calculate Fixed End Moments (FEM) assuming all joints are fully clamped.\n2. Calculate Distribution Factors at all rigid intermediate joints.\n3. Release joints iteratively: distribute unbalanced joint moments and carry over half to opposite fixed ends.\n4. Repeat cycles until unbalanced moments converge to near-zero; sum final end moments.",
+        "keyPoints": "\u2022 Hardy Cross method provides an iterative solution for indeterminate continuous beams and frames.\n\u2022 Carry-over factor to a fixed support is $+0.5$; carry-over to a hinged support is $0$.\n\u2022 Distribution factors at any rigid joint always sum strictly to $1.0$.",
+        "importantTopics": "1. Analysis of continuous beams with sinking/settling supports.\n2. Non-sway vs Sway analysis of single-bay portal frames.\n3. Fixed End Moment formulas for UDL, point load, and UVL.\n4. Constructing Bending Moment Diagrams (BMD) by superimposing free and fixed moment curves.",
+        "mcqs": "1. What is the Carry-Over Factor to a far end that is rigidly fixed?\n   A) +0.5 [CORRECT]\n   B) -0.5\n   C) 0\n   D) +1.0\n\n2. The sum of Distribution Factors ($DF$) for all members framing into a rigid joint is:\n   A) 1.0 [CORRECT]\n   B) 0\n   C) $4EI/L$\n   D) Infinity",
+        "vivaQuestions": "Q1: What is the difference between static and kinematic indeterminacy?\nAns: Static indeterminacy ($D_s$) is the number of unknown forces exceeding equilibrium equations. Kinematic indeterminacy ($D_k$) is the total number of unconstrained joint degrees of freedom (rotations and translations).\n\nQ2: What is the physical meaning of the Distribution Factor?\nAns: It represents the proportion of unbalanced joint moment absorbed by a connected member based on its relative bending stiffness.",
+        "summary": "Structural analysis methods like Moment Distribution and Slope Deflection enable precise determination of internal forces, deflections, and moments in reinforced concrete and steel infrastructure."
+      }
+    },
+    {
+      "id": "note-sub-it-web-1",
+      "title": "Full Stack Web Technologies & Cloud \u2022 Unit 4: RESTful APIs, JWT Authentication & Microservices",
+      "subject": "Full Stack Web Technologies & Cloud",
+      "unit": "Unit 4",
+      "year": "3rd Year",
+      "semester": "Semester 6",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-it",
+      "department": "Information Technology",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "FullStackWebTechnologies&Cloud",
+        "Unit4",
+        "ExamReady",
+        "IT"
+      ],
+      "content": {
+        "shortNotes": "### 1. REST Architecture Principles\nRepresentational State Transfer (REST) is a stateless architectural style for web services based on standard HTTP verbs:\n* `GET` (Safe, Idempotent retrieval), `POST` (Resource creation), `PUT` (Idempotent complete update), `PATCH` (Partial update), `DELETE` (Idempotent removal).\n\n### 2. JSON Web Token (JWT) Authentication\n* JWT is a compact, URL-safe standard (RFC 7519) for transmitting claims securely:\n  $$\\text{JWT} = \\text{Header}.\\text{Payload}.\\text{Signature}$$\n* **Header**: Alg (e.g. HS256) + Token type.\n* **Payload**: Claims (userId, role, exp, iat).\n* **Signature**: $\\text{HMACSHA256}(\\text{base64UrlEncode}(Header) + \".\" + \\text{base64UrlEncode}(Payload), secret)$.\n\n### 3. Microservices vs Monoliths\n* **Monolith**: Single unified codebase and database; simpler initial deployment but poor horizontal scalability.\n* **Microservices**: Loosely coupled services communicating over REST/gRPC/Kafka with independent database per service, API Gateway routing, and Docker container orchestration.",
+        "keyPoints": "\u2022 REST APIs are stateless: every request must contain all authentication context without server session affinity.\n\u2022 JWT signature prevents tampering while allowing client-side decodable claims.\n\u2022 Microservices require API Gateways, service discovery (Consul/Eureka), and distributed tracing (Jaeger/Zipkin).",
+        "importantTopics": "1. Idempotency and HTTP status codes ($200, 201, 400, 401, 403, 404, 500$).\n2. JWT generation, verification, and refresh token rotation workflows.\n3. Microservices patterns: API Gateway, Circuit Breaker (Resilience4j), Saga Pattern for distributed transactions.\n4. Dockerfile creation and multi-stage containerization.",
+        "mcqs": "1. Which HTTP methods are guaranteed to be idempotent according to RFC 7231?\n   A) GET, PUT, DELETE [CORRECT]\n   B) POST, PATCH\n   C) Only POST\n   D) None\n\n2. In a JSON Web Token, which segment prevents unauthorized client modification of payload claims?\n   A) Signature [CORRECT]\n   B) Header\n   C) Base64 encoding\n   D) Cookie attribute",
+        "vivaQuestions": "Q1: What is the purpose of the Circuit Breaker pattern in microservices?\nAns: It detects cascading service failures and temporarily trips (Open State) to fail-fast without overwhelming failing backend dependencies, allowing them to recover.\n\nQ2: What is the difference between Authentication (401) and Authorization (403)?\nAns: Authentication verifies identity ('who you are'); Authorization verifies permissions ('what you are allowed to access').",
+        "summary": "Full stack web engineering utilizes RESTful architectures, stateless JWT security, and containerized microservices to build globally distributed, scalable applications."
+      }
+    },
+    {
+      "id": "note-sub-bio-gen-1",
+      "title": "Genetic Engineering & Recombinant DNA \u2022 Unit 1: Restriction Enzymes, Cloning Vectors & PCR",
+      "subject": "Genetic Engineering & Recombinant DNA",
+      "unit": "Unit 1",
+      "year": "3rd Year",
+      "semester": "Semester 5",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-biotech",
+      "department": "Biotechnology",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "GeneticEngineering&RecombinantDNA",
+        "Unit1",
+        "ExamReady",
+        "BIO-TECH"
+      ],
+      "content": {
+        "shortNotes": "### 1. Molecular Tools of Recombinant DNA\nRecombinant DNA technology involves isolating, cutting, joining, and transferring specific DNA fragments into host cells to express proteins or modify genomes.\n\n### 2. Restriction Endonucleases & DNA Ligase\n* **Type II Restriction Enzymes**: Cleave DNA at specific palindromic recognition sequences (e.g. EcoRI: `5'-GAATTC-3'`) producing sticky or blunt ends.\n* **DNA Ligase**: Catalyzes phosphodiester bond formation between adjacent 3'-OH and 5'-phosphate ends using ATP/NAD+.\n\n### 3. Cloning Vectors & Polymerase Chain Reaction (PCR)\n* **Plasmid Vectors (pBR322, pUC19)**: Require Origin of Replication ($ori$), Selectable Marker (AmpR, TetR), and Multiple Cloning Site (MCS).\n* **PCR Thermocycling (3 Steps)**:\n  1. **Denaturation** ($94-96^\\circ\\text{C}$): Separates double-stranded DNA into single strands.\n  2. **Annealing** ($50-65^\\circ\\text{C}$): Oligonucleotide primers bind complementary sequences.\n  3. **Extension** ($72^\\circ\\text{C}$): Taq DNA Polymerase synthesizes new strand ($2^n$ amplification after $n$ cycles).",
+        "keyPoints": "\u2022 Type II restriction enzymes cut within palindromic recognition sites without requiring ATP.\n\u2022 Plasmids must contain an origin of replication ($ori$), selectable antibiotic markers, and MCS.\n\u2022 PCR amplifies DNA exponentially: $N = N_0 \\times 2^n$ using heat-stable Taq DNA polymerase.",
+        "importantTopics": "1. Features and blue-white screening mechanism in pUC19 plasmids using $\\text{lacZ}$ $\\beta$-galactosidase.\n2. Step-by-step PCR reaction cycle and Primer Design rules.\n3. Comparison of Plasmids, Bacteriophage $\\lambda$, Cosmids, BACs, and YACs.\n4. CRISPR-Cas9 mechanism for targeted gene editing.",
+        "mcqs": "1. Which enzyme catalyzes the formation of phosphodiester bonds to join foreign DNA into a cloning vector?\n   A) DNA Ligase [CORRECT]\n   B) Taq Polymerase\n   C) Reverse Transcriptase\n   D) Alkaline Phosphatase\n\n2. In Blue-White colony screening, recombinant clones containing inserted foreign DNA appear:\n   A) White [CORRECT]\n   B) Blue\n   C) Fluorescent Green\n   D) Yellow",
+        "vivaQuestions": "Q1: Why is Taq DNA Polymerase specifically used in PCR instead of human DNA polymerase?\nAns: Taq polymerase isolated from thermophilic bacterium *Thermus aquaticus* is thermostable and does not denature during repeated $95^\\circ\\text{C}$ denaturation cycles.\n\nQ2: What is the function of Alkaline Phosphatase in molecular cloning?\nAns: It removes 5'-phosphate groups from vector ends to prevent self-ligation of the linearized plasmid without the insert.",
+        "summary": "Recombinant DNA and PCR technologies provide precise molecular tools for gene cloning, genetic diagnostics, biopharmaceutical production, and CRISPR genome editing."
+      }
+    },
+    {
+      "id": "note-sub-mgmt-strat-1",
+      "title": "Strategic Management & Corporate Governance \u2022 Unit 2: Porter's Five Forces & VRIO Framework",
+      "subject": "Strategic Management & Corporate Governance",
+      "unit": "Unit 2",
+      "year": "2nd Year",
+      "semester": "Semester 3",
+      "date": "2026-09-08",
+      "pinned": true,
+      "isAiGenerated": true,
+      "departmentId": "dept-mgmt",
+      "department": "Management Studies",
+      "generatedBy": "StudentHub Neural Synthesis Engine (Local AI)",
+      "tags": [
+        "StrategicManagement&CorporateGovernance",
+        "Unit2",
+        "ExamReady",
+        "MBA / BBA"
+      ],
+      "content": {
+        "shortNotes": "### 1. Strategic Environmental Analysis\nStrategic management formulates and implements long-term corporate initiatives by evaluating external industry competition and internal organizational capabilities.\n\n### 2. Porter's Five Competitive Forces Model\n1. **Threat of New Entrants**: Barriers to entry, capital requirements, economies of scale.\n2. **Bargaining Power of Buyers**: Customer switching costs, buyer concentration.\n3. **Bargaining Power of Suppliers**: Supplier uniqueness, availability of substitute raw materials.\n4. **Threat of Substitute Products**: Relative price-performance of alternative solutions.\n5. **Competitive Rivalry Among Existing Competitors**: Industry growth rate, exit barriers, differentiation.\n\n### 3. Internal VRIO Resource-Based Framework\nTo provide sustainable competitive advantage, a resource must be:\n* **Valuable**: Exploits opportunities or neutralizes external threats.\n* **Rare**: Controlled by few or no competing firms.\n* **Inimitable**: Costly or difficult for rivals to duplicate (patents, culture, tacit knowledge).\n* **Organized**: Company structure and systems aligned to capture value.",
+        "keyPoints": "\u2022 Porter's Five Forces analyzes industry structural attractiveness and profit potential.\n\u2022 VRIO evaluates whether internal firm capabilities yield competitive parity, temporary advantage, or sustained competitive advantage.\n\u2022 Generic Strategies: Cost Leadership, Differentiation, and Focus (Cost/Differentiation).",
+        "importantTopics": "1. Application of Porter's Five Forces to modern tech ecosystems (e.g. Cloud/SaaS).\n2. VRIO framework decision tree and competitive outcomes.\n3. SWOT vs PESTEL Macro-environmental framework.\n4. Boston Consulting Group (BCG) Growth-Share Matrix (Stars, Cash Cows, Question Marks, Dogs).",
+        "mcqs": "1. According to the VRIO framework, a resource that is Valuable and Rare, but easily Imitable yields:\n   A) Temporary Competitive Advantage [CORRECT]\n   B) Sustained Competitive Advantage\n   C) Competitive Disadvantage\n   D) Competitive Parity\n\n2. In the BCG Matrix, business units with high market share in low-growth mature industries are called:\n   A) Cash Cows [CORRECT]\n   B) Stars\n   C) Question Marks\n   D) Dogs",
+        "vivaQuestions": "Q1: What is the primary difference between Corporate Strategy and Business Strategy?\nAns: Corporate Strategy decides 'which industries/markets to compete in' (portfolio diversification, M&A); Business Strategy decides 'how to win within a specific market' (differentiation vs cost leadership).\n\nQ2: What are High Exit Barriers in an industry?\nAns: Specialized assets, high severance costs, or strategic interrelationships that prevent unprofitable firms from leaving, driving up competitive rivalry.",
+        "summary": "Strategic management synthesizes environmental forces, VRIO internal competencies, and BCG portfolio balancing to establish sustainable corporate market leadership."
       }
     }
   ],
   "studyMaterials": [
     {
-      "id": "mat-1",
-      "name": "Operating_Systems_Unit3.pdf",
+      "id": "mat-sub-cse-m1",
+      "title": "Engineering Mathematics & Calculus - Complete Handout & Lecture Slides",
+      "fileName": "MA-101_Engineering_Mathematics_&_Calculus_FullSyllabus.pdf",
+      "subject": "Engineering Mathematics & Calculus",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Engineering Mathematics & Calculus (MA-101).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-cse-dsa",
+      "title": "Data Structures & Algorithms - Complete Handout & Lecture Slides",
+      "fileName": "CS-201_Data_Structures_&_Algorithms_FullSyllabus.pdf",
+      "subject": "Data Structures & Algorithms",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Data Structures & Algorithms (CS-201).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-cse-os",
+      "title": "Operating Systems - Complete Handout & Lecture Slides",
+      "fileName": "CS-301_Operating_Systems_FullSyllabus.pdf",
       "subject": "Operating Systems",
-      "subjectId": "sub-os",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
       "type": "PDF",
-      "size": "2.4 MB",
-      "uploadedDate": "2026-09-04",
-      "pages": 48,
-      "summary": "Complete lecture slides on CPU scheduling algorithms, criteria, Gantt charts, and multi-processor synchronization."
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Operating Systems (CS-301).",
+      "url": "#"
     },
     {
-      "id": "mat-2",
-      "name": "DBMS_Normalization_Guide.pdf",
-      "subject": "DBMS",
-      "subjectId": "sub-dbms",
-      "type": "PDF",
-      "size": "3.8 MB",
-      "uploadedDate": "2026-09-02",
-      "pages": 62,
-      "summary": "In-depth reference notes on Functional Dependencies, 1NF through 5NF, and Armstrong axioms."
-    },
-    {
-      "id": "mat-3",
-      "name": "Computer_Networks_TransportLayer.pptx",
+      "id": "mat-sub-cse-cn",
+      "title": "Computer Networks - Complete Handout & Lecture Slides",
+      "fileName": "CS-303_Computer_Networks_FullSyllabus.pdf",
       "subject": "Computer Networks",
-      "subjectId": "sub-cn",
-      "type": "PPT",
-      "size": "5.1 MB",
-      "uploadedDate": "2026-08-28",
-      "pages": 35,
-      "summary": "Presentation deck covering TCP headers, 3-way handshake, sliding window, and UDP datagram mechanics."
-    },
-    {
-      "id": "mat-4",
-      "name": "Java_Multithreading_Cheatsheet.docx",
-      "subject": "Java Programming",
-      "subjectId": "sub-java",
-      "type": "DOC",
-      "size": "1.2 MB",
-      "uploadedDate": "2026-08-20",
-      "pages": 14,
-      "summary": "Practical cheatsheet on thread life cycle, synchronization blocks, locks, and thread pools."
-    },
-    {
-      "id": "mat-5",
-      "name": "Discrete_Math_Graph_Theory.pdf",
-      "subject": "Mathematics & Discrete Structures",
-      "subjectId": "sub-math",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
       "type": "PDF",
-      "size": "4.6 MB",
-      "uploadedDate": "2026-08-15",
-      "pages": 52,
-      "summary": "Comprehensive notes covering Euler paths, Hamiltonian cycles, planar graphs, and tree traversals."
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Computer Networks (CS-303).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-cse-ai",
+      "title": "Artificial Intelligence & Expert Systems - Complete Handout & Lecture Slides",
+      "fileName": "CS-401_Artificial_Intelligence_&_Expert_Systems_FullSyllabus.pdf",
+      "subject": "Artificial Intelligence & Expert Systems",
+      "departmentId": "dept-cse",
+      "department": "Computer Science & Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Artificial Intelligence & Expert Systems (CS-401).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-aids-math",
+      "title": "Linear Algebra & Statistics for AI - Complete Handout & Lecture Slides",
+      "fileName": "AI-101_Linear_Algebra_&_Statistics_for_AI_FullSyllabus.pdf",
+      "subject": "Linear Algebra & Statistics for AI",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Linear Algebra & Statistics for AI (AI-101).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-aids-ml",
+      "title": "Machine Learning Algorithms - Complete Handout & Lecture Slides",
+      "fileName": "AI-301_Machine_Learning_Algorithms_FullSyllabus.pdf",
+      "subject": "Machine Learning Algorithms",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Machine Learning Algorithms (AI-301).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-aids-dl",
+      "title": "Deep Learning & Neural Networks - Complete Handout & Lecture Slides",
+      "fileName": "AI-401_Deep_Learning_&_Neural_Networks_FullSyllabus.pdf",
+      "subject": "Deep Learning & Neural Networks",
+      "departmentId": "dept-aids",
+      "department": "Artificial Intelligence & Data Science",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Deep Learning & Neural Networks (AI-401).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-ece-edc",
+      "title": "Electronic Devices & Circuits - Complete Handout & Lecture Slides",
+      "fileName": "EC-201_Electronic_Devices_&_Circuits_FullSyllabus.pdf",
+      "subject": "Electronic Devices & Circuits",
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Electronic Devices & Circuits (EC-201).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-ece-dsp",
+      "title": "Digital Signal Processing - Complete Handout & Lecture Slides",
+      "fileName": "EC-301_Digital_Signal_Processing_FullSyllabus.pdf",
+      "subject": "Digital Signal Processing",
+      "departmentId": "dept-ece",
+      "department": "Electronics & Communication Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Digital Signal Processing (EC-301).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-eee-machines",
+      "title": "Electrical Machines & Transformers - Complete Handout & Lecture Slides",
+      "fileName": "EE-202_Electrical_Machines_&_Transformers_FullSyllabus.pdf",
+      "subject": "Electrical Machines & Transformers",
+      "departmentId": "dept-eee",
+      "department": "Electrical & Electronics Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Electrical Machines & Transformers (EE-202).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-mech-thermo",
+      "title": "Engineering Thermodynamics - Complete Handout & Lecture Slides",
+      "fileName": "ME-201_Engineering_Thermodynamics_FullSyllabus.pdf",
+      "subject": "Engineering Thermodynamics",
+      "departmentId": "dept-mech",
+      "department": "Mechanical Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Engineering Thermodynamics (ME-201).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-civil-struct",
+      "title": "Structural Analysis - Complete Handout & Lecture Slides",
+      "fileName": "CE-301_Structural_Analysis_FullSyllabus.pdf",
+      "subject": "Structural Analysis",
+      "departmentId": "dept-civil",
+      "department": "Civil Engineering",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Structural Analysis (CE-301).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-it-web",
+      "title": "Full Stack Web Technologies & Cloud - Complete Handout & Lecture Slides",
+      "fileName": "IT-302_Full_Stack_Web_Technologies_&_Cloud_FullSyllabus.pdf",
+      "subject": "Full Stack Web Technologies & Cloud",
+      "departmentId": "dept-it",
+      "department": "Information Technology",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Full Stack Web Technologies & Cloud (IT-302).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-bio-gen",
+      "title": "Genetic Engineering & Recombinant DNA - Complete Handout & Lecture Slides",
+      "fileName": "BT-301_Genetic_Engineering_&_Recombinant_DNA_FullSyllabus.pdf",
+      "subject": "Genetic Engineering & Recombinant DNA",
+      "departmentId": "dept-biotech",
+      "department": "Biotechnology",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Genetic Engineering & Recombinant DNA (BT-301).",
+      "url": "#"
+    },
+    {
+      "id": "mat-sub-mgmt-strat",
+      "title": "Strategic Management & Corporate Governance - Complete Handout & Lecture Slides",
+      "fileName": "MB-201_Strategic_Management_&_Corporate_Governance_FullSyllabus.pdf",
+      "subject": "Strategic Management & Corporate Governance",
+      "departmentId": "dept-mgmt",
+      "department": "Management Studies",
+      "type": "PDF",
+      "size": "4.2 MB",
+      "date": "2026-09-08",
+      "summary": "Complete curriculum slides and comprehensive university lecture notes for Strategic Management & Corporate Governance (MB-201).",
+      "url": "#"
     }
   ],
   "assignments": [
@@ -1145,6 +1820,18 @@
       "title": "Test Task Validation",
       "time": "5:00 PM",
       "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
+    },
+    {
+      "id": "task-test-99",
+      "title": "Test Task Validation",
+      "time": "5:00 PM",
+      "completed": false
     }
   ],
   "calendarEvents": [
@@ -1204,6 +1891,18 @@
       "title": "Mid-Term Exam",
       "date": "2026-09-15",
       "time": "10:00 AM"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "evt-test-99",
+      "title": "Mid-Term Exam",
+      "date": "2026-09-15",
+      "time": "10:00 AM"
     }
   ],
   "notifications": [
@@ -1247,91 +1946,7 @@
     "deadlineReminders": true,
     "autoSaveNotes": true,
     "fontSize": "medium"
-  },
-  "source": "local",
-  "departments": [
-    {
-      "id": "dept-cse",
-      "name": "Computer Science & Engineering",
-      "code": "CSE",
-      "icon": "💻",
-      "degree": "B.Tech",
-      "color": "#3b82f6",
-      "description": "Software architecture, operating systems, cloud, data structures, and database systems."
-    },
-    {
-      "id": "dept-aids",
-      "name": "Artificial Intelligence & Data Science",
-      "code": "AI & DS",
-      "icon": "🧠",
-      "degree": "B.Tech",
-      "color": "#8b5cf6",
-      "description": "Deep learning, natural language processing, predictive modeling, and neural networks."
-    },
-    {
-      "id": "dept-ece",
-      "name": "Electronics & Communication Engineering",
-      "code": "ECE",
-      "icon": "📡",
-      "degree": "B.E. / B.Tech",
-      "color": "#06b6d4",
-      "description": "Digital signal processing, VLSI design, embedded systems, and wireless communications."
-    },
-    {
-      "id": "dept-eee",
-      "name": "Electrical & Electronics Engineering",
-      "code": "EEE",
-      "icon": "⚡",
-      "degree": "B.E.",
-      "color": "#eab308",
-      "description": "Power systems, control systems, electrical machines, and renewable energy grids."
-    },
-    {
-      "id": "dept-mech",
-      "name": "Mechanical Engineering",
-      "code": "MECH",
-      "icon": "⚙️",
-      "degree": "B.E. / B.Tech",
-      "color": "#f97316",
-      "description": "Thermodynamics, fluid mechanics, CAD/CAM automation, and strength of materials."
-    },
-    {
-      "id": "dept-civil",
-      "name": "Civil Engineering",
-      "code": "CIVIL",
-      "icon": "🏗️",
-      "degree": "B.E.",
-      "color": "#84cc16",
-      "description": "Structural engineering, concrete technology, geotechnical analysis, and environmental systems."
-    },
-    {
-      "id": "dept-it",
-      "name": "Information Technology",
-      "code": "IT",
-      "icon": "🌐",
-      "degree": "B.Tech",
-      "color": "#0284c7",
-      "description": "Cloud infrastructure, cybersecurity, DevOps pipelines, and enterprise software systems."
-    },
-    {
-      "id": "dept-bt",
-      "name": "Biotechnology",
-      "code": "BIO-TECH",
-      "icon": "🧬",
-      "degree": "B.Tech",
-      "color": "#10b981",
-      "description": "Genetic engineering, bioprocess kinetics, bioinformatics, and immunology."
-    },
-    {
-      "id": "dept-mba",
-      "name": "Management Studies (MBA)",
-      "code": "MBA / BBA",
-      "icon": "📊",
-      "degree": "MBA",
-      "color": "#6366f1",
-      "description": "Financial management, brand marketing, business analytics, and organizational behavior."
-    }
-  ]
+  }
 };
 
   // --- Global Application State ---
@@ -1775,28 +2390,59 @@
     if (!container) return;
 
     const subjects = getFilteredSubjects();
+    if (subjects.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">No subjects found for this program.</div>';
+      return;
+    }
+
     container.innerHTML = subjects.map(s => `
-      <div class="subject-card" style="padding:18px;background:var(--bg-surface-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-          <span style="width:36px;height:36px;border-radius:8px;background:${s.color}22;color:${s.color};display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;">${s.code.substring(0, 2)}</span>
-          <span style="font-size:0.72rem;font-weight:700;color:var(--text-muted);background:var(--bg-surface-elevated);padding:2px 8px;border-radius:9999px;">${s.credits} Credits</span>
-        </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;">${escapeHtml(s.name)}</h3>
-        <p style="font-size:0.74rem;color:var(--text-muted);margin-bottom:12px;">Faculty: ${escapeHtml(s.faculty)}</p>
-        
-        <div style="margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;color:var(--text-secondary);margin-bottom:4px;">
-            <span>Syllabus Progress</span>
-            <span>${s.progress}%</span>
+      <div class="subject-card" style="background:var(--bg-surface-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-card);transition:transform var(--transition-fast),box-shadow var(--transition-fast);">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:${s.color}20;color:${s.color};display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;">
+              ${escapeHtml(s.code ? s.code.slice(0, 2) : 'CS')}
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+              <span style="font-size:0.7rem;font-weight:700;color:var(--primary-blue);background:rgba(59,130,246,0.12);padding:2px 8px;border-radius:9999px;">
+                ${escapeHtml(s.year || '2nd Year')} • ${escapeHtml(s.semester || 'Sem 3')}
+              </span>
+              <span style="font-size:0.68rem;color:var(--text-muted);">${s.credits || 4} Credits</span>
+            </div>
           </div>
-          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden;">
-            <div style="width:${s.progress}%;height:100%;background:${s.color};border-radius:9999px;"></div>
+
+          <h3 style="font-size:1rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;">${escapeHtml(s.name)}</h3>
+          <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:12px;">Code: <strong style="color:var(--text-primary);">${escapeHtml(s.code)}</strong> • Faculty: ${escapeHtml(s.faculty || 'Senior Professor')}</div>
+
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">
+              <span>Syllabus Coverage</span>
+              <strong style="color:var(--primary-blue);">${s.progress || 70}%</strong>
+            </div>
+            <div style="width:100%;height:6px;background:rgba(255,255,255,0.08);border-radius:9999px;overflow:hidden;">
+              <div style="width:${s.progress || 70}%;height:100%;background:linear-gradient(90deg, #3b82f6, #8b5cf6);border-radius:9999px;"></div>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid var(--border-subtle);padding-top:10px;margin-bottom:12px;">
+            <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);margin-bottom:6px;">Course Units (Syllabus):</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              ${(s.units || []).slice(0, 3).map(u => `
+                <div style="font-size:0.7rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;">
+                  <span style="width:6px;height:6px;border-radius:50%;background:${u.status === 'Completed' ? 'var(--success-green)' : 'var(--primary-blue)'};display:inline-block;"></span>
+                  <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(u.name)}</span>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
 
-        <div style="display:flex;gap:8px;margin-top:14px;">
-          <button class="btn-secondary" style="flex:1;padding:6px;font-size:0.76rem;" onclick="window.filterNotesBySubject('${escapeHtml(s.name)}')">View Notes</button>
-          <button class="btn-primary" style="flex:1;padding:6px;font-size:0.76rem;" onclick="window.generateNotesForSubject('${escapeHtml(s.name)}')">✨ AI Notes</button>
+        <div style="display:flex;gap:8px;margin-top:12px;border-top:1px solid var(--border-subtle);padding-top:12px;">
+          <button class="btn-secondary" style="flex:1;padding:6px 10px;font-size:0.74rem;" onclick="window.generateNotesForSubject('${escapeHtml(s.name)}')">
+            ✨ AI Notes
+          </button>
+          <button class="btn-primary" style="flex:1;padding:6px 10px;font-size:0.74rem;" onclick="window.filterNotesBySubject('${escapeHtml(s.name)}')">
+            📚 View Notes
+          </button>
         </div>
       </div>
     `).join('');
@@ -1806,33 +2452,88 @@
     const container = $('#notes-library-container');
     if (!container) return;
 
-    const notes = state.notes || [];
+    let notes = state.notes || [];
+
+    // Filter by Search Query
+    const searchVal = ($('#notes-search-box')?.value || '').trim().toLowerCase();
+    if (searchVal) {
+      notes = notes.filter(n => 
+        (n.title && n.title.toLowerCase().includes(searchVal)) ||
+        (n.subject && n.subject.toLowerCase().includes(searchVal)) ||
+        (n.unit && n.unit.toLowerCase().includes(searchVal)) ||
+        (n.content?.summary && n.content.summary.toLowerCase().includes(searchVal)) ||
+        (n.content?.shortNotes && n.content.shortNotes.toLowerCase().includes(searchVal))
+      );
+    }
+
+    // Filter by Subject
+    const subjVal = $('#notes-filter-subject')?.value || 'All';
+    if (subjVal !== 'All') {
+      notes = notes.filter(n => n.subject === subjVal);
+    }
+
+    // Filter by Unit
+    const unitVal = $('#notes-filter-unit')?.value || 'All';
+    if (unitVal !== 'All') {
+      notes = notes.filter(n => n.unit === unitVal || (n.title && n.title.includes(unitVal)));
+    }
+
+    // Sort Notes
+    const sortVal = $('#notes-sort-select')?.value || 'newest';
+    if (sortVal === 'oldest') {
+      notes.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    } else if (sortVal === 'subject') {
+      notes.sort((a, b) => (a.subject || '').localeCompare(b.subject || ''));
+    } else {
+      // newest
+      notes.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    }
+
+    // Update subject filter options dynamically
+    const filterSubjSelect = $('#notes-filter-subject');
+    if (filterSubjSelect && filterSubjSelect.options.length <= 6) {
+      const allUniqueSubjs = Array.from(new Set(state.notes.map(n => n.subject))).filter(Boolean);
+      const currentVal = filterSubjSelect.value;
+      filterSubjSelect.innerHTML = '<option value="All">All Subjects</option>' + allUniqueSubjs.map(s => `
+        <option value="${escapeHtml(s)}" ${s === currentVal ? 'selected' : ''}>${escapeHtml(s)}</option>
+      `).join('');
+    }
+
     if (notes.length === 0) {
-      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">No notes saved yet. Use AI Note Generator to create your first note!</div>';
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--text-muted);background:var(--bg-surface-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);"><div style="font-size:2rem;margin-bottom:8px;">📝</div><h3 style="color:var(--text-primary);margin-bottom:6px;">No Course Notes Found</h3><p style="font-size:0.8rem;">Try clearing the search filter or switch to another department.</p></div>';
       return;
     }
 
     container.innerHTML = notes.map(n => `
-      <div class="note-card" data-note-id="${n.id}" style="padding:18px;background:var(--bg-surface-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);display:flex;flex-direction:column;justify-content:space-between;">
+      <div class="note-card" data-note-id="${n.id}" style="padding:18px;background:var(--bg-surface-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-card);transition:transform var(--transition-fast),border-color var(--transition-fast);">
         <div>
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px;">
             <span style="font-size:0.72rem;font-weight:700;color:var(--primary-blue);background:rgba(59,130,246,0.12);padding:2px 8px;border-radius:9999px;">${escapeHtml(n.subject)}</span>
-            <span style="font-size:0.7rem;color:var(--text-muted);">${escapeHtml(n.date || 'Today')}</span>
+            <span style="font-size:0.68rem;color:var(--text-muted);white-space:nowrap;">${escapeHtml(n.year || '2nd Year')} • ${escapeHtml(n.unit || 'Unit 1')}</span>
           </div>
-          <h3 style="font-size:0.92rem;font-weight:800;color:var(--text-primary);margin-bottom:6px;">${escapeHtml(n.title)}</h3>
-          <p style="font-size:0.76rem;color:var(--text-secondary);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+          <h3 style="font-size:0.92rem;font-weight:800;color:var(--text-primary);margin-bottom:6px;line-height:1.3;">${escapeHtml(n.title)}</h3>
+          <p style="font-size:0.76rem;color:var(--text-secondary);line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px;">
             ${escapeHtml(n.content?.summary || n.content?.shortNotes || 'No summary available.')}
           </p>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;">
+            ${(n.tags || []).slice(0, 3).map(t => `
+              <span style="font-size:0.65rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:1px 6px;border-radius:4px;">#${escapeHtml(t)}</span>
+            `).join('')}
+          </div>
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:10px;border-top:1px solid var(--border-subtle);">
-          <span style="font-size:0.7rem;color:var(--text-muted);">${n.isAiGenerated ? '✨ AI Generated' : 'Manual'}</span>
-          <button class="btn-secondary" style="padding:4px 12px;font-size:0.74rem;" onclick="window.viewNote('${n.id}')">Read Note →</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border-subtle);">
+          <span style="font-size:0.7rem;color:var(--text-muted);">${n.isAiGenerated ? '✨ AI Synthesis' : 'Manual'}</span>
+          <button class="btn-primary" style="padding:4px 12px;font-size:0.74rem;display:flex;align-items:center;gap:4px;" onclick="window.viewNote('${n.id}')">
+            <span>Read Note</span>
+            <span>→</span>
+          </button>
         </div>
       </div>
     `).join('');
   }
 
+  function renderStudyMaterials() { renderStudyMaterial(); }
   function renderStudyMaterial() {
     const tbody = $('#study-material-tbody');
     if (!tbody) return;
